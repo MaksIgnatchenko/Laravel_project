@@ -1,0 +1,85 @@
+p {
+    color: #fff;
+}
+#left-content {
+    float: left;
+    margin-top: 30px;
+    margin-left: 15px;
+}
+#left-content .task_title {
+    display: flex;
+}
+#left-content .task_level {
+    color: #fff;
+    padding: 2px 9px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background-color: #000;
+}
+#left-content .task_name {
+    color: #fff;
+    margin-left: 15px;
+}
+#left-content .task_description {
+    margin-top: 35px;
+    width: 600px;
+    height: 300px;
+    background-color: rgba(35, 35, 35, 0.6);
+}
+#left-content .task_description .desc {
+    font-size: 20px;
+    color: #EBEBEB;
+    margin-left: 15px;
+    padding-top: 15px;
+}
+#left-content .task_description .task_desc {
+    font-size: 16px;
+    color: #EBEBEB;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+#right-content {
+	float: right;
+    margin-top: 35px;
+	margin-right: 15px;
+}
+#right-content .solution {
+    width: 700px;
+    height: 50px;
+    background-color: rgba(35, 35, 35, 0.6);
+}
+#right-content .solution p {
+    font-size: 20px;
+    color: #EBEBEB;
+    line-height: 50px;
+    margin-left: 15px;
+}
+#right-content form #btn {
+    margin-top: 12px;
+    padding: 10px 22px;
+    background-color: #141414;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+#right-content form #btn:hover {
+    background-color: #232323;
+}
+#editor {
+	width: 700px;
+	height: 200px;
+}
+select {
+	background-color: rgba(35, 35, 35, 0.6);
+	border: none;
+	padding: 10px 15px;
+	cursor: pointer;
+	color: #fff;
+	margin-bottom: 15px;
+}
+select option {
+	color: #fff;
+	font-size: 16px;
+}
