@@ -29,7 +29,7 @@ Route::get('create',function (){
 Route::post('createtask','TaskController@create');
 
 //Route::get('/test/{id}',function ($id){
-//    $task=Task::findOrFail($id);
+//   $task=Task::findOrFail($id);
 //    return view('test',compact('task'));
 //});
 
