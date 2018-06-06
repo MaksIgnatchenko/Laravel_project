@@ -30,7 +30,16 @@
         </textarea>
         <div id="editor"></div>
         <input type="submit" value="Check solution" name="test" id="btn">
+        @if($task->id >1)
+        <a href="{{$task->id-1}}" style="color: #fff;">Prev</a>
+        @endif
+        @if($task->id < (\App\Task::all()->count()))
+            <a href="{{$task->id+1}}" style="color: #fff;">Next</a>
+        @endif
     </form>
+    @if(isset($post))
+        <p>{{$result}}</p>
+    @endif
 @endsection
 
 

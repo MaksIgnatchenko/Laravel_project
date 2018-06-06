@@ -12,6 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('test', 'TaskController@index');
+Route::get('test/{id}', 'TaskController@test');
 
 Route::post('test/{id}', 'TaskController@test');
 

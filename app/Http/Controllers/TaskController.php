@@ -18,6 +18,7 @@ class TaskController extends Controller
 
         return view('main', compact('tasks'));
     }
+
     public function train($id)
     {
         $task = Task::find($id);
@@ -25,17 +26,18 @@ class TaskController extends Controller
         return view('train', compact('task'));
     }
 
-    public function test($id)
+    public function test(Request $request, $id)
     {
-        $post=$_POST['editor'];
-        if (isset($_POST['editor'])) {
+        $post = $request->input('editor');
+        /*$post = $_POST['editor'];*/
+        if (isset($post)) {
             $test = Task::find($id)->check_code;
             $preCode = '';
-            $preCode .= '<?php'."\n";
+            $preCode .= '<?php' . "\n";
             $preCode .= $_POST['editor'];
             $preCode .= $test;
             $hand = fopen("code.php", "w");
-            fwrite($hand,$preCode);
+            fwrite($hand, $preCode);
             fclose($hand);
             $descriptorspec = array(
                 0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
@@ -44,17 +46,18 @@ class TaskController extends Controller
             );
             $process = proc_open("php", $descriptorspec, $pipes, null, null);
             if (is_resource($process)) {
-                fwrite($pipes[0],$preCode);
+                fwrite($pipes[0], $preCode);
                 fclose($pipes[0]);
                 $result = stream_get_contents($pipes[1]);
-                echo "<p class='t1'>".$result."<p>";
+                echo $result;
                 fclose($pipes[1]);
             }
 
         }
-        $task=Task::find($id);
-        return view('train', compact('task', 'post'));
+        $task = Task::find($id);
+        return view('train', compact("task", "result", "post"));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -73,7 +76,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -84,7 +87,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Task  $task
+     * @param  \App\Task $task
      * @return \Illuminate\Http\Response
      */
     public function show(Task $task)
@@ -95,7 +98,7 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Task  $task
+     * @param  \App\Task $task
      * @return \Illuminate\Http\Response
      */
     public function edit(Task $task)
@@ -106,8 +109,8 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Task  $task
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Task $task
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Task $task)
@@ -118,7 +121,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Task  $task
+     * @param  \App\Task $task
      * @return \Illuminate\Http\Response
      */
     public function destroy(Task $task)
