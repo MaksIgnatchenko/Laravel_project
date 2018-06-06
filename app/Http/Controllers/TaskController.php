@@ -14,8 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-
+        $tasks = Task::all()->forPage(2,2);
+            //dd($tasks);
         return view('main', compact('tasks'));
     }
 
