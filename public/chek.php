@@ -1,5 +1,5 @@
 <?php
-vfunction test($received, $expected) {
+function test($received, $expected) {
     echo $expected === $received ? "OK"
         : "Fail";
 }

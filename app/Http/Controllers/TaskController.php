@@ -83,7 +83,7 @@ class TaskController extends Controller
             $code .= $post;
             $code .= $test;
 
-            $hand = fopen("chek.php", "w");
+            $hand = fopen("check.php", "w");
             fwrite($hand, $code);
             fclose($hand);
             $descriptorspec = array(
