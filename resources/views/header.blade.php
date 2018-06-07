@@ -33,7 +33,7 @@
                 </li>
                 <hr>
                 <li>
-                    <a href="create">Create new task</a>
+                    <a href="../create">Create new task</a>
                 </li>
                 <hr>
                 <li>
