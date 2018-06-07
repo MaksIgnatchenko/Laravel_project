@@ -71,4 +71,7 @@
                 @endforeach
             </li>
         </ul>
+
+        <p>{{$tasks->render()}}</p>
+
 @endsection

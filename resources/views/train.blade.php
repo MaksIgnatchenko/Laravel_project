@@ -31,10 +31,10 @@
         <div id="editor"></div>
         <input type="submit" value="Check solution" name="test" id="btn">
         @if($task->id >1)
-        <a href="{{$task->id-1}}" style="color: #fff;">Prev</a>
+            <a href="../prew/{{$task->id}}" style="color: #fff;">Prev</a>
         @endif
         @if($task->id < (\App\Task::all()->count()))
-            <a href="{{$task->id+1}}" style="color: #fff;">Next</a>
+            <a href="../next/{{$task->id}}" style="color: #fff;">Next</a>
         @endif
     </form>
     @if(isset($post))

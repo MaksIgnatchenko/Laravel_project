@@ -4,14 +4,15 @@ use App\Scopes\IdScope;
 use App\User;
 use Illuminate\Support\Str;
 use App\Task;
-Route::get('1',function (){
-    dd(Task::find(1,['preview','description']));
-});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('test', 'TaskController@index');
+
+Route::get('next/{id}','TaskController@next');
+Route::get('prew/{id}','TaskController@prew');
 Route::get('test/{id}', 'TaskController@test');
 
 Route::post('test/{id}', 'TaskController@test');
@@ -22,6 +23,7 @@ Route::get('create',function (){
 });
 Route::get('main', 'TaskController@index');
 Route::get('train/{id}', 'TaskController@train');
+Route::get('next/{id}', 'TaskController@next');
 Route::get('create',function (){
     $task=Task::find(1);
     return view('create_view', compact('task'));

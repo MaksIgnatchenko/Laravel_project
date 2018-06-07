@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -14,14 +15,29 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all()->forPage(2,2);
-            //dd($tasks);
+        $tasks = Task::paginate(2);
+
         return view('main', compact('tasks'));
+    }
+
+    public function next($id)
+    {
+
+        $task =  Task::next($id);
+
+        return view('train', compact('task'));
+    }
+    public function prew($id)
+    {
+        $task =  Task::prew($id);
+
+        return view('train', compact('task'));
     }
 
     public function train($id)
     {
-        $task = Task::find($id);
+
+        $task = Task::findOrFail($id);
 
         return view('train', compact('task'));
     }
@@ -34,7 +50,7 @@ class TaskController extends Controller
             $test = Task::find($id)->check_code;
             $preCode = '';
             $preCode .= '<?php' . "\n";
-            $preCode .= $_POST['editor'];
+            $preCode .= $post;
             $preCode .= $test;
             $hand = fopen("code.php", "w");
             fwrite($hand, $preCode);
@@ -49,7 +65,6 @@ class TaskController extends Controller
                 fwrite($pipes[0], $preCode);
                 fclose($pipes[0]);
                 $result = stream_get_contents($pipes[1]);
-                echo $result;
                 fclose($pipes[1]);
             }
 

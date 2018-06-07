@@ -25,8 +25,8 @@ function my_sum($arr) {
 TASKVIEW;
         $task->check_code = <<<'TEXT'
 function test($received, $expected) {
-    echo $expected === $received ? "<br>"."OK"
-        : "<br>"."Fail";
+    echo $expected === $received ? "OK"
+        : "Fail";
 }
 function test_my_sum(){
     echo "We are testing my_sum!" . PHP_EOL;
@@ -61,8 +61,8 @@ function shortener($shortMe) {
 TASKVIEW;
         $task->check_code = <<<'TEXT'
  function test($received, $expected) {
-    echo $expected === $received ? "<br>"."OK"
-        : "<br>"."Fail";
+    echo $expected === $received ? "OK"
+        : "Fail";
 }
 function test_shortener(){
     echo "We are testing shortener!" . PHP_EOL;
@@ -115,8 +115,8 @@ function compare_ends($shortMe) {
 TASKVIEW;
         $task->check_code = <<<'TEXT'
 function test($received, $expected) {
-    echo $expected === $received ? "<br>"."OK"
-        : "<br>"."Fail";
+    echo $expected === $received ? "OK"
+        : "Fail";
 }
 function test_compare_ends() {
     echo "We are testing compare_ends!" . PHP_EOL;
@@ -147,8 +147,8 @@ function reverse_string($str) {
 TASKVIEW;
         $task->check_code = <<<'TEXT'
  function test($received, $expected) {
-    echo $expected === $received ? "<br>"."OK"
-        : "<br>"."Fail";
+    echo $expected === $received ?."OK"
+        : ."Fail";
 }
 function test_reverse_string() {
     echo "We are testing reverse_string" . PHP_EOL;
