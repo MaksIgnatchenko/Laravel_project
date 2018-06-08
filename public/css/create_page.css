@@ -1,0 +1,15 @@
+h1 {
+    color: #fff;
+    text-align: center;
+}
+#left-content {
+    float: left;
+    width: 48%;
+    background-color: rgba(35, 35, 35, 0.6);
+}
+#left-content textarea {
+    width: 90%;
+}
+#left-content legend {
+    color: #fff;
+}

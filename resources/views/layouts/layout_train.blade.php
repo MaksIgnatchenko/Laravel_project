@@ -11,21 +11,6 @@
     <script src="{{asset('js/src/theme-monokai.js')}}" type="text/javascript" charset="utf-8"></script>
     <script src="{{asset('js/src/mode-php.js')}}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
-    <style>
-        body{
-            font-family:helvetica;
-        }
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -41,3 +26,4 @@
 
 </body>
 </html>
+

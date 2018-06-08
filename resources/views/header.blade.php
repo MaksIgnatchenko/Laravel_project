@@ -1,16 +1,5 @@
-    @if (Route::has('login'))
-        <div class="top-right links t">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                    <a href="{{ route('register') }}">Register</a>
-                    @endauth
-        </div>
-    @endif
 <header>
     <div id="logo">
-
         <a href="/">
             <img src="{{asset('images/logo.png')}}" alt="Logo">
         </a>
@@ -33,7 +22,7 @@
                 </li>
                 <hr>
                 <li>
-                    <a href="../create">Create new task</a>
+                    <a href="create">Create new task</a>
                 </li>
                 <hr>
                 <li>
@@ -42,4 +31,14 @@
             </ul>
         </li>
     </ul>
+    @if (Route::has('login'))
+        <div class="top-right links t">
+            @auth
+                <a href="{{ url('/home') }}">Home</a>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">Register</a>
+            @endauth
+        </div>
+    @endif
 </header>

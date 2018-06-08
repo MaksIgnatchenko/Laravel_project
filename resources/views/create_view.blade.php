@@ -1,3 +1,11 @@
+@extends('layouts.layout_create')
+
+@section('head')
+    <h1>Task editor</h1>
+@endsection
+
+@section('body')
+
 <form action="chek" method="post">
     <legend>description_task</legend>
     <textarea  class="t" name="task_desc"  id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
@@ -28,3 +36,4 @@
     <br>
 </div>
 @endif
+@endsection

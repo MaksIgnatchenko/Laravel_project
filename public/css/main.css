@@ -1,7 +1,7 @@
 #content {
 	float: left;
-	width: 350px;
-	height: 590px;
+	width: 28%;
+	height: auto;
 	margin-left: 20px;
 	margin-top: 20px;
 	background-color: rgba(42, 42, 42, 0.61);
@@ -18,12 +18,21 @@
 	position: relative;
 	margin-bottom: 40px;
 }
+#content .task .sort .sort_item {
+	width: 50%;
+}
 #content .task .lang {
 	position: relative;
 	margin-bottom: 40px;
 }
+#content .task .lang .language {
+	width: 50%;
+}
 #content .task .diffic {
 	position: relative;
+}
+#content .task .diffic .level {
+	width: 50%;
 }
 #content .task span {
 	font-size: 18px;
@@ -81,8 +90,8 @@
 
 #sidebar {
 	float: right;
-	width: 950px;
-	height: 890px;
+	width: 67%;
+	height: auto;
 	background-color: rgba(42, 42, 42, 0.6);
 	margin-right: 20px;
 	margin-top: 20px;
@@ -150,5 +159,23 @@
 	border-radius: 5px;
 }
 #sidebar ul li .task_left .task_tag a:hover {
+	color: #5AEFFF;
+}
+#sidebar .pagination {
+	display: inline-block;
+	margin-left: 40%;
+	background-color: rgba(182, 192, 182, 0.4);
+	padding-right: 5px;
+	margin-bottom: 10px;
+}
+#sidebar .pagination li {
+	display: inline-block;
+	padding: 0 10px 10px 0;
+}
+#sidebar .pagination li a:hover {
+	text-decoration: none;
+	color: #5AEFFF;
+}
+#sidebar .pagination .active span{
 	color: #5AEFFF;
 }
