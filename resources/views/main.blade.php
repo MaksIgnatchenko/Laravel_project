@@ -49,7 +49,6 @@
                 <li class="tags_item"><a href="">Algebra</a></li>
                 <li class="tags_item"><a href="">Geometry</a></li>
                 <li class="tags_item"><a href="">Mathematics</a></li>
-                <li class="tags_item"><a href="">Loops</a></li>
             </ul>
         </div>
     </div>
@@ -71,7 +70,6 @@
                 @endforeach
             </li>
         </ul>
-
-        <p>{{$tasks->render()}}</p>
+            <a>{{$tasks->links()}}</a>
 
 @endsection

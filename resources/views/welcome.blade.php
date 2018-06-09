@@ -85,11 +85,12 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+
             }
+
         </style>
     </head>
     <body>
-
         <div class=" position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
