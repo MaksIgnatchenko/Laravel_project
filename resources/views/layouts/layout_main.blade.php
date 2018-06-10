@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{asset('css/all.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/train.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/pagination.css')}}" type="text/css">
     <script type="text/javascript" src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script src="{{asset('js/src/ace.js')}}" type="text/javascript" charset="utf-8"></script>
     <script src="{{asset('js/src/theme-monokai.js')}}" type="text/javascript" charset="utf-8"></script>
@@ -13,7 +14,6 @@
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
     <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
     <style>
 
 
@@ -95,7 +95,7 @@
         }
         .btn-draw:hover {
             color: #e4e4e2;
-            background-color: #324577;
+            background-color: #f6f6ff;
             -webkit-transition-delay: 0.2s;
             transition-delay: 0.2s;
         }
@@ -225,12 +225,12 @@
         }
 
         .layer:nth-child(n+11):after {
-            -webkit-text-stroke: 15px #7fa4de;
+            -webkit-text-stroke: 15px rgba(127, 164, 222, 0.38);
             text-shadow: 6px 0 6px #00366b, 5px 5px 5px #002951, 0 6px 6px #00366b;
         }
 
         .layer:nth-child(n+12):after {
-            -webkit-text-stroke: 15px #7fa4de;
+            -webkit-text-stroke: 15px rgba(127, 164, 222, 0.42);
         }
 
         .layer:last-child:after {
