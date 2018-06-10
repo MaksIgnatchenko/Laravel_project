@@ -1,7 +1,28 @@
 <header>
-    <div id="logo">
+    <div>
         <a href="/">
-            <img src="{{asset('images/logo.png')}}" alt="Logo">
+            <div class="stage">
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+            </div>
         </a>
     </div>
     <ul id="profile">
@@ -32,7 +53,7 @@
         </li>
     </ul>
     @if (Route::has('login'))
-        <div class="top-right links t">
+        <div class="top-right links">
             @auth
                 <a href="{{ url('/home') }}">Home</a>
             @else
@@ -41,4 +62,5 @@
             @endauth
         </div>
     @endif
+
 </header>

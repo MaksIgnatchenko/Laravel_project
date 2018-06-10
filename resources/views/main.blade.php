@@ -48,7 +48,7 @@
                 <li class="tags_item"><a href="">Logic</a></li>
                 <li class="tags_item"><a href="">Algebra</a></li>
                 <li class="tags_item"><a href="">Geometry</a></li>
-                <li class="tags_item"><a href="">Mathematics</a></li>
+                <li class="tags_item"><a class="a1" href="">Mathematics</a></li>
             </ul>
         </div>
     </div>
