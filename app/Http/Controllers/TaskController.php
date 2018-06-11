@@ -16,10 +16,11 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::paginate(3);
+        $path = $tasks->toArray()['path'];
         $actpage = $tasks->toArray()['current_page'];
         $totalPageCount = $tasks->toArray()['last_page'];
 
-        return view('main', compact('tasks','actpage', 'totalPageCount'));
+        return view('main', compact('tasks','actpage', 'totalPageCount', 'path'));
     }
 
     public function next($id)

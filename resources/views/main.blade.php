@@ -73,13 +73,13 @@
 
 
         <div class="content_detail__pagination cdp" actpage="{{$actpage}}">
-            <a href="http://sourseplanet1/main?page={{$actpage-1}}" class="cdp_i">prev</a>
+            <a href="{{$path}}?page={{$actpage-1}}" class="cdp_i">prev</a>
 
                 @for($i = 1; $i <= $totalPageCount; $i++)
-                 <a href="http://sourseplanet1/main?page={{$i}}" class="cdp_i">{{$i}}</a>
+                 <a href="{{$path}}?page={{$i}}" class="cdp_i">{{$i}}</a>
                 @endfor
 
-            <a href="http://sourseplanet1/main?page={{$actpage+1}}" class="cdp_i">next</a>
+            <a href="{{$path}}?page={{$actpage+1}}" class="cdp_i">next</a>
         </div>
 
 @endsection
