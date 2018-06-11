@@ -80,9 +80,9 @@ class TaskController extends Controller
     {
         $task = Task::find(1);
         $userCode = $request->editor;
-        $interpreter = 'php -r ';
+        $interpreter = "php -r ";
         $checkCode = $task->check_code;
-        $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
+        $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
         $cmd = str_replace(["\r","\n", "\r\n"],"",$cmd);
         $descriptorspec = array(
             0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
