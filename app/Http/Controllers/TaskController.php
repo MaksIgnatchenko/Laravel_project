@@ -23,6 +23,17 @@ class TaskController extends Controller
         return view('main', compact('tasks','actpage', 'totalPageCount', 'path'));
     }
 
+    public function edit()
+    {
+        $tasks = Task::paginate(2);
+        $path = $tasks->toArray()['path'];
+        $actpage = $tasks->toArray()['current_page'];
+        $totalPageCount = $tasks->toArray()['last_page'];
+//        $task=Task::find(1);
+//       dd($task->user->name);
+        return view('edit', compact('tasks','actpage', 'totalPageCount', 'path'));
+    }
+
     public function next($id)
     {
 
@@ -146,16 +157,7 @@ class TaskController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Task $task
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Task $task)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.

@@ -16,4 +16,9 @@ class Task extends Model
 
         return $query->where('id', '<', $id)->get()->last();
     }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }
