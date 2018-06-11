@@ -60,7 +60,7 @@
                 <a class="btn-draw" href="{{ route('login') }}">Login</a>
                 <a class="btn-draw" href="{{ route('register') }}">Register</a>
             @endauth
-                    <a class="btn-draw" href="edit">edit</a>
+                    <a class="btn-draw" href="/edit">edit</a>
         </div>
     @endif
 

@@ -2,21 +2,24 @@
 
 @section('sidebar')
 
-    <h1>Task editor</h1>
-
-
-    <h5>Task list</h5>
     <ul>
-        <li>
+        <li style="padding: 0px;  margin: 30px">
             @foreach($tasks as $task)
-                <div class="task_left">
+
+                <div style="margin: 20px" class="task_left">
                     <span class="task_level">{{$task->user->name}}</span>
                     <a href="train/{{$task->id}}" class="task_name">{{$task->task_desc}}</a><br>
                     <div class="task_tag"><a href="#">{{$task->theme}}</a></div>
                 </div>
-                <div >
-                    <button class="btn-draw"><a class="t1" href="editTask/{{$task->id}}">edit</a></button>
-                </div><hr>
+
+                    <div style="position: relative; top: 45px" class="flip">
+                        <a href="editTask/{{$task->id}}" target="_blank">
+                            <div class="front">EDIT</div>
+                            <div class="back">EDIT</div>
+                        </a>
+                    </div>
+
+                <hr>
             @endforeach
         </li>
     </ul>

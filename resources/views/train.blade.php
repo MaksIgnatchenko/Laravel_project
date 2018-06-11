@@ -1,4 +1,5 @@
 @extends('layouts.layout_train')
+{{--@extends('layouts.layout_main')--}}
 
 @section('left-content')
     <div class="task_title">
