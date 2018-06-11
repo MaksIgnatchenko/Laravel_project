@@ -1,7 +1,7 @@
 @extends('layouts.layout_create')
 
 @section('head')
-    <h1>Task editor</h1>
+    <h1>Task creator</h1>
 @endsection
 
 @section('body')
