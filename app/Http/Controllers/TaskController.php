@@ -53,11 +53,23 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        $userCode = $request->editor;
-        $interpreter = 'php -r ';
-        $checkCode = $task->check_code;
-        $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
-        $cmd = str_replace(["\r","\n", "\r\n"],"",$cmd);
+        $checkOs = php_uname('s');
+        $p = strpos($checkOs, ' ');
+        $os = substr($checkOs, 0, $p);
+        if ($os === "Windows") {
+            $userCode = $request->editor;
+            $interpreter = 'php -r ';
+            $checkCode = $task->check_code;
+            $checkCode = str_replace(['"'],'\'',$checkCode);
+            $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
+            $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
+        } else {
+            $userCode = $request->editor;
+            $interpreter = 'php -r ';
+            $checkCode = $task->check_code;
+            $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
+            $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
+        }
         $descriptorspec = array(
             0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
             1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
@@ -72,6 +84,7 @@ class TaskController extends Controller
             proc_close($process);
         }
         return view('train', compact('task', 'userCode', 'result'));
+
     }
 
     public function check(Request $request)
@@ -79,10 +92,10 @@ class TaskController extends Controller
         dd
         $task = Task::find(1);
         $userCode = $request->editor;
-        $interpreter = "php -r ";
+        $interpreter = 'php -r ';
         $checkCode = $task->check_code;
         $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
-        $cmd = str_replace(["\r","\n", "\r\n"],"",$cmd);
+        $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
         $descriptorspec = array(
             0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
             1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
