@@ -70,24 +70,7 @@
                 @endforeach
             </li>
         </ul>
-            <a>{{$tasks->links()}}</a>
-        {{--<script>--}}
-            {{--window.onload = function(){--}}
-                {{--var paginationPage = parseInt($('.cdp').attr('actpage'), 10);--}}
-                {{--$('.cdp_i').on('click', function(){--}}
-                    {{--var go = $(this).attr('href').replace("http://sourseplanet1/main?page=", '');--}}
-                    {{--if (go === '+1') {--}}
-                        {{--paginationPage++;--}}
-                    {{--} else if (go === '-1') {--}}
-                        {{--paginationPage--;--}}
-                    {{--}else{--}}
-                        {{--paginationPage = parseInt(go, 10);--}}
-                    {{--}--}}
-                    {{--//alert(paginationPage)--}}
-                    {{--$('.cdp').attr('actpage', paginationPage);--}}
-                {{--});--}}
-            {{--};--}}
-        {{--</script>--}}
+
 
         <div class="content_detail__pagination cdp" actpage="{{$actpage}}">
             <a href="http://sourseplanet1/main?page={{$actpage-1}}" class="cdp_i">prev</a>
