@@ -29,8 +29,6 @@ class TaskController extends Controller
         $path = $tasks->toArray()['path'];
         $actpage = $tasks->toArray()['current_page'];
         $totalPageCount = $tasks->toArray()['last_page'];
-//        $task=Task::find(1);
-//       dd($task->user->name);
         return view('edit', compact('tasks','actpage', 'totalPageCount', 'path'));
     }
 
@@ -148,7 +146,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+       $task;
     }
 
     /**
