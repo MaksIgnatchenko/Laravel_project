@@ -25,7 +25,7 @@ class TaskController extends Controller
 
     public function edit()
     {
-        $tasks = Task::paginate(2);
+        $tasks = Task::paginate(3);
         $path = $tasks->toArray()['path'];
         $actpage = $tasks->toArray()['current_page'];
         $totalPageCount = $tasks->toArray()['last_page'];
@@ -76,6 +76,7 @@ class TaskController extends Controller
 
     public function check(Request $request)
     {
+        dd
         $task = Task::find(1);
         $userCode = $request->editor;
         $interpreter = "php -r ";
@@ -146,7 +147,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-       $task;
+       return view ('editor', compact('task'));
     }
 
     /**
