@@ -20,7 +20,7 @@ class TasksTableSeeder extends Seeder
         $task->short_desc = 'Cумма';
         $task->task_view = <<<'TASKVIEW'
 function my_sum($arr) {
-        
+    return array_sum($arr);        
         }
 TASKVIEW;
         $task->check_code = <<<'TEXT'
