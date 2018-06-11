@@ -7,6 +7,30 @@ p {
     margin-top: 30px;
     margin-left: 15px;
 }
+#left-content .back_to_task_list {
+    width: 180px;
+    height: 40px;
+    position: relative;
+    margin-bottom: 15px;
+    background-color: rgba(35, 35, 35, 0.6);
+    border: none;
+    border-radius: 25px;
+}
+#left-content .back_to_task_list img{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+}
+#left-content .back_to_task_list .to_tasks {
+    color: #fff;
+    font-size: 20px;
+    padding-left: 40px;
+    line-height: 40px;
+}
+#left-content .back_to_task_list .to_tasks:hover {
+    color: #7AA1DA;
+}
 #left-content .task_title {
     display: flex;
 }

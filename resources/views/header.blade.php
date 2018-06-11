@@ -25,6 +25,47 @@
             </div>
         </a>
     </div>
+    @if (Route::has('login'))
+    <nav>
+        <div class="menu">
+            <ul class="clear">
+                <li>
+                    <a href="#" title="Home">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <span class="link-text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Create task">
+                        <i class="fa fa-tasks" aria-hidden="true"></i>
+                        <span class="link-text">Create task</span>
+                    </a>
+                </li>
+                @auth
+                <li>
+                    <a href="#" title="Sign Out">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <span class="link-text">Sign Out</span>
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ route('login') }}" title="Login">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        <span class="link-text">Login</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('register') }}" title="Register">
+                        <i class="fa fa-registered" aria-hidden="true"></i>
+                        <span class="link-text">Register</span>
+                    </a>
+                </li>
+                @endauth
+            </ul>
+        </div>
+    </nav>
+    @endif
     <ul id="profile">
         <li class="menu-item">
             <a href="">
@@ -36,32 +77,5 @@
                 </div>
             </a>
         </li>
-        <li class="menu-item">
-            <ul class="sub-menu">
-                <li>
-                    <a href="">View profile</a>
-                </li>
-                <hr>
-                <li>
-                    <a href="create">Create new task</a>
-                </li>
-                <hr>
-                <li>
-                    <a href="">Sign Out</a>
-                </li>
-            </ul>
-        </li>
     </ul>
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a class="btn-draw" href="{{ route('login') }}">Login</a>
-                <a class="btn-draw" href="{{ route('register') }}">Register</a>
-            @endauth
-                    <a class="btn-draw" href="/edit">edit</a>
-        </div>
-    @endif
-
 </header>

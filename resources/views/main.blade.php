@@ -71,7 +71,6 @@
             </li>
         </ul>
 
-
         <div class="content_detail__pagination cdp" actpage="{{$actpage}}">
             <a href="{{$path}}?page={{$actpage-1}}" class="cdp_i">prev</a>
 

@@ -2,6 +2,14 @@
 {{--@extends('layouts.layout_main')--}}
 
 @section('left-content')
+    <div class="back_to_task_list">
+        <a href="/main">
+            <img src="{{asset('images/arrow.png')}}" alt="">
+        </a>
+        <a href="/main" class="to_tasks">
+            К списку задач
+        </a>
+    </div>
     <div class="task_title">
         <span class="task_level">{{$task->difficulty}} lvl</span>
         <h4 class="task_name">{{$task->short_desc}}</h4>
