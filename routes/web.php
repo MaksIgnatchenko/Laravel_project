@@ -15,14 +15,14 @@ Route::get('next/{id}','TaskController@next');
 Route::get('prew/{id}','TaskController@prew');
 Route::get('test/{id}', 'TaskController@test');
 
-Route::post('test/{id}', 'TaskController@test');
+Route::post('test/{task}', 'TaskController@test');
 
 Route::get('create',function (){
     $task=Task::find(1);
     return view('test1', compact('task'));
 });
 Route::get('main', 'TaskController@index');
-Route::get('train/{id}', 'TaskController@train');
+Route::get('train/{task}', 'TaskController@train');
 Route::get('next/{id}', 'TaskController@next');
 Route::get('create',function (){
     $task=Task::find(1);
@@ -30,7 +30,7 @@ Route::get('create',function (){
 });
 
 Route::post('createtask','TaskController@create');
-Route::post('chek','TaskController@chek');
+Route::post('check','TaskController@chek');
 
 //Route::get('/test/{id}',function ($id){
 //   $task=Task::findOrFail($id);

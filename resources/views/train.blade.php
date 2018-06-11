@@ -22,8 +22,8 @@
     </div>
     <form action="../test/{{$task->id}}" method="post">
         <textarea name="editor">
-            @if(isset($post))
-                {{$post}}
+            @if(isset($userCode))
+                {{$userCode}}
             @else
                 {{$task->task_view}}
             @endif
@@ -37,7 +37,7 @@
             <a href="../next/{{$task->id}}" style="color: #fff;">Next</a>
         @endif
     </form>
-    @if(isset($post))
+    @if(isset($userCode))
         <p>{{$result}}</p>
     @endif
 @endsection

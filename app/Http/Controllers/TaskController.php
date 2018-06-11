@@ -46,76 +46,56 @@ class TaskController extends Controller
         return view('train', compact('task'));
     }
 
-    public function train($id)
+    public function train(Task $task)
     {
-
-        $task = Task::findOrFail($id);
-
         return view('train', compact('task'));
     }
 
-    public function test(Request $request, $id)
+    public function test(Request $request, Task $task)
     {
-        $post = $request->input('editor');
-        if (isset($post)) {
-            $test = Task::find($id)->check_code;
-            $preCode = '';
-            $preCode .= '<?php' . "\n";
-            $preCode .= $post;
-            $preCode .= $test;
-            $hand = fopen("code.php", "w");
-            fwrite($hand, $preCode);
-            fclose($hand);
-            $descriptorspec = array(
-                0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
-                1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
-                2 => array("pipe", "w") // stderr - файл для записи
-            );
-            $process = proc_open("php", $descriptorspec, $pipes, null, null);
-            if (is_resource($process)) {
-                fwrite($pipes[0], $preCode);
-                fclose($pipes[0]);
-                $result = stream_get_contents($pipes[1]);
-                fclose($pipes[1]);
-            }
-
+        $userCode = $request->editor;
+        $interpreter = 'php -r ';
+        $checkCode = $task->check_code;
+        $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
+        $cmd = str_replace(["\r","\n", "\r\n"],"",$cmd);
+        $descriptorspec = array(
+            0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
+            1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
+            2 => array("pipe", "w") // stderr - файл для записи
+        );
+        $process = proc_open($cmd, $descriptorspec, $pipes, null, null);
+        if (is_resource($process)) {
+            $result = stream_get_contents($pipes[1]);
+            fclose($pipes[1]);
+            echo stream_get_contents($pipes[2]);
+            fclose($pipes[2]);
+            proc_close($process);
         }
-        $task = Task::find($id);
-        return view('train', compact("task", "result", "post"));
+        return view('train', compact('task', 'userCode', 'result'));
     }
 
-    public function chek(Request $request)
+    public function check(Request $request)
     {
-        if ($request->input('chek')) {
-            $post = $request->input('params');
-            $test = $request->input('check_code');
-
-            $code = '';
-            $code .= '<?php' . "\n";
-            $code .= $post;
-            $code .= $test;
-
-            $hand = fopen("check.php", "w");
-            fwrite($hand, $code);
-            fclose($hand);
-            $descriptorspec = array(
-                0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
-                1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
-                2 => array("pipe", "w") // stderr - файл для записи
-            );
-            $process = proc_open("php", $descriptorspec, $pipes, null, null);
-            if (is_resource($process)) {
-                fwrite($pipes[0], $code);
-                fclose($pipes[0]);
-                $result = stream_get_contents($pipes[1]);
-                fclose($pipes[1]);
-            }
-            $task = Task::find(1);
-            return view('create_view', compact("task", "result", "code"));
+        $task = Task::find(1);
+        $userCode = $request->editor;
+        $interpreter = 'php -r ';
+        $checkCode = $task->check_code;
+        $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
+        $cmd = str_replace(["\r","\n", "\r\n"],"",$cmd);
+        $descriptorspec = array(
+            0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
+            1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
+            2 => array("pipe", "w") // stderr - файл для записи
+        );
+        $process = proc_open($cmd, $descriptorspec, $pipes, null, null);
+        if (is_resource($process)) {
+            $result = stream_get_contents($pipes[1]);
+            fclose($pipes[1]);
+            echo stream_get_contents($pipes[2]);
+            fclose($pipes[2]);
+            proc_close($process);
         }
-        else{
-            $this->create();
-        }
+            return view('create_view', compact("task", "result", "checkCode"));
     }
 
     /**
