@@ -1,7 +1,7 @@
 @extends('layouts.layout_main')
 @section('sidebar')
 
-    <form action="/check" method="post">
+    <form action="/check/{{$task->id}}" method="post">
         <legend class="t1">description_task</legend>
         <textarea  class="t" name="task_desc"  id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
         <br><br>
@@ -15,7 +15,7 @@
         <textarea class="t" name="params" id="3" cols="80" rows="10" required></textarea>
         <br>
         <input type="submit" name="check" value="проверить" title="Отправить данные формы">
-        <input type="submit" name="create"  value="create" title="Отправить данные формы">
+        <input type="submit" name="create"  value="update" title="Отправить данные формы">
     </form>
 
     @if(isset($checkCode))

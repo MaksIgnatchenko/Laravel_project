@@ -2,13 +2,11 @@
 
 @section('sidebar')
 
-    <h1>Task editor</h1>
-
     <ul>
-        <li>
+        <li style="padding: 0px;  margin: 30px">
             @foreach($tasks as $task)
 
-                <div class="task_left">
+                <div style="margin: 20px" class="task_left">
                     <span class="task_level">{{$task->user->name}}</span>
                     <a href="train/{{$task->id}}" class="task_name">{{$task->task_desc}}</a><br>
                     <div class="task_tag"><a href="#">{{$task->theme}}</a></div>

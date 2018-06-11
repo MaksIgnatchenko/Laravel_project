@@ -87,10 +87,9 @@ class TaskController extends Controller
 
     }
 
-    public function check(Request $request)
+    public function check(Request $request,Task $task)
     {
-        dd
-        $task = Task::find(1);
+
         $userCode = $request->editor;
         $interpreter = 'php -r ';
         $checkCode = $task->check_code;
