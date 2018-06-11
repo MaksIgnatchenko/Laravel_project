@@ -37,7 +37,7 @@ function test_my_sum(){
 test_my_sum();
 TEXT;
         $task->difficulty = 1;
-        $task->author = 'Max';
+        $task->user_id = 1;
         $task->is_published = 1;
         $task->save();
 
@@ -91,7 +91,7 @@ function test_shortener(){
 test_shortener();
 TEXT;
         $task->difficulty = 2;
-        $task->author = 'Max';
+        $task->user_id = 1;
         $task->is_published = 1;
         $task->save();
 
@@ -127,7 +127,7 @@ function test_compare_ends() {
 test_compare_ends();
 TEXT;
         $task->difficulty = 2;
-        $task->author = 'Max';
+        $task->user_id = 1;
         $task->is_published = 1;
         $task->save();
         //task 4
@@ -159,7 +159,7 @@ function test_reverse_string() {
 test_reverse_string();
 TEXT;
         $task->difficulty = 2;
-        $task->author = 'Max';
+        $task->user_id = 1;
         $task->is_published = 1;
         $task->save();
     }

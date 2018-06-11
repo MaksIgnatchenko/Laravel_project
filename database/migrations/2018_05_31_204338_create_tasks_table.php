@@ -22,10 +22,9 @@ class CreateTasksTable extends Migration
             $table->string('task_view', 100);
             $table->text('check_code');
             $table->integer('difficulty')->default(1);
-            $table->string('author', 30)->default('Max');
+            $table->integer('user_id');
             $table->boolean('is_published')->default(0);
             $table->timestamps();
-
         });
     }
 

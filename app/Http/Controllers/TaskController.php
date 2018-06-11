@@ -114,12 +114,12 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $task = new Task;
-        $task->task_desc = $_POST['task_desc'];
-        $task->check_code = $_POST['check_code'];
-        $task->task_view = $_POST['task_view'];
+        $task->task_desc = $request->task_desc;
+        $task->check_code = $request->check_code;
+        $task->task_view = $request->task_view;
         $task->save();
         return redirect()->action('TaskController@index');
     }
