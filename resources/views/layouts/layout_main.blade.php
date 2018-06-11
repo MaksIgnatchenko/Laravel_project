@@ -12,7 +12,6 @@
     <script src="{{asset('js/src/theme-monokai.js')}}" type="text/javascript" charset="utf-8"></script>
     <script src="{{asset('js/src/mode-php.js')}}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
-    <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <style>
 
@@ -94,8 +93,8 @@
             transition-delay: 0.4s;
         }
         .btn-draw:hover {
-            color: #e4e4e2;
-            background-color: #f6f6ff;
+            color: #12416e;
+            background-color: #15476d;
             -webkit-transition-delay: 0.2s;
             transition-delay: 0.2s;
         }
