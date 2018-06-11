@@ -17,7 +17,7 @@
     <textarea class="t" name="task_view" id="3" cols="80" rows="10">{{$task->task_view}}</textarea>
     <br>
     <legend>chek_params</legend>
-    <textarea class="t" name="params" id="3" cols="80" rows="10" required></textarea>
+    <textarea class="t" name="editor" id="3" cols="80" rows="10" required></textarea>
     <br>
     <input type="submit" name="check" value="проверить" title="Отправить данные формы">
     <input type="submit" name="create"  value="create" title="Отправить данные формы">

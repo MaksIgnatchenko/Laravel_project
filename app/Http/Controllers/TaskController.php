@@ -89,12 +89,28 @@ class TaskController extends Controller
 
     public function check(Request $request)
     {
-        $task = Task::find(1);
-        $userCode = $request->editor;
-        $interpreter = 'php -r ';
-        $checkCode = $task->check_code;
-        $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
-        $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
+        if (isset($request->editor)) {
+            $task = $request;
+        } else {
+            $task = Task::find(1);
+        }
+        $checkOs = php_uname('s');
+        $p = strpos($checkOs, ' ');
+        $os = substr($checkOs, 0, $p);
+        if ($os === "Windows") {
+            $userCode = $task->editor;
+            $interpreter = 'php -r ';
+            $checkCode = $task->check_code;
+            $checkCode = str_replace(['"'],'\'',$checkCode);
+            $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
+            $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
+        } else {
+            $userCode = $task->editor;
+            $interpreter = 'php -r ';
+            $checkCode = $task->check_code;
+            $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
+            $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
+        }
         $descriptorspec = array(
             0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
             1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать

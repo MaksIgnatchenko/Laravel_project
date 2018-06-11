@@ -30,7 +30,7 @@ Route::get('create',function (){
 });
 
 Route::post('createtask','TaskController@create');
-Route::post('check','TaskController@chek');
+Route::post('check','TaskController@check');
 
 //Route::get('/test/{id}',function ($id){
 //   $task=Task::findOrFail($id);
