@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
@@ -20,7 +21,7 @@ class TaskController extends Controller
         $actpage = $tasks->toArray()['current_page'];
         $totalPageCount = $tasks->toArray()['last_page'];
 
-        return view('main', compact('tasks','actpage', 'totalPageCount', 'path'));
+        return view('main', compact('tasks', 'actpage', 'totalPageCount', 'path'));
     }
 
     public function edit()
@@ -29,19 +30,20 @@ class TaskController extends Controller
         $path = $tasks->toArray()['path'];
         $actpage = $tasks->toArray()['current_page'];
         $totalPageCount = $tasks->toArray()['last_page'];
-        return view('edit', compact('tasks','actpage', 'totalPageCount', 'path'));
+        return view('edit', compact('tasks', 'actpage', 'totalPageCount', 'path'));
     }
 
     public function next($id)
     {
 
-        $task =  Task::next($id);
+        $task = Task::next($id);
 
         return view('train', compact('task'));
     }
+
     public function prew($id)
     {
-        $task =  Task::prew($id);
+        $task = Task::prew($id);
 
         return view('train', compact('task'));
     }
@@ -60,15 +62,15 @@ class TaskController extends Controller
             $userCode = $request->editor;
             $interpreter = 'php -r ';
             $checkCode = $task->check_code;
-            $checkCode = str_replace(['"'],'\'',$checkCode);
+            $checkCode = str_replace(['"'], '\'', $checkCode);
             $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
-            $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
+            $cmd = str_replace(["\r", "\n", "\r\n"], '', $cmd);
         } else {
             $userCode = $request->editor;
             $interpreter = 'php -r ';
-            $checkCode = $task->check_code;
+            $checkCode = $request->check_code;
             $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
-            $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
+            $cmd = str_replace(["\r", "\n", "\r\n"], '', $cmd);
         }
         $descriptorspec = array(
             0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
@@ -89,12 +91,28 @@ class TaskController extends Controller
 
     public function check(Request $request)
     {
-       $task = Task::find(1);
-        $userCode = $request->editor;
-        $interpreter = 'php -r ';
-        $checkCode = $request->check_code;
-        $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
-        $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
+        $task = new Task();
+        $checkOs = php_uname('s');
+        $p = strpos($checkOs, ' ');
+        $os = substr($checkOs, 0, $p);
+        if ($os === "Windows") {
+            $task->task_desc = $request->task_desc;
+            $task->task_view = $request->task_view;
+            $userCode = $request->editor;
+            $interpreter = 'php -r ';
+            $task->check_code = $checkCode = $request->check_code;
+            $checkCode = str_replace(['"'], '\'', $checkCode);
+            $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
+            $cmd = str_replace(["\r", "\n", "\r\n"], '', $cmd);
+        } else {
+            $task->task_desc = $request->task_desc;
+            $task->task_view = $request->task_view;
+            $userCode = $request->editor;
+            $interpreter = 'php -r ';
+            $task->check_code = $checkCode = $request->check_code;
+            $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
+            $cmd = str_replace(["\r", "\n", "\r\n"], '', $cmd);
+        }
         $descriptorspec = array(
             0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
             1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
@@ -108,7 +126,7 @@ class TaskController extends Controller
             fclose($pipes[2]);
             proc_close($process);
         }
-            return view('create_view', compact("task", "result", "cmd"));
+        return view('create_view', compact("task", "result", "cmd", "userCode"));
     }
 
     /**
@@ -119,6 +137,7 @@ class TaskController extends Controller
     public function create(Request $request)
     {
         $task = new Task;
+        $task->user_id = Auth::user()->id;
         $task->task_desc = $request->task_desc;
         $task->check_code = $request->check_code;
         $task->task_view = $request->task_view;
@@ -149,7 +168,6 @@ class TaskController extends Controller
     }
 
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -159,7 +177,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        return view ('singleeditor',compact('task'));
+        return view('singleeditor', compact('task'));
     }
 
     /**
@@ -171,6 +189,15 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
 
+    }
+
+    public function distribute(Request $request)
+    {
+        if ($request->action === 'check') {
+            return $this->check($request);
+        } else {
+            return $this->create($request);
+        }
     }
 
 }
