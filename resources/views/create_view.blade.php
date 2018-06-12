@@ -23,14 +23,14 @@
     <input type="submit" name="create"  value="create" title="Отправить данные формы">
 </form>
 
-@if(isset($checkCode))
-<div style="position: absolute; top: 0; left: 40%">
+@if(isset($cmd))
+<div style="position: absolute; top: 100px; left: 50%">
     <h3>fix if you need it</h3>
 <legend>your code</legend>
-<textarea class="t" name="allcode" id="3" cols="100" rows="20">{{$checkCode}}</textarea>
+<textarea class="t" name="allcode" id="3" cols="100" rows="20">{{$cmd}}</textarea>
 <br>
 </div>
-<div style="position: absolute; top: 40%; left: 40%">
+<div style="position: absolute; top: 50%; left: 50%">
     <legend>result</legend>
     <textarea class="t" name="" id="3" cols="80" rows="10">{{$result}}</textarea>
     <br>

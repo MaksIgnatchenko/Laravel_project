@@ -89,10 +89,10 @@ class TaskController extends Controller
 
     public function check(Request $request)
     {
-        $task = Task::find(1);
+       $task = Task::find(1);
         $userCode = $request->editor;
         $interpreter = 'php -r ';
-        $checkCode = $task->check_code;
+        $checkCode = $request->check_code;
         $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
         $cmd = str_replace(["\r","\n", "\r\n"],'',$cmd);
         $descriptorspec = array(
@@ -108,7 +108,7 @@ class TaskController extends Controller
             fclose($pipes[2]);
             proc_close($process);
         }
-            return view('create_view', compact("task", "result", "checkCode"));
+            return view('create_view', compact("task", "result", "cmd"));
     }
 
     /**
@@ -159,7 +159,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-       $task;
+        return view ('singleeditor',compact('task'));
     }
 
     /**
