@@ -18,13 +18,14 @@
         <br>
         <legend>Пример правильно выполненного задания</legend>
         <textarea class="t" name="editor" id="3" cols="80" rows="10" required>
-        @if (isset($userCode))
+        @isset($userCode)
                 {{ $userCode }}
-            @endif
+            @endisset
     </textarea>
         <br>
         <input type="submit" name="action" value="check" title="Отправить данные формы">
         <input type="submit" name="action" value="create" title="Отправить данные формы">
+
     </form>
 
     @if(isset($cmd))

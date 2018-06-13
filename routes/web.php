@@ -33,16 +33,14 @@ Route::post('createtask','TaskController@create');
 Route::post('check','TaskController@check');
 Route::post('distribute', 'TaskController@distribute');
 
-//Route::get('/test/{id}',function ($id){
-//   $task=Task::findOrFail($id);
-//    return view('test',compact('task'));
-//});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('edit', 'TaskController@edit');
-Route::get('editTask/{task}', 'TaskController@update');
+Route::get('editTask/{task}', 'TaskController@show');
+Route::post('editor/{task}', 'TaskController@distribute');
+
 
 
 

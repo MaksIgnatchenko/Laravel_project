@@ -1,31 +1,39 @@
-@extends('layouts.layout_main')
-@section('sidebar')
+@extends('layouts.layout_create')
+@section('head')
+       <h1>task update</h1>
+@endsection
 
-    <form action="/check/{{$task->id}}" method="post">
-        <legend class="t1">description_task</legend>
-        <textarea  class="t" name="task_desc"  id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
+@section('body')
+
+    <form action="/editor/{{$task->id}}" method="post">
+        <legend>Описание задачи</legend>
+        <textarea class="t" name="task_desc"  cols="80" rows="10">{{$task->task_desc}}</textarea>
         <br><br>
-        <legend class="t1">task_test_code</legend>
-        <textarea class="t" name="check_code" id="2" cols="80" rows="20">{{$task->check_code}}</textarea>
+        <legend>Код, проверяющий пользовательский код</legend>
+        <textarea class="t" name="check_code" cols="80" rows="20">{{$task->check_code}}</textarea>
         <br><br>
-        <legend class="t1">preview_task</legend>
-        <textarea class="t" name="task_view" id="3" cols="80" rows="10">{{$task->task_view}}</textarea>
+        <legend>Заготовка функции для пользователя</legend>
+        <textarea class="t" name="task_view"  cols="80" rows="10">{{$task->task_view}}</textarea>
         <br>
-        <legend class="t1">put check code here</legend>
-        <textarea class="t" name="params" id="3" cols="80" rows="10" required></textarea>
+        <legend>Пример правильно выполненного задания</legend>
+        <textarea class="t" name="editor"  cols="80" rows="10" required>
+        @isset($userCode)
+                {{ $userCode }}
+            @endisset
+    </textarea>
         <br>
-        <input type="submit" name="check" value="проверить" title="Отправить данные формы">
-        <input type="submit" name="create"  value="update" title="Отправить данные формы">
+        <input type="submit" name="action" value="checkin" title="Отправить данные формы">
+        <input type="submit" name="action" value="update" title="Отправить данные формы">
     </form>
 
-    @if(isset($checkCode))
-        <div style="position: absolute; top: 0; left: 40%">
+    @if(isset($cmd))
+        <div style="position: absolute; top: 100px; left: 50%">
             <h3>fix if you need it</h3>
             <legend>your code</legend>
-            <textarea class="t" name="allcode" id="3" cols="100" rows="20">{{$checkCode}}</textarea>
+            <textarea class="t" name="allcode" id="3" cols="100" rows="20">{{$cmd}}</textarea>
             <br>
         </div>
-        <div style="position: absolute; top: 40%; left: 40%">
+        <div style="position: absolute; top: 50%; left: 50%">
             <legend>result</legend>
             <textarea class="t" name="" id="3" cols="80" rows="10">{{$result}}</textarea>
             <br>

@@ -13,7 +13,7 @@
                 </div>
 
                     <div style="position: relative; top: 45px" class="flip">
-                        <a href="editTask/{{$task->id}}">
+                        <a href="/editTask/{{$task->id}}">
                             <div class="front">EDIT</div>
                             <div class="back">EDIT</div>
                         </a>

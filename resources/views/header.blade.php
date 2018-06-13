@@ -30,13 +30,19 @@
         <div class="menu">
             <ul class="clear">
                 <li>
-                    <a href="#" title="Home">
+                    <a href="{{ url('/home') }}" title="Home">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <span class="link-text">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" title="Create task">
+                    <a href="test" title="Main">
+                        <i class="fa fa-tasks" aria-hidden="true"></i>
+                        <span class="link-text">Main</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="create" title="Create task">
                         <i class="fa fa-tasks" aria-hidden="true"></i>
                         <span class="link-text">Create task</span>
                     </a>
