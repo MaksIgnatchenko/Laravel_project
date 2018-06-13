@@ -1,7 +1,7 @@
 @extends('layouts.layout_create')
 
 @section('body')
-    <form action="check" method="post">
+    <form action="{{ action('TaskController@distribute') }}" method="post">
         <legend>description_task</legend>
         <textarea  class="t" name="task_desc"  id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
         <br><br>
@@ -13,16 +13,17 @@
         <br>
         <legend>chek_params</legend>
         <textarea class="t" name="editor" id="3" cols="80" rows="10" required></textarea>
+        <div style="position: relative; left: 50%;" class="flip">
+            <a href="editTask/{{$task->id}}">
+                <div class="front">UPDATE</div>
+                <div class="back">UPDATE</div>
+            </a>
+        </div>
         <br>
-        <input type="submit" name="check" value="проверить" title="Отправить данные формы">
-        <input type="submit" name="create"  value="update" title="Отправить данные формы">
+        <input type="submit" name="action" value="check" title="Отправить данные формы">
+        <input type="submit" name="action" value="update" title="Отправить данные формы">
     </form>
-    <div style="position: relative; left: 50%; top: 40px" class="flip">
-        <a href="editTask/{{$task->id}}">
-            <div class="front">UPDATE</div>
-            <div class="back">UPDATE</div>
-        </a>
-    </div>
+
     @if(isset($cmd))
         <div style="position: absolute; top: 100px; left: 50%">
             <h3>fix if you need it</h3>
