@@ -147,8 +147,8 @@ function reverse_string($str) {
 TASKVIEW;
         $task->check_code = <<<'TEXT'
  function test($received, $expected) {
-    echo $expected === $received ?."OK"
-        : ."Fail";
+    echo $expected === $received ?"OK"
+        : "Fail";
 }
 function test_reverse_string() {
     echo "We are testing reverse_string" . PHP_EOL;
