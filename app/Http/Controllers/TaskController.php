@@ -24,7 +24,7 @@ class TaskController extends Controller
         return view('main', compact('tasks', 'actpage', 'totalPageCount', 'path'));
     }
 
-    public function edit()
+    public function showedit()
     {
         $tasks = Task::paginate(2);
         $path = $tasks->toArray()['path'];
@@ -55,78 +55,29 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        $checkOs = php_uname('s');
-        $p = strpos($checkOs, ' ');
-        $os = substr($checkOs, 0, $p);
-        if ($os === "Windows") {
-            $userCode = $request->editor;
-            $interpreter = 'php -r ';
-            $checkCode = $task->check_code;
-            $checkCode = str_replace(['"'], '\'', $checkCode);
-            $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
-            $cmd = str_replace(["\r", "\n", "\r\n"], '', $cmd);
-        } else {
-            $userCode = $request->editor;
-            $interpreter = 'php -r ';
-            $checkCode = $request->check_code;
-            $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
-            $cmd = str_replace(["\r", "\n", "\r\n"], '', $cmd);
-        }
-        $descriptorspec = array(
-            0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
-            1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
-            2 => array("pipe", "w") // stderr - файл для записи
-        );
-        $process = proc_open($cmd, $descriptorspec, $pipes, null, null);
-        if (is_resource($process)) {
-            $result = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
-            echo stream_get_contents($pipes[2]);
-            fclose($pipes[2]);
-            proc_close($process);
-        }
-        return view('train', compact('task', 'userCode', 'result'));
-
+        $userCode = $request->editor;
+        $exam = exam($task, $request->editor);
+        return view('train', compact('task', 'userCode', 'exam'));
     }
 
-    public function check(Request $request)
+    public function check(Request $request, $task = NULL)
     {
-        $task = new Task();
-        $checkOs = php_uname('s');
-        $p = strpos($checkOs, ' ');
-        $os = substr($checkOs, 0, $p);
-        if ($os === "Windows") {
-            $task->task_desc = $request->task_desc;
-            $task->task_view = $request->task_view;
-            $userCode = $request->editor;
-            $interpreter = 'php -r ';
-            $task->check_code = $checkCode = $request->check_code;
-            $checkCode = str_replace(['"'], '\'', $checkCode);
-            $cmd = $interpreter . "\"" . $userCode . $checkCode . "\"";
-            $cmd = str_replace(["\r", "\n", "\r\n"], '', $cmd);
+        $action = 'update';
+        echo "check";
+        if(!$task) {
+            $task = new Task();
+            $action = 'save';
+        }
+        $task->task_desc = $request->task_desc;
+        $task->task_view = $request->task_view;
+        $task->check_code = $request->check_code;
+        $exam = exam($task, $request->editor);
+        if ($action === 'save') {
+            return view('create_view', compact("task", "exam"));
         } else {
-            $task->task_desc = $request->task_desc;
-            $task->task_view = $request->task_view;
-            $userCode = $request->editor;
-            $interpreter = 'php -r ';
-            $task->check_code = $checkCode = $request->check_code;
-            $cmd = $interpreter . '\'' . $userCode . $checkCode . '\'';
-            $cmd = str_replace(["\r", "\n", "\r\n"], '', $cmd);
+            return view('singleeditor', compact("task", "exam"));
         }
-        $descriptorspec = array(
-            0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
-            1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
-            2 => array("pipe", "w") // stderr - файл для записи
-        );
-        $process = proc_open($cmd, $descriptorspec, $pipes, null, null);
-        if (is_resource($process)) {
-            $result = stream_get_contents($pipes[1]);
-            fclose($pipes[1]);
-            echo stream_get_contents($pipes[2]);
-            fclose($pipes[2]);
-            proc_close($process);
-        }
-        return view('create_view', compact("task", "result", "cmd", "userCode"));
+
     }
 
     /**
@@ -177,7 +128,16 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        return view('singleeditor', compact('task'));
+        $task->task_desc = $request->task_desc;
+        $task->check_code = $request->check_code;
+        $task->task_view = $request->task_view;
+        $task->save();
+        return redirect()->action('TaskController@showedit');
+    }
+
+    public function edit(Request $request, Task $task)
+    {
+        return view('singleeditor', compact("task", "exam"));
     }
 
     /**
@@ -191,10 +151,12 @@ class TaskController extends Controller
 
     }
 
-    public function distribute(Request $request)
+    public function distribute(Request $request, Task $task)
     {
         if ($request->action === 'check') {
-            return $this->check($request);
+            return $this->check($request, $task);
+        } elseif ($request->action === 'update') {
+            return $this->update($request, $task);
         } else {
             return $this->create($request);
         }

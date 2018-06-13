@@ -39,15 +39,17 @@
         </textarea>
         <div id="editor"></div>
         <input type="submit" value="Check solution" name="test" id="btn">
-        @if($task->id >1)
+        @if($task->id > 1)
             <a href="../prew/{{$task->id}}" style="color: #fff;">Prev</a>
         @endif
         @if($task->id < (\App\Task::all()->count()))
             <a href="../next/{{$task->id}}" style="color: #fff;">Next</a>
         @endif
     </form>
-    @if(isset($userCode))
-        <p>{{$result}}</p>
+    @if(isset($exam))
+        @if($exam->isPassed)
+            <p>Вы решили правильно</p>
+        @endif
     @endif
 @endsection
 
