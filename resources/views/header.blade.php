@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="test" title="Main">
+                        <a href="/" title="Main">
                             <i class="fa fa-tasks" aria-hidden="true"></i>
                             <span class="link-text">Main</span>
                         </a>

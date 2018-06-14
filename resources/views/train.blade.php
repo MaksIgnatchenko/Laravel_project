@@ -39,12 +39,15 @@
         </textarea>
         <div id="editor"></div>
         <input type="submit" value="Check solution" name="test" id="btn">
-        @if($task->id > 1)
-            <a href="../prew/{{$task->id}}" style="color: #fff;">Prev</a>
-        @endif
-        @if($task->id < (\App\Task::all()->count()))
-            <a href="../next/{{$task->id}}" style="color: #fff;">Next</a>
-        @endif
+        <div class="content_detail__pagination cdp" actpage="{{$actpage}}">
+            <a href="{{$path}}?page={{$actpage-1}}" class="cdp_i">prev</a>
+
+            @for($i = 1; $i <= $totalPageCount; $i++)
+                <a href="{{$path}}?page={{$i}}" class="cdp_i">{{$i}}</a>
+            @endfor
+
+            <a href="{{$path}}?page={{$actpage+1}}" class="cdp_i">next</a>
+        </div>
     </form>
     @isset($exam))
         @if($exam->isPassed)

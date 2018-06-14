@@ -28,8 +28,7 @@ function test($received, $expected) {
     echo $expected === $received ? 1
         : 0;
 }
-function test_my_sum(){
-    echo "We are testing my_sum!" . PHP_EOL;
+function test_my_sum(){    
     test(12, my_sum(array(10, 2, 0)));
     test(144, my_sum(array(10, 20, 100, 14)));
     test(12, my_sum(array(-50, 200, -100, -50, 12)));
@@ -64,8 +63,7 @@ function test($received, $expected) {
     echo $expected === $received ? 1
         : 0;
 }
-function test_shortener(){
-    echo "We are testing shortener!" . PHP_EOL;
+function test_shortener(){    
     $sourceStrings = array(
         'A very looooooong wooooord',
         'Loremia ipsumia dolaria sitia ameti',
@@ -118,8 +116,7 @@ function test($received, $expected) {
     echo $expected === $received ? 1
         : 0;
 }
-function test_compare_ends() {
-    echo "We are testing compare_ends!" . PHP_EOL;
+function test_compare_ends() {    
     test(compare_ends(array('aba', 'xyz', 'aa', 'x', 'bbb')), 3);
     test(compare_ends(array('', 'x', 'xy', 'xyx', 'xx')), 2);
     test(compare_ends(array('aaa', 'be', 'abc', 'hello')), 1);
@@ -150,8 +147,7 @@ function test($received, $expected) {
     echo $expected === $received ? 1
         : 0;
 }
-function test_reverse_string() {
-    echo "We are testing reverse_string" . PHP_EOL;
+function test_reverse_string() {   
     test(reverse_string('asdfcvbn'), 'nbvcfdsa');
     test(reverse_string('Welcome friend'), 'dneirf emocleW');
     test(reverse_string('nehzitsepmur'), 'rumpestizhen');

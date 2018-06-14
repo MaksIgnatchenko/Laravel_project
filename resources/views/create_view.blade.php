@@ -6,7 +6,7 @@
 
 @section('body')
 
-    <form action="/distibute/{{ $task->id }}" method="post">
+    <form action="/distribute/{{ $task->id }}" method="post">
         <legend>Описание задачи</legend>
         <textarea class="t" name="task_desc" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
         <br><br>
@@ -24,7 +24,11 @@
     </textarea>
         <br>
         <input type="submit" name="action" value="check" title="Отправить данные формы">
-        <input type="submit" name="action" value="create" title="Отправить данные формы">
+        @if(isset($update))
+            <input type="submit" name="action" value="update" title="Отправить данные формы">
+        @else
+            <input type="submit" name="action" value="create" title="Отправить данные формы">
+        @endif
     </form>
 
     @if(isset($exam))

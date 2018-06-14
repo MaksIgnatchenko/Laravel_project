@@ -50,7 +50,14 @@ class TaskController extends Controller
 
     public function train(Task $task)
     {
-        return view('train', compact('task'));
+
+        $paginate = Task::paginate(1);
+        $task = Task::find($paginate->toArray()['data'][0]['id']);
+        $path = $paginate->toArray()['path'];
+        $actpage = $paginate->toArray()['current_page'];
+        $totalPageCount = $paginate->toArray()['last_page'];
+
+        return view('train', compact('task', 'actpage', 'totalPageCount', 'path', 'paginate'));
     }
 
     public function test(Request $request, Task $task)
@@ -137,7 +144,8 @@ class TaskController extends Controller
 
     public function edit(Request $request, Task $task)
     {
-        return view('singleeditor', compact("task", "exam"));
+        $update = true;
+        return view('create_view', compact("task", "exam", "update"));
     }
 
     /**
@@ -153,6 +161,7 @@ class TaskController extends Controller
 
     public function distribute(Request $request, Task $task)
     {
+        echo 'sdsds';
         if ($request->action === 'check') {
             return $this->check($request, $task);
         } elseif ($request->action === 'update') {

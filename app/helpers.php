@@ -3,7 +3,7 @@ if (! function_exists('iswrong')) {
     function exam($task, $editor)
     {
         $language = 'php';
-        $interpreter = '<?php ';
+        $interpreter = '<?php ' . "\n\r";
         $task->check_code;
         $runCode = $interpreter . $editor . $task->check_code;
         $descriptorspec = [
@@ -12,6 +12,7 @@ if (! function_exists('iswrong')) {
             2 => array("pipe", "w") // stderr - файл для записи
         ];
         $process = proc_open($language, $descriptorspec, $pipes, null, null);
+
         if (is_resource($process)) {
             fwrite($pipes[0], $runCode);
             fclose($pipes[0]);
@@ -31,7 +32,6 @@ if (! function_exists('iswrong')) {
             $exam->isPassed = !preg_match('/0+/', $exam->result);
         }
         $exam->code = $runCode;
-        dd($exam);
         return $exam;
     }
 }
