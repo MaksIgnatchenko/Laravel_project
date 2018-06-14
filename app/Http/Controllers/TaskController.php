@@ -75,7 +75,7 @@ class TaskController extends Controller
         if ($action === 'save') {
             return view('create_view', compact("task", "exam"));
         } else {
-            return view('singleeditor', compact("task", "exam"));
+            return view('create_view', compact("task", "exam"));
         }
 
     }

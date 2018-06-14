@@ -46,11 +46,14 @@
             <a href="../next/{{$task->id}}" style="color: #fff;">Next</a>
         @endif
     </form>
-    @if(isset($exam))
+    @isset($exam))
         @if($exam->isPassed)
             <p>Вы решили правильно</p>
+            @else
+            <p>Решение неверно!</p>
+            <p>{{ $exam->error }}</p>
         @endif
-    @endif
+    @endisset
 @endsection
 
 

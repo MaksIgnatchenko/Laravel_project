@@ -6,7 +6,7 @@
 
 @section('body')
 
-    <form action="{{ action('TaskController@distribute') }}" method="post">
+    <form action="/distibute/{{ $task->id }}" method="post">
         <legend>Описание задачи</legend>
         <textarea class="t" name="task_desc" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
         <br><br>

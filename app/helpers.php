@@ -23,8 +23,15 @@ if (! function_exists('iswrong')) {
         }
         $exam = new stdClass();
         $exam->error = $error;
-        $exam->isPassed = strpos($result, '0') ? false : true;
+        $exam->result = $result;
+        if (!is_numeric($exam->result)) {
+            $exam->error = $exam->result;
+            $exam->isPassed = false;
+        } else {
+            $exam->isPassed = !preg_match('/0+/', $exam->result);
+        }
         $exam->code = $runCode;
+        dd($exam);
         return $exam;
     }
 }
