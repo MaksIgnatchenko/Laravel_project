@@ -26,53 +26,6 @@
         </a>
     </div>
     @if (Route::has('login'))
-<<<<<<< HEAD
-    <nav>
-        <div class="menu">
-            <ul class="clear">
-                <li>
-                    <a href="{{ url('/home') }}" title="Home">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        <span class="link-text">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="test" title="Main">
-                        <i class="fa fa-tasks" aria-hidden="true"></i>
-                        <span class="link-text">Main</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/create" title="Create task">
-                        <i class="fa fa-tasks" aria-hidden="true"></i>
-                        <span class="link-text">Create task</span>
-                    </a>
-                </li>
-                @auth
-                <li>
-                    <a href="#" title="Sign Out">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        <span class="link-text">Sign Out</span>
-                    </a>
-                </li>
-                @else
-                <li>
-                    <a href="{{ route('login') }}" title="Login">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        <span class="link-text">Login</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('register') }}" title="Register">
-                        <i class="fa fa-registered" aria-hidden="true"></i>
-                        <span class="link-text">Register</span>
-                    </a>
-                </li>
-                @endauth
-            </ul>
-        </div>
-    </nav>
-=======
         <nav>
             <div class="menu">
                 <ul class="clear">
@@ -118,7 +71,6 @@
                 </ul>
             </div>
         </nav>
->>>>>>> master
     @endif
     <ul id="profile">
         <li class="menu-item">

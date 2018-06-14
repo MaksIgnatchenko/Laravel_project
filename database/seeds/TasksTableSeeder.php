@@ -143,15 +143,9 @@ function reverse_string($str) {
 }
 TASKVIEW;
         $task->check_code = <<<'TEXT'
-<<<<<<< HEAD
- function test($received, $expected) {
-    echo $expected === $received ?"OK"
-        : "Fail";
-=======
 function test($received, $expected) {
     echo $expected === $received ? 1
         : 0;
->>>>>>> 572e0b591f34213cfbc32a269c7f2c637122d205
 }
 function test_reverse_string() {   
     test(reverse_string('asdfcvbn'), 'nbvcfdsa');

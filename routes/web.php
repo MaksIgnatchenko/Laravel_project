@@ -38,15 +38,8 @@ Route::post('distribute/{task?}', 'TaskController@distribute');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
-Route::get('edit', 'TaskController@edit');
-Route::get('editTask/{task}', 'TaskController@show');
-Route::post('editor/{task}', 'TaskController@distribute');
-
-=======
 Route::get('edit', 'TaskController@showedit');
 Route::get('editTask/{task}', 'TaskController@edit');
->>>>>>> master
 
 
 

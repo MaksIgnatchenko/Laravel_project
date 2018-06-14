@@ -6,11 +6,7 @@
 
 @section('body')
 
-<<<<<<< HEAD
-    <form action="distribute" method="post">
-=======
     <form action="/distribute/{{ $task->id }}" method="post">
->>>>>>> master
         <legend>Описание задачи</legend>
         <textarea class="t" name="task_desc" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
         <br><br>
@@ -22,19 +18,6 @@
         <br>
         <legend>Пример правильно выполненного задания</legend>
         <textarea class="t" name="editor" id="3" cols="80" rows="10" required>
-<<<<<<< HEAD
-        @isset($userCode)
-                {{ $userCode }}
-            @endisset
-    </textarea>
-        <br>
-        <input type="submit" name="action" value="check" title="Отправить данные формы">
-        <input type="submit" name="action" value="create" title="Отправить данные формы">
-
-    </form>
-
-    @isset($cmd))
-=======
         @if (isset($exam->code))
                 {{ $exam->code }}
             @endif
@@ -49,7 +32,6 @@
     </form>
 
     @if(isset($exam))
->>>>>>> master
         <div style="position: absolute; top: 100px; left: 50%">
             <h3>fix if you need it</h3>
             <legend>your code</legend>
@@ -70,5 +52,5 @@
             </textarea>
             <br>
         </div>
-    @endisset
+    @endif
 @endsection

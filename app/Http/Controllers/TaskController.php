@@ -84,11 +84,7 @@ class TaskController extends Controller
         } else {
             return view('create_view', compact("task", "exam"));
         }
-<<<<<<< HEAD
-        return (compact("task", "result", "cmd", "userCode"));
-=======
 
->>>>>>> master
     }
 
     /**
@@ -126,7 +122,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return view('editor', compact("task"));
+        //
     }
 
 
@@ -139,18 +135,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-<<<<<<< HEAD
-
-=======
->>>>>>> master
         $task->task_desc = $request->task_desc;
         $task->check_code = $request->check_code;
         $task->task_view = $request->task_view;
         $task->save();
-<<<<<<< HEAD
-        return $this->edit();
-
-=======
         return redirect()->action('TaskController@showedit');
     }
 
@@ -158,7 +146,6 @@ class TaskController extends Controller
     {
         $update = true;
         return view('create_view', compact("task", "exam", "update"));
->>>>>>> master
     }
 
     /**
@@ -176,24 +163,12 @@ class TaskController extends Controller
     {
         echo 'sdsds';
         if ($request->action === 'check') {
-<<<<<<< HEAD
-            return view('create_view', $this->check($request));
-=======
             return $this->check($request, $task);
         } elseif ($request->action === 'update') {
             return $this->update($request, $task);
         } else {
             return $this->create($request);
->>>>>>> master
         }
-        elseif($request->action ==='checkin') {
-            return view ('editor', $this->check($request));
-        }
-        elseif($request->action === 'update'){
-            return $this->update($request, $task);
-        }
-        else
-            return $this->create($request);
     }
 
 }
