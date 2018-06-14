@@ -10,16 +10,15 @@
                     <span class="task_level">{{$task->user->name}}</span>
                     <a href="train/{{$task->id}}" class="task_name">{{$task->task_desc}}</a><br>
                     <div class="task_tag"><a href="#">{{$task->theme}}</a></div>
+                    <a style="position: relative; float: right" class="a1" href="editTask/{{$task->id}}">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        update
+                    </a>
                 </div>
-
-                    <div style="position: relative; top: 45px" class="flip">
-                        <a href="editTask/{{$task->id}}">
-                            <div class="front">EDIT</div>
-                            <div class="back">EDIT</div>
-                        </a>
-                    </div>
-
-                <hr>
+                        <hr>
             @endforeach
         </li>
     </ul>

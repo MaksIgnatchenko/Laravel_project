@@ -19,7 +19,7 @@
         <legend>Пример правильно выполненного задания</legend>
         <textarea class="t" name="editor" id="3" cols="80" rows="10" required>
         @if (isset($exam->code))
-                {{ $exam->code }}
+                {{ $usercode }}
             @endif
     </textarea>
         <br>

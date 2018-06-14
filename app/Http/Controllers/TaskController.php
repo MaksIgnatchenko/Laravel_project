@@ -62,9 +62,17 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        $userCode = $request->editor;
-        $exam = exam($task, $request->editor);
-        return view('train', compact('task', 'userCode', 'exam'));
+        $paginate = Task::paginate(1);
+        $task = Task::find($paginate->toArray()['data'][0]['id']);
+        $path = $paginate->toArray()['path'];
+        $actpage = $paginate->toArray()['current_page'];
+        $totalPageCount = $paginate->toArray()['last_page'];
+
+    if(isset($request->test)) {
+            $userCode = $request->editor;
+            $exam = exam($task, $request->editor);
+}
+        return view('train', compact('task', 'userCode', 'exam', 'actpage', 'totalPageCount', 'path', 'paginate'));
     }
 
     public function check(Request $request, $task = NULL)
@@ -79,10 +87,11 @@ class TaskController extends Controller
         $task->task_view = $request->task_view;
         $task->check_code = $request->check_code;
         $exam = exam($task, $request->editor);
+        $usercode= $request->editor;
         if ($action === 'save') {
             return view('create_view', compact("task", "exam"));
         } else {
-            return view('create_view', compact("task", "exam"));
+            return view('create_view', compact("task", "exam",'usercode'));
         }
 
     }
@@ -161,7 +170,7 @@ class TaskController extends Controller
 
     public function distribute(Request $request, Task $task)
     {
-        echo 'sdsds';
+
         if ($request->action === 'check') {
             return $this->check($request, $task);
         } elseif ($request->action === 'update') {

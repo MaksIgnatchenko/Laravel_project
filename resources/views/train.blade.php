@@ -39,17 +39,18 @@
         </textarea>
         <div id="editor"></div>
         <input type="submit" value="Check solution" name="test" id="btn">
-        <div class="content_detail__pagination cdp" actpage="{{$actpage}}">
-            <a href="{{$path}}?page={{$actpage-1}}" class="cdp_i">prev</a>
-
-            @for($i = 1; $i <= $totalPageCount; $i++)
-                <a href="{{$path}}?page={{$i}}" class="cdp_i">{{$i}}</a>
-            @endfor
-
-            <a href="{{$path}}?page={{$actpage+1}}" class="cdp_i">next</a>
-        </div>
     </form>
-    @isset($exam))
+    <div class="content_detail__pagination cdp" actpage="{{$actpage}}">
+        <a href="{{$path}}?page={{$actpage-1}}" class="cdp_i">prev</a>
+
+        @for($i = 1; $i <= $totalPageCount; $i++)
+            <a href="{{$path}}?page={{$i}}" class="cdp_i">{{$i}}</a>
+        @endfor
+
+        <a href="{{$path}}?page={{$actpage+1}}" class="cdp_i">next</a>
+    </div>
+
+    @isset($exam)
         @if($exam->isPassed)
             <p>Вы решили правильно</p>
             @else
