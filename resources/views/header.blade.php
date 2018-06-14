@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="create" title="Create task">
+                    <a href="/create" title="Create task">
                         <i class="fa fa-tasks" aria-hidden="true"></i>
                         <span class="link-text">Create task</span>
                     </a>

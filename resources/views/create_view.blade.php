@@ -6,7 +6,7 @@
 
 @section('body')
 
-    <form action="{{ action('TaskController@distribute') }}" method="post">
+    <form action="distribute" method="post">
         <legend>Описание задачи</legend>
         <textarea class="t" name="task_desc" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
         <br><br>
@@ -28,7 +28,7 @@
 
     </form>
 
-    @if(isset($cmd))
+    @isset($cmd))
         <div style="position: absolute; top: 100px; left: 50%">
             <h3>fix if you need it</h3>
             <legend>your code</legend>
@@ -40,5 +40,5 @@
             <textarea class="t" name="" id="3" cols="80" rows="10">{{$result}}</textarea>
             <br>
         </div>
-    @endif
+    @endisset
 @endsection
