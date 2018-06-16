@@ -62,20 +62,13 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        echo "ertert";
-        echo "sdfg";
+        echo "qqqqq";
+        echo "qqqqq";
+        echo "qqqqq";
+        echo "qqqqq";
 
 
-        echo "gfdgdffd";
-
-
-
-
-
-
-
-        echo "ujdyj";
-        $paginate = Task::paginate(228);
+        $paginate = Task::paginate(1);
         dd($paginate);
         $task = Task::find($paginate->toArray()['data'][0]['id']);
         $path = $paginate->toArray()['path'];
