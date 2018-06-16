@@ -18,6 +18,7 @@ class TaskController extends Controller
      */
     public function index()
     {
+
         $dto = new PaginationDto();
         $tasks = Task::paginate(3);
         $dto->setTasks($tasks)
@@ -51,20 +52,22 @@ class TaskController extends Controller
         return view('train', compact('task'));
     }
 
-    public function train(Task $task)
+
+    public function train( Request $request, Task $task)
     {
         $paginate = Task::paginate(1);
-        $task = Task::find($paginate->toArray()['data'][0]['id']);
+        if ($request->query()) {
+            $task = Task::find($paginate->toArray()['data'][0]['id']);
+        }
         $path = $paginate->toArray()['path'];
-        $actpage = $paginate->toArray()['current_page'];
-        $totalPageCount = $paginate->toArray()['last_page'];
+        $actpage = $paginate->currentPage();
+        $totalPageCount = $paginate->lastPage();
 
         return view('train', compact('task', 'actpage', 'totalPageCount', 'path', 'paginate'));
     }
 
     public function test(Request $request, Task $task)
     {
-        echo "BAG";
         $paginate = Task::paginate(1);
         $task = Task::find($paginate->toArray()['data'][0]['id']);
         $path = $paginate->toArray()['path'];

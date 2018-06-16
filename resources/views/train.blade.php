@@ -1,5 +1,4 @@
 @extends('layouts.layout_train')
-{{--@extends('layouts.layout_main')--}}
 
 @section('left-content')
     <div class="back_to_task_list">
@@ -39,6 +38,15 @@
         </textarea>
         <div id="editor"></div>
         <input type="submit" value="Check solution" name="test" id="btn">
+        <br><br>
+        @isset($exam)
+            @if($exam->isPassed)
+                <p>Вы решили правильно</p>
+            @else
+                <p>Решение неверно!</p>
+                <p>{{ $exam->error }}</p>
+            @endif
+        @endisset
     </form>
     <div class="content_detail__pagination cdp" actpage="{{$actpage}}">
         <a href="{{$path}}?page={{$actpage-1}}" class="cdp_i">prev</a>
@@ -50,14 +58,6 @@
         <a href="{{$path}}?page={{$actpage+1}}" class="cdp_i">next</a>
     </div>
 
-    @isset($exam)
-        @if($exam->isPassed)
-            <p>Вы решили правильно</p>
-            @else
-            <p>Решение неверно!</p>
-            <p>{{ $exam->error }}</p>
-        @endif
-    @endisset
 @endsection
 
 

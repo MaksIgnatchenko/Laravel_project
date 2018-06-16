@@ -1,5 +1,5 @@
 @extends('layouts.layout_main')
-/** @var PaginationDto $dto*/
+{{--/** @var PaginationDto $dto*/--}}
 @section('content')
     <div class="task">
         <h5>Choose your task:</h5>
@@ -61,7 +61,7 @@
             @foreach($dto->getTasks() as $task)
                 <div class="task_left">
                     <span class="task_level">{{$task->difficulty}} lvl</span>
-                    <a href="train/{{$task->id}}" class="task_name">{{$task->short_desc}}</a><br>
+                    <a href="train/{{$task->id}}"  name="main" class="task_name">{{$task->short_desc}}</a><br>
                     <div class="task_tag"><a href="#">{{$task->theme}}</a></div>
                 </div>
                 <div class="task_right">
