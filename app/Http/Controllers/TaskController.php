@@ -81,22 +81,28 @@ class TaskController extends Controller
         return view('train', compact('task', 'userCode', 'exam', 'actpage', 'totalPageCount', 'path', 'paginate'));
     }
 
-    public function check(Request $request, $task = NULL)
+    public function check(Request $request, Task $task)
     {
-        $action = 'update';
-        if (!$task) {
-            $task = new Task();
-            $action = 'save';
-        }
-        $task->task_desc = $request->task_desc;
+        //dd($request,$task);
+
+        if ($request->example)
+        {
+        $task = new Task();
+        $task->task_desc = $request->task_example;
         $task->task_view = $request->task_view;
         $task->check_code = $request->check_code;
+
         $exam = exam($task, $request->editor);
         $usercode = $request->editor;
-        if ($action === 'save') {
-            return view('create_view', compact("task", "exam"));
-        } else {
-            return view('create_view', compact("task", "exam", 'usercode'));
+
+            return view('create_view', compact("task", "exam",'usercode'));
+        }
+        else
+        {
+            $update = true;
+            $exam = exam($task, $request->editor);
+            $usercode = $request->editor;
+            return view('create_view', compact("task", "exam", 'usercode', 'update'));
         }
     }
 

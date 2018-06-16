@@ -8,7 +8,11 @@
 
     <form action="/distribute/{{ $task->id }}" method="post">
         <legend>Описание задачи</legend>
+        @if(isset($example))
+        <textarea class="t" name="example" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
+        @else
         <textarea class="t" name="task_desc" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
+        @endif
         <br><br>
         <legend>Код, проверяющий пользовательский код</legend>
         <textarea class="t" name="check_code" id="2" cols="80" rows="20">{{$task->check_code}}</textarea>

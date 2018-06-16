@@ -17,17 +17,15 @@ Route::get('test/{id}', 'TaskController@test');
 
 Route::post('test/{task}', 'TaskController@test');
 
-Route::get('create',function (){
-    $task=Task::find(1);
-    return view('test1', compact('task'));
-});
+
 Route::get('main', 'TaskController@index');
 Route::get('train/{task}', 'TaskController@train');
 Route::get('next/{id}', 'TaskController@next');
 Route::get('create',function (){
 
     $task= Task::find(1);
-    return view('create_view', compact('task'));
+    $example = true;
+    return view('create_view', compact('task','example'));
 });
 
 Route::post('createtask','TaskController@create');
