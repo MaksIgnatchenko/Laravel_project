@@ -1,5 +1,5 @@
 <?php
-if (! function_exists('iswrong')) {
+if (!function_exists('iswrong')) {
     function exam($task, $editor)
     {
         $language = 'php';
@@ -7,9 +7,9 @@ if (! function_exists('iswrong')) {
         $task->check_code;
         $runCode = $interpreter . $editor . $task->check_code;
         $descriptorspec = [
-            0 => array("pipe", "r"),  // stdin - канал, из которого дочерний процесс будет читать
-            1 => array("pipe", "w"),  // stdout - канал, в который дочерний процесс будет записывать
-            2 => array("pipe", "w") // stderr - файл для записи
+            0 => ["pipe", "r"],  // stdin - канал, из которого дочерний процесс будет читать
+            1 => ["pipe", "w"],  // stdout - канал, в который дочерний процесс будет записывать
+            2 => ["pipe", "w"] // stderr - файл для записи
         ];
         $process = proc_open($language, $descriptorspec, $pipes, null, null);
 
@@ -32,6 +32,7 @@ if (! function_exists('iswrong')) {
             $exam->isPassed = !preg_match('/0+/', $exam->result);
         }
         $exam->code = $runCode;
+
         return $exam;
     }
 }

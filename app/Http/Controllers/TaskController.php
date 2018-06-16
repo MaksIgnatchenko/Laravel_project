@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Dto\PaginationDto;
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -16,12 +18,14 @@ class TaskController extends Controller
      */
     public function index()
     {
+        $dto = new PaginationDto();
         $tasks = Task::paginate(3);
-        $path = $tasks->toArray()['path'];
-        $actpage = $tasks->toArray()['current_page'];
-        $totalPageCount = $tasks->toArray()['last_page'];
+        $dto->setTasks($tasks)
+            ->setPath($tasks->toArray()['path'])
+            ->setActpage($tasks->currentPage())
+            ->setTotalPageCount($tasks->lastPage());
 
-        return view('main', compact('tasks', 'actpage', 'totalPageCount', 'path'));
+        return view('main', compact('dto'));
     }
 
     public function showedit()
@@ -35,7 +39,6 @@ class TaskController extends Controller
 
     public function next($id)
     {
-
         $task = Task::next($id);
 
         return view('train', compact('task'));
@@ -50,7 +53,6 @@ class TaskController extends Controller
 
     public function train(Task $task)
     {
-
         $paginate = Task::paginate(1);
         $task = Task::find($paginate->toArray()['data'][0]['id']);
         $path = $paginate->toArray()['path'];
@@ -62,30 +64,23 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        echo "azqwe";
-        echo "fghfgh";
-        echo "fghfgh";
-        echo "tyutyut";
-
-
-        $paginate = Task::paginate(1);
-        dd($paginate);
+        $paginate = Task::paginate(3);
         $task = Task::find($paginate->toArray()['data'][0]['id']);
         $path = $paginate->toArray()['path'];
         $actpage = $paginate->toArray()['current_page'];
         $totalPageCount = $paginate->toArray()['last_page'];
 
-    if(isset($request->test)) {
+        if (isset($request->test)) {
             $userCode = $request->editor;
             $exam = exam($task, $request->editor);
-}
+        }
         return view('train', compact('task', 'userCode', 'exam', 'actpage', 'totalPageCount', 'path', 'paginate'));
     }
 
     public function check(Request $request, $task = NULL)
     {
         $action = 'update';
-        if(!$task) {
+        if (!$task) {
             $task = new Task();
             $action = 'save';
         }
@@ -93,11 +88,11 @@ class TaskController extends Controller
         $task->task_view = $request->task_view;
         $task->check_code = $request->check_code;
         $exam = exam($task, $request->editor);
-        $usercode= $request->editor;
+        $usercode = $request->editor;
         if ($action === 'save') {
             return view('create_view', compact("task", "exam"));
         } else {
-            return view('create_view', compact("task", "exam",'usercode'));
+            return view('create_view', compact("task", "exam", 'usercode'));
         }
     }
 

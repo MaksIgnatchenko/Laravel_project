@@ -1,5 +1,5 @@
 @extends('layouts.layout_main')
-
+/** @var PaginationDto $dto*/
 @section('content')
     <div class="task">
         <h5>Choose your task:</h5>
@@ -55,10 +55,10 @@
 @endsection
 
 @section('sidebar')
-        <h5>Task list</h5>
-        <ul>
-            <li>
-                @foreach($tasks as $task)
+    <h5>Task list</h5>
+    <ul>
+        <li>
+            @foreach($dto->getTasks() as $task)
                 <div class="task_left">
                     <span class="task_level">{{$task->difficulty}} lvl</span>
                     <a href="train/{{$task->id}}" class="task_name">{{$task->short_desc}}</a><br>
@@ -66,19 +66,20 @@
                 </div>
                 <div class="task_right">
                     <img src="images/php-icon.jpg">
-                </div><hr>
-                @endforeach
-            </li>
-        </ul>
+                </div>
+                <hr>
+            @endforeach
+        </li>
+    </ul>
 
-        <div class="content_detail__pagination cdp" actpage="{{$actpage}}">
-            <a href="{{$path}}?page={{$actpage-1}}" class="cdp_i">prev</a>
+    <div class="content_detail__pagination cdp" actpage="{{$dto->getActpage()}}">
+        <a href="{{$dto->getPath()}}?page={{$dto->getActPage() - 1}}" class="cdp_i">prev</a>
 
-                @for($i = 1; $i <= $totalPageCount; $i++)
-                 <a href="{{$path}}?page={{$i}}" class="cdp_i">{{$i}}</a>
-                @endfor
+        @for($i = 1; $i <= $dto->getTotalPageCount(); $i++)
+            <a href="{{$dto->getPath()}}?page={{$i}}" class="cdp_i">{{$i}}</a>
+        @endfor
 
-            <a href="{{$path}}?page={{$actpage+1}}" class="cdp_i">next</a>
-        </div>
+        <a href="{{$dto->getPath()}}?page={{$dto->getActPage()+1}}" class="cdp_i">next</a>
+    </div>
 
 @endsection
