@@ -27,11 +27,29 @@
             @endif
     </textarea>
         <br>
-        <input type="submit" name="action" value="check" title="Отправить данные формы">
+        <p style="position: relative; float: left; top: 40px; left: 60px" class="a1">
+            <input style="opacity: 0;" class="a1" type="submit" name="action" value="check" title="Отправить данные формы">
+            <span></span>
+            <span></span>
+            <span></span>
+            check
+        </p>
         @if(isset($update))
-            <input type="submit" name="action" value="update" title="Отправить данные формы">
+            <p style="position: relative; float: left; top: 40px; left: 90px" class="a1">
+                <input style="opacity: 0;" class="a1" type="submit" name="action" value="update" title="Отправить данные формы">
+                <span></span>
+                <span></span>
+                <span></span>
+                update
+            </p>
         @else
-            <input type="submit" name="action" value="create" title="Отправить данные формы">
+            <p style="position: relative;float: left; top: 40px; left: 90px" class="a1">
+                <input style="opacity: 0;" class="a1" type="submit" name="action" value="create" title="Отправить данные формы">
+                <span></span>
+                <span></span>
+                <span></span>
+                create
+            </p>
         @endif
     </form>
 
