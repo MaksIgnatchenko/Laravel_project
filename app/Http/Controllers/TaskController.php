@@ -64,7 +64,8 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        $paginate = Task::paginate(3);
+        echo "BAG";
+        $paginate = Task::paginate(1);
         $task = Task::find($paginate->toArray()['data'][0]['id']);
         $path = $paginate->toArray()['path'];
         $actpage = $paginate->toArray()['current_page'];
