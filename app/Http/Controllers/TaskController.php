@@ -62,6 +62,7 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
+        echo "BAG";
         $paginate = Task::paginate(1);
         $task = Task::find($paginate->toArray()['data'][0]['id']);
         $path = $paginate->toArray()['path'];
@@ -78,7 +79,6 @@ class TaskController extends Controller
     public function check(Request $request, $task = NULL)
     {
         $action = 'update';
-        echo "check";
         if(!$task) {
             $task = new Task();
             $action = 'save';
@@ -93,7 +93,6 @@ class TaskController extends Controller
         } else {
             return view('create_view', compact("task", "exam",'usercode'));
         }
-
     }
 
     /**
