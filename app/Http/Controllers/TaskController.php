@@ -62,10 +62,10 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        echo "qqqqq";
-        echo "qqqqq";
-        echo "qqqqq";
-        echo "qqqqq";
+        echo "azqwe";
+        echo "fghfgh";
+        echo "fghfgh";
+        echo "tyutyut";
 
 
         $paginate = Task::paginate(1);
