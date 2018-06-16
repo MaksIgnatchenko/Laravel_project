@@ -62,8 +62,10 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        echo "tytteyer675756756";
-        echo "dffdgghs r dtr;hjsdghjospdsfghjoewr yiohjesrto[ hiser[ othij[sreiohj ";
+        echo "ertert";
+        echo "sdfg";
+
+
         echo "gfdgdffd";
 
 
