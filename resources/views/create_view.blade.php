@@ -7,7 +7,7 @@
 @section('body')
 
     <form action="/distribute/{{$task->id}}" method="post">
-        <legend>Выберите язык программирования<h1>id={{$task->id}}</h1></legend>
+        <legend>Выберите язык программирования</legend>
         <select name="language" id="">
             <option value="php">PHP</option>
             <option value="python">Python</option>
