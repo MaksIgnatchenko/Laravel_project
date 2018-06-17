@@ -60,7 +60,8 @@
         <li>
             @foreach($dto->getTasks() as $task)
                 <div class="task_left">
-                    <span class="task_level">{{$task->difficulty}} lvl</span>
+                    <span class="task_level">{{$task->difficulty}} level</span>
+                    <span class="task_level">{{$task->user->name}}</span>
                     <a href="train/{{$task->id}}"  name="main" class="task_name">{{$task->short_desc}}</a><br>
                     <div class="task_tag"><a href="#">{{$task->theme}}</a></div>
                 </div>

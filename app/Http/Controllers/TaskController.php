@@ -84,7 +84,9 @@ class TaskController extends Controller
     {
         if ($request->task_example)
         {
+            //Task::orderBy('created_at', 'desc')->first()->id;
             $task = new Task();
+            $task->id = 1;
             $task->task_desc = $request->task_example;
             $task->task_view = $request->task_view;
             $task->check_code = $request->check_code;
@@ -112,7 +114,7 @@ class TaskController extends Controller
     {
         $task = new Task;
         $task->user_id = Auth::user()->id;
-        $task->task_desc = $request->task_desc;
+        $task->task_desc = $request->task_example;
         $task->check_code = $request->check_code;
         $task->task_view = $request->task_view;
         $task->save();
