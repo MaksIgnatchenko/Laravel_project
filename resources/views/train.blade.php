@@ -30,21 +30,23 @@
     </div>
     <form action="../test/{{$task->id}}" method="post">
         <textarea name="editor">
-            @if(isset($userCode))
-                {{$userCode}}
+            @if(isset($taskResult->userCode))
+                {{ $taskResult->userCode }}
             @else
-                {{$task->task_view}}
+                {{ $task->task_view }}
             @endif
         </textarea>
         <div id="editor"></div>
         <input type="submit" value="Check solution" name="test" id="btn">
         <br><br>
-        @isset($exam)
-            @if($exam->isPassed)
+        @isset($taskResult)
+            @if($taskResult->isPassed)
                 <p>Вы решили правильно</p>
             @else
                 <p>Решение неверно!</p>
-                <p>{{ $exam->error }}</p>
+                    @isset($taskResult->error)
+                <p>{{ $taskResult->error }}</p>
+                    @endisset
             @endif
         @endisset
     </form>

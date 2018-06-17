@@ -75,35 +75,28 @@ class TaskController extends Controller
         $totalPageCount = $paginate->toArray()['last_page'];
 
         if (isset($request->test)) {
-            $userCode = $request->editor;
-            $exam = exam($task, $request->editor);
+            $taskResult = $task->test($request->editor);
         }
-        return view('train', compact('task', 'userCode', 'exam', 'actpage', 'totalPageCount', 'path', 'paginate'));
+        return view('train', compact('task', 'taskResult', 'actpage', 'totalPageCount', 'path', 'paginate'));
     }
 
     public function check(Request $request, Task $task)
     {
-        //dd($request,$task);
 
         if ($request->example)
         {
-        $task = new Task();
-        $task->task_desc = $request->task_example;
-        $task->task_view = $request->task_view;
-        $task->check_code = $request->check_code;
-
-        $exam = exam($task, $request->editor);
-        $usercode = $request->editor;
-
-            return view('create_view', compact("task", "exam",'usercode'));
-        }
-        else
-        {
+            $task = new Task();
+            $task->task_desc = $request->task_example;
+            $task->task_view = $request->task_view;
+            $task->check_code = $request->check_code;
+            $task->language = $request->language;
+            $taskResult = $task->test($request->editor);
+            return view('create_view', compact('task', 'taskResult'));
+        } else {
+            $taskResult = $task->test($request->editor);
             $update = true;
-            $exam = exam($task, $request->editor);
-            $usercode = $request->editor;
-            return view('create_view', compact("task", "exam", 'usercode', 'update'));
-        }
+            return view('create_view', compact('task', 'taskResult', 'update'));
+            }
     }
 
     /**

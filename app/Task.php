@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Executors\ExecutorFactory;
+use App\Executors\TaskResult;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
@@ -19,6 +21,11 @@ class Task extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function test(string $editor)
+    {
+        return ExecutorFactory::getTaskResult($this, $editor);
     }
 
 }

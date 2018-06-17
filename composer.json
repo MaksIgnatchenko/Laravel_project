@@ -19,7 +19,10 @@
     },
     "autoload": {
         "files": [
-            "app/helpers.php"
+            "app/Executors/Executor.php",
+            "app/Executors/ExecutorFactory.php",
+            "app/Executors/TaskResult.php",
+            "app/Executors/PhpExecutor.php"
         ],
         "classmap": [
             "database/seeds",
