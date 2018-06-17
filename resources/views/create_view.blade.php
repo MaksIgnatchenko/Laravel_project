@@ -6,16 +6,16 @@
 
 @section('body')
 
-    <form action="/distribute/{{ $task->id }}" method="post">
-        <legend>Описание задачи</legend>
-        @if(isset($example))
-        <legend>Выберите язык программирования</legend>
+    <form action="/distribute/{{$task->id}}" method="post">
+        <legend>Выберите язык программирования<h1>id={{$task->id}}</h1></legend>
         <select name="language" id="">
             <option value="php">PHP</option>
             <option value="python">Python</option>
             <option value="javascript">JavaScript</option>
         </select>
-        <textarea class="t" name="example" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
+        <legend>Описание задачи</legend>
+        @if(isset($example))
+        <textarea class="t" name="task_example" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
         @else
         <textarea class="t" name="task_desc" id="1" cols="80" rows="10">{{$task->task_desc}}</textarea>
         @endif
@@ -27,7 +27,7 @@
         <textarea class="t" name="task_view" id="3" cols="80" rows="10">{{$task->task_view}}</textarea>
         <br>
         <legend>Пример правильно выполненного задания</legend>
-        <textarea class="t" name="editor" id="3" cols="80" rows="10" required>
+        <textarea class="t" required name="editor" id="3" cols="80" rows="10">
         @if (isset($taskResult->fullCode))
                 {{ $taskResult->userCode }}
             @endif
@@ -65,17 +65,22 @@
             <textarea class="t" name="allcode" id="3" cols="100" rows="20">{{$taskResult->fullCode}}</textarea>
             <br>
         </div>
-        <div style="position: absolute; top: 50%; left: 50%">
+
+        <div style="position: absolute; top: 60%; left: 50%">
             <legend>result</legend>
             <textarea class="t" name="" id="3" cols="80" rows="10">
-                @if($taskResult->isPassed)
-                    Задача решена правильно
-                @else
-                    Задача решена неверно
-                @endif
-                @if($taskResult->error)
-                Синтаксическая ошибка {{ $taskResult->error }}
-                @endif
+
+               @isset($taskResult)
+                    @if($taskResult->isPassed)
+                        Вы решили правильно
+                    @else
+                        Решение неверно!
+                        @isset($taskResult->result)
+                            {{ $taskResult->result }}
+                        @endisset
+                    @endif
+                @endisset
+
             </textarea>
             <br>
         </div>

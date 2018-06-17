@@ -23,7 +23,7 @@ class Task extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function test(string $editor)
+    public function test(string $editor = NULL)
     {
         return ExecutorFactory::getTaskResult($this, $editor);
     }

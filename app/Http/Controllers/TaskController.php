@@ -82,8 +82,7 @@ class TaskController extends Controller
 
     public function check(Request $request, Task $task)
     {
-
-        if ($request->example)
+        if ($request->task_example)
         {
             $task = new Task();
             $task->task_desc = $request->task_example;
@@ -91,8 +90,13 @@ class TaskController extends Controller
             $task->check_code = $request->check_code;
             $task->language = $request->language;
             $taskResult = $task->test($request->editor);
-            return view('create_view', compact('task', 'taskResult'));
+            $example = true;
+            return view('create_view', compact('task', 'taskResult', 'example'));
         } else {
+            $task->language = $request->language;
+            $task->task_desc = $request->task_desc;
+            $task->task_view = $request->task_view;
+            $task->check_code = $request->check_code;
             $taskResult = $task->test($request->editor);
             $update = true;
             return view('create_view', compact('task', 'taskResult', 'update'));

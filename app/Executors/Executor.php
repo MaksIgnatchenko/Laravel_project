@@ -19,13 +19,13 @@ Abstract class Executor
     public $error;
     private $pipes;
 
-    public function __construct(Task $task, string $editor)
+    public function __construct(Task $task, string $editor=null)
     {
         $this->check_code = $task->check_code;
         $this->editor = $editor;
     }
 
-    public static function execute(Task $task, string $editor)
+    public static function execute(Task $task, string $editor = null)
     {
         $executor = new static($task, $editor);
         return $executor->getTaskResult();

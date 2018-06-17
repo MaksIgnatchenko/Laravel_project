@@ -44,8 +44,8 @@
                 <p>Вы решили правильно</p>
             @else
                 <p>Решение неверно!</p>
-                    @isset($taskResult->error)
-                <p>{{ $taskResult->error }}</p>
+                    @isset($taskResult->result)
+                <p>{{ $taskResult->result }}</p>
                     @endisset
             @endif
         @endisset
