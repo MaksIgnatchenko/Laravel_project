@@ -68,15 +68,17 @@ class TaskController extends Controller
 
     public function test(Request $request, Task $task)
     {
-        $paginate = Task::paginate(1);
-        $task = Task::find($paginate->toArray()['data'][0]['id']);
-        $path = $paginate->toArray()['path'];
-        $actpage = $paginate->toArray()['current_page'];
-        $totalPageCount = $paginate->toArray()['last_page'];
-
         if (isset($request->test)) {
             $taskResult = $task->test($request->editor);
+            if (($taskResult->isPassed) && (Auth::user()->role === 'user')) {
+                SolutionController::create($taskResult);
+            }
         }
+            $paginate = Task::paginate(1);
+            $task = Task::find($paginate->toArray()['data'][0]['id']);
+            $path = $paginate->toArray()['path'];
+            $actpage = $paginate->currentPage();
+            $totalPageCount = $paginate->lastPage();
         return view('train', compact('task', 'taskResult', 'actpage', 'totalPageCount', 'path', 'paginate'));
     }
 

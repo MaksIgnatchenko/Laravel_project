@@ -28,7 +28,7 @@
     <div class="solution">
         <p>Solution:</p>
     </div>
-    <form action="../test/{{$task->id}}" method="post">
+    <form action="../test/@if(isset($taskResult->task_id)){{$taskResult->task_id}}@else{{$task->id}}@endif" method="post">
         <textarea name="editor">
             @if(isset($taskResult->userCode))
                 {{ $taskResult->userCode }}
