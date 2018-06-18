@@ -5,9 +5,8 @@ use App\User;
 use Illuminate\Support\Str;
 use App\Task;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MainController@index');
+
 
 Route::get('test', 'TaskController@index');
 
@@ -18,7 +17,7 @@ Route::get('test/{id}', 'TaskController@test');
 Route::post('test/{task}', 'TaskController@test');
 
 
-Route::get('main', 'TaskController@index');
+Route::get('main', 'TaskController@index')->name('main');
 Route::get('train/{task}', 'TaskController@train');
 Route::get('next/{id}', 'TaskController@next');
 Route::get('create',function (){

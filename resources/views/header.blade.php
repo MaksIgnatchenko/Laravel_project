@@ -55,10 +55,16 @@
                     </li>
                     @auth
                         <li>
-                            <a href="#" title="Sign Out">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                <span class="link-text">Sign Out</span>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            <span class="link-text">Sign Out</span>
                             </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </li>
                     @else
                         <li>

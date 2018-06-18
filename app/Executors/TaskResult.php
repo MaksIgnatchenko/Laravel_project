@@ -5,6 +5,7 @@ namespace App\Executors;
 
 class TaskResult
 {
+    public $task_id;
     public $isPassed;
     public $fullCode;
     public $userCode;
@@ -14,6 +15,7 @@ class TaskResult
 
     public function __construct(Executor $executor)
     {
+        $this->task_id = $executor->task_id;
         $this->isPassed = $executor->isPassed;
         $this->fullCode = $executor->code;
         $this->userCode = $executor->editor;
