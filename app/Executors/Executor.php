@@ -11,6 +11,7 @@ Abstract class Executor
         1 => ["pipe", "w"],
         2 => ["pipe", "w"]
     ];
+    public $task_id;
     public $check_code;
     public $editor;
     public $isPassed;
@@ -23,6 +24,7 @@ Abstract class Executor
     {
         $this->check_code = $task->check_code;
         $this->editor = $editor;
+        $this->task_id = $task->id;
     }
 
     public static function execute(Task $task, string $editor = null)
@@ -48,7 +50,7 @@ Abstract class Executor
         if (is_numeric($this->result)) {
             $this->isPassed = !preg_match('/0+/', $this->result);
         } else {
-            $this->isPassed = null;
+            $this->isPassed = 0;
         }
         return new TaskResult($this);
     }

@@ -86,7 +86,6 @@ class TaskController extends Controller
     {
         if ($request->task_example)
         {
-            //Task::orderBy('created_at', 'desc')->first()->id;
             $task = new Task();
             $task->id = 1;
             $task->task_desc = $request->task_example;

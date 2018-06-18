@@ -94,12 +94,6 @@
         <div class=" position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                        @section('sidebar')
-                            <a href="main">Пройти тестирование</a>
-                        @show
-                        @section('sidebar1')
-                             <a href="create">Добавить задачу</a>
-                        @show
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
