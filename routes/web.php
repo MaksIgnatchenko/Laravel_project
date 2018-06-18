@@ -22,7 +22,7 @@ Route::get('train/{task}', 'TaskController@train');
 Route::get('next/{id}', 'TaskController@next');
 Route::get('create',function (){
 
-    $task= Task::all()->first();
+    $task= Task::first();
     $example = true;
     return view('create_view', compact('task','example'));
 });
