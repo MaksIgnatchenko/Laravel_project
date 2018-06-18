@@ -15,8 +15,8 @@ class CreateSolutionsTable extends Migration
     {
         Schema::create('solutions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('task_id')->unsigned()->index();
-            $table->integer('user_id')->unsigned()->index();
+            $table->integer('task_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->text('solutionCode');
             $table->timestamps();
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
