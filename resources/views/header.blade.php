@@ -24,6 +24,7 @@
                 <div class="layer"></div>
             </div>
         </a>
+
     </div>
     @if (Route::has('login'))
         <nav>
@@ -42,7 +43,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/edit" title="Create task">
+                        <a href="/admingroup" title="Admin group">
+                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                            <span class="link-text">Admin Group</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/edit" title="Update task">
                             <i class="fa fa-tasks" aria-hidden="true"></i>
                             <span class="link-text">Update task</span>
                         </a>

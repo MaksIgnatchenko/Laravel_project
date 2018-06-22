@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/train.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/button.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/accordeon.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/pagination.css')}}" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">

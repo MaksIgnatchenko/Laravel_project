@@ -7,6 +7,13 @@ use App\Group;
 
 class GroupController extends Controller
 {
+    public function index(){
+
+        $groups = Group::all();
+        return view('admingroup', compact('groups'));
+
+    }
+
     public function test()
     {
         $users = Group::find(3)->users;

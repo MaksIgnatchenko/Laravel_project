@@ -1,0 +1,151 @@
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav ul li {
+    /* Sub Menu */
+}
+.nav ul li a {
+    display: block;
+    background: rgba(45, 92, 150, 0.59);
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -ms-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
+    transition: 0.2s linear;
+}
+.nav ul li a:hover {
+    background: rgba(41, 107, 164, 0.73);
+}
+.nav ul li a .fa {
+    width: 16px;
+    text-align: center;
+    margin-right: 5px;
+}
+.nav ul li a .badge {
+    display: inline-block;
+    background: #fff;
+    /* IE Fallback */
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 7px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+}
+.nav ul li ul li a {
+    background: #444;
+    border-left: 4px solid transparent;
+    padding: 10px 20px;
+}
+.nav ul li ul li a:hover {
+    background: #333;
+    border-left: 4px solid #3498db;
+}
+/* Float Right/Left */
+.right {
+    float: right;
+}
+.left {
+    float: left;
+}
+
+
+/* SIDEBAR */
+
+#sidebar1 {
+    float: right;
+    width: 50%;
+    height: auto;
+    background-color: rgba(42, 42, 42, 0.6);
+    margin-right: 20px;
+    margin-top: 20px;
+}
+#sidebar1 h5 {
+    color: #fff;
+    margin-right: 800px;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+#sidebar1  ul {
+    display: block;
+}
+#sidebar1 ul hr {
+    width: 100%;
+    margin-top: 20px;
+    background-color:#555; /*для Firefox, Opera, Safari*/
+    border:0px none;
+    height:1px; /* высота 1px IE, Firefox, Opera, Safari */
+    clear:both; /* для очистки, если тег идет после float елемента */
+}
+#sidebar1 ul li {
+    display: block;
+    position: relative;
+    margin: 15px 0 0 15px;
+}
+#sidebar1 ul li .task_left {
+    float: left;
+    width: 700px;
+}
+#sidebar1 ul li .task_right {
+    float: right;
+}
+#sidebar1 ul li .task_right img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    line-height: 50%;
+}
+#sidebar1 ul li .task_left .task_level {
+    margin-top: 5px;
+    color: #fff;
+    padding: 2px 9px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background-color: #000;
+}
+#sidebar1 ul li a {
+    color: #fff;
+}
+#sidebar1 ul li .task_left .task_name {
+    font-size: 18px;
+    margin-left: 20px;
+}
+#sidebar1 ul li .task_left .task_name:hover {
+    color: #5AEFFF;
+}
+#sidebar1 ul li .task_left .task_tag {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+#sidebar1 ul li .task_left .task_tag a {
+    padding: 2px 4px;
+    background-color: #303130;
+    border-radius: 5px;
+}
+#sidebar1 ul li .task_left .task_tag a:hover {
+    color: #5AEFFF;
+}
+#sidebar1 .pagination {
+    display: inline-block;
+    margin-left: 40%;
+    background-color: rgba(182, 192, 182, 0.4);
+    padding-right: 5px;
+    margin-bottom: 10px;
+}
+#sidebar1 .pagination li {
+    display: inline-block;
+    padding: 0 10px 10px 0;
+}
+#sidebar1 .pagination li a:hover {
+    text-decoration: none;
+    color: #5AEFFF;
+}
+#sidebar1 .pagination .active span{
+    color: #5AEFFF;
+}
+

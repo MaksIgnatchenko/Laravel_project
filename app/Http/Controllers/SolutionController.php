@@ -12,6 +12,7 @@ class SolutionController extends Controller
     public static function create(TaskResult $taskResult)
     {
         $user_id = Auth::user()->id;
+
         if (!Solution::where('task_id', $taskResult->task_id)
                        ->where('user_id', $user_id)->first()) {
             $solution = new Solution();
