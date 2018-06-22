@@ -9,6 +9,9 @@ class GroupController extends Controller
 {
     public function test()
     {
-        dd(Group::find(2)->users);
+        $users = Group::find(3)->users;
+        foreach ($users as $user) {
+            echo "user $user->name, id: $user->id <br>";
+        }
     }
 }

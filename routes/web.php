@@ -39,6 +39,7 @@ Route::get('edit', 'TaskController@showedit');
 Route::get('editTask/{task}', 'TaskController@edit');
 
 Route::get('users', 'GroupController@test');
+Route::get('groups', 'UserController@test');
 
 
 
