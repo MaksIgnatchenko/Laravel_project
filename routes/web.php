@@ -40,7 +40,7 @@ Route::get('editTask/{task}', 'TaskController@edit');
 
 Route::get('users', 'GroupController@test');
 Route::get('admingroup', 'GroupController@index');
-Route::get('groups', 'UserController@test');
+
 
 
 
