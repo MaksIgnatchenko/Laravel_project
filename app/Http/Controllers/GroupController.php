@@ -21,4 +21,12 @@ class GroupController extends Controller
         return redirect()->route('groups');
     }
 
+    public function addUser(Request $request)
+    {
+        $group = Group::find($request->group_id);
+
+        $group->users()->attach($request->user_id);
+        return redirect()->route('groups');
+    }
 }
+
