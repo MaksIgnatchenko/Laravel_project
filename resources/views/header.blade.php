@@ -31,26 +31,20 @@
             <div class="menu">
                 <ul class="clear">
                     <li>
-                        <a href="{{ url('/home') }}" title="Home">
-                            <i class="fa fa-home" aria-hidden="true"></i>
-                            <span class="link-text">Home</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="/main" title="Main">
-                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                            <i class="fa fa-home" aria-hidden="true"></i>
                             <span class="link-text">Main</span>
                         </a>
                     </li>
                     <li>
                         <a href="/admingroup" title="Admin group">
-                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                            <i class="fa fa-buysellads" aria-hidden="true"></i>
                             <span class="link-text">Admin Group</span>
                         </a>
                     </li>
                     <li>
                         <a href="/edit" title="Update task">
-                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                            <i class="fa fa-edit" aria-hidden="true"></i>
                             <span class="link-text">Update task</span>
                         </a>
                     </li>

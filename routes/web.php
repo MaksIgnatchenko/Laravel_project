@@ -43,4 +43,18 @@ Route::get('admingroup', 'GroupController@index')->name('groups');
 Route::post('creategroup', 'GroupController@create');
 
 
+// sociality routes
+Route::get(
+    '/socialite/{provider}',
+    [
+        'as' => 'socialite.auth',
+        function ( $provider ) {
+            return \Socialite::driver( $provider )->redirect();
+        }
+    ]
+);
 
+Route::get('/socialite/{provider}/callback', function ($provider) {
+    $user = \Socialite::driver($provider)->user();
+    dd($user);
+});
