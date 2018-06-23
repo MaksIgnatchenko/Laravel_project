@@ -38,9 +38,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('edit', 'TaskController@showedit');
 Route::get('editTask/{task}', 'TaskController@edit');
 
-Route::get('users', 'GroupController@test');
-Route::get('admingroup', 'GroupController@index');
-
+Route::get('users', 'GroupController@index');
+Route::get('admingroup', 'GroupController@index')->name('groups');
+Route::post('creategroup', 'GroupController@create');
 
 
 
