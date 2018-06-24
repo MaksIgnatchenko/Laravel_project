@@ -9,6 +9,24 @@
                     {{$group->name}}
                     <div class='fa fa-caret-down right'></div>
                 </a>
+                <ul>
+                    <li>
+                        <a href='#'>
+                            <form action="{{ action('GroupController@addUser') }}" method="POST">
+                                {{csrf_field()}}
+                                <div class="group">
+                                    <input type="text" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Student login</label>
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                    <br>
+                                    <input class="litel" type="submit" value="Добавить ученика">
+                                </div>
+                            </form>
+                        </a>
+                    </li>
+                </ul>
                 @foreach($group->users as $user)
                 <ul>
                     <li>
