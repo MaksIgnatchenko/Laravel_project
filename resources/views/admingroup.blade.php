@@ -15,7 +15,7 @@
                             <form action="{{ action('GroupController@addUser') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <input type="text" required>
+                                    <input type="text" required name="user_id">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <label>Student login</label>
@@ -50,8 +50,12 @@
                     <li>
                         <form action="{{ action('GroupController@create') }}" method="POST">
                             {{csrf_field()}}
-                            <input type="text" name="groupName">
-                            <input type="submit" value="Создать группу">
+                            <input type="text" required name="groupName">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>New group</label>
+                            <br>
+                            <input class="litel" type="submit" value="Создать группу">
                         </form>
                     </li>
                 </ul>
