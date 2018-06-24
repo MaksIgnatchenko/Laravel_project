@@ -44,4 +44,18 @@ Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
 
 
+// sociality routes
+Route::get(
+    '/socialite/{provider}',
+    [
+        'as' => 'socialite.auth',
+        function ( $provider ) {
+            return \Socialite::driver( $provider )->redirect();
+        }
+    ]
+);
 
+Route::get('/socialite/{provider}/callback', function ($provider) {
+    $user = \Socialite::driver($provider)->user();
+    dd($user);
+});
