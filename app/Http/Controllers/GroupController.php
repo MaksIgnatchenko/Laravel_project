@@ -23,8 +23,9 @@ class GroupController extends Controller
 
     public function addUser(Request $request)
     {
-        $group = Group::find($request->group_id);
 
+
+        $group = Group::find($request->group_id);
         $group->users()->attach($request->user_id);
         return redirect()->route('groups');
     }
