@@ -59,3 +59,6 @@ Route::get('/socialite/{provider}/callback', function ($provider) {
     $user = \Socialite::driver($provider)->user();
     dd($user);
 });
+
+//Route::get('auth/google', 'GoogleController@redirectToProvider')->name('google.login');
+//Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');

@@ -39,7 +39,7 @@ return [
     'google' => [
         'client_id' => '401596630546-9mspga1l3rs2s5fvghfe4mun6ggg6cpr.apps.googleusercontent.com',
         'client_secret' => 'D3FvE1vUZq-rbhJfPDievGO0',
-        'redirect' => 'http://source.planet.php.a-level.com.ua/', // Ссылка на перенаправление при удачной авторизации (3)
+        'redirect' => 'http://source.planet.php.a-level.com.ua/auth/google/callback', // Ссылка на перенаправление при удачной авторизации (3)
 ],
 
 ];
