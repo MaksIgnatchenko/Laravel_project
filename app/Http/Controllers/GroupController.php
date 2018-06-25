@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Group;
+use App\User;
 
 class GroupController extends Controller
 {
@@ -26,7 +27,8 @@ class GroupController extends Controller
 
 
         $group = Group::find($request->group_id);
-        $group->users()->attach($request->user_id);
+        $user = User::where('name', $request->user_id)->first();
+        $group->users()->attach($user->id);
         return redirect()->route('groups');
     }
 }
