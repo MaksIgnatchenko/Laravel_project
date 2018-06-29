@@ -28,4 +28,9 @@ class Task extends Model
         return ExecutorFactory::getTaskResult($this, $editor);
     }
 
+    public function tasklists()
+    {
+        return $this->belongsToMany('App\Tasklist', 'tasklist_task');
+    }
+
 }

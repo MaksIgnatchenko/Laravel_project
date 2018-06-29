@@ -43,22 +43,24 @@ Route::get('admingroup', 'GroupController@index')->name('groups');
 Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
 
+Route::get('admintasklists', 'TasklistController@index')->name('tasklists');
+Route::post('createtasklist', 'TasklistController@create');
+Route::post('addtask', 'TasklistController@addTask');
 
 // sociality routes
-Route::get(
-    '/socialite/{provider}',
+Route::get('auth/google',
     [
-        'as' => 'socialite.auth',
-        function ( $provider ) {
-            return \Socialite::driver( $provider )->redirect();
-        }
+        'as' => 'auth/google',
+        'uses' => 'GoogleController@redirectToProvider'
     ]
 );
 
-Route::get('/socialite/{provider}/callback', function ($provider) {
-    $user = \Socialite::driver($provider)->user();
-    dd($user);
-});
+Route::get('auth/google/callback',
+    [
+        'as' => 'auth/google/callback',
+        'uses' => 'GoogleController@handleProviderCallback'
+    ]
+);
 
 //Route::get('auth/google', 'GoogleController@redirectToProvider')->name('google.login');
 //Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
