@@ -44,7 +44,7 @@
                     </li>
                     <li>
                         <a href="/admintasklists" title="Admin tasklists">
-                            <i class="fa fa-buysellads" aria-hidden="true"></i>
+                            <i class="fa fa-bookmark" aria-hidden="true"></i>
                             <span class="link-text">Tasklists</span>
                         </a>
                     </li>
