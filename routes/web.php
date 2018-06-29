@@ -45,16 +45,20 @@ Route::post('addstudent', 'GroupController@addUser');
 
 
 // sociality routes
-Route::get('auth/google',
+Route::get(
+    '/socialite/{provider}',
     [
-        'as' => 'auth/google',
-        'uses' => 'GoogleController@redirectToProvider'
+        'as' => 'socialite.auth',
+        function ( $provider ) {
+            return \Socialite::driver( $provider )->redirect();
+        }
     ]
 );
 
-Route::get('auth/google/callback',
-    [
-        'as' => 'auth/google/callback',
-        'uses' => 'GoogleController@handleProviderCallback'
-    ]
-);
+Route::get('/socialite/{provider}/callback', function ($provider) {
+    $user = \Socialite::driver($provider)->user();
+    dd($user);
+});
+
+//Route::get('auth/google', 'GoogleController@redirectToProvider')->name('google.login');
+//Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
