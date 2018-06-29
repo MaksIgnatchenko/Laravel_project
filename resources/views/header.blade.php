@@ -37,9 +37,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admingroup" title="Admin group">
+                        <a href="/admingroup" title="Admin groups">
                             <i class="fa fa-buysellads" aria-hidden="true"></i>
                             <span class="link-text">Admin Group</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admintasklists" title="Admin tasklists">
+                            <i class="fa fa-buysellads" aria-hidden="true"></i>
+                            <span class="link-text">Admin Tasklists</span>
                         </a>
                     </li>
                     <li>
