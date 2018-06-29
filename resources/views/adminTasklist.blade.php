@@ -31,7 +31,7 @@
                         <ul>
                             <li>
                                 <a href='#'>
-                                    {{$task->short_desc}}
+                                    {{$task->task_desc}}
                                 </a>
                             </li>
                         </ul>
