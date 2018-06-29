@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{asset('css/all.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/accordeon.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">
 </head>
 <body>
 
