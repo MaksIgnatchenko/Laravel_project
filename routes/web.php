@@ -43,6 +43,9 @@ Route::get('admingroup', 'GroupController@index')->name('groups');
 Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
 
+Route::get('admintasklists', 'TasklistController@index')->name('tasklists');
+Route::post('createtasklist', 'TasklistController@create');
+Route::post('addtask', 'TasklistController@addTask');
 
 // sociality routes
 Route::get('auth/google',
