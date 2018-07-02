@@ -8,10 +8,10 @@ use App\User;
 
 class GroupController extends Controller
 {
-    public function index()
+    public function index($error = null)
     {
         $groups = Group::all();
-        return view('admingroup', compact('groups'));
+        return view('admingroup', compact('groups', 'error'));
     }
 
     public function create(Request $request)
@@ -24,10 +24,14 @@ class GroupController extends Controller
 
     public function addUser(Request $request)
     {
-
-
         $group = Group::find($request->group_id);
-        $user = User::where('name', $request->user_id)->first();
+        $user = User::where('email', $request->user_email)->first();
+        if (!$user) {
+            return redirect()->route('groups', ['error' => 'No such user']);
+        }
+        if ($group->users->firstWhere('id', $user->id)) {
+            return redirect()->route('groups', ['error' => 'This user is already exists in the group']);
+        }
         $group->users()->attach($user->id);
         return redirect()->route('groups');
     }

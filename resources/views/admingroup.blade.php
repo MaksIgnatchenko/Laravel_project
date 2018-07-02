@@ -1,6 +1,9 @@
 @extends('layouts.layout_admin')
 @section('sidebar')
     <nav class='animated bounceInDown nav'>
+        @if ($error)
+            <p class="t1">{{ $error }}</p>
+        @endif
         @foreach($groups as $group)
         <ul>
             <li class='sub-menu'>
@@ -15,7 +18,7 @@
                             <form action="{{ action('GroupController@addUser') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <input type="text" required name="user_id">
+                                    <input type="text" required name="user_email">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <label>Student login</label>

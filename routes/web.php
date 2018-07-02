@@ -39,7 +39,7 @@ Route::get('edit', 'TaskController@showedit');
 Route::get('editTask/{task}', 'TaskController@edit');
 
 Route::get('users', 'GroupController@index');
-Route::get('admingroup', 'GroupController@index')->name('groups');
+Route::get('admingroup/{error?}', 'GroupController@index')->name('groups');
 Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
 
