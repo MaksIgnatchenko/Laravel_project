@@ -4,7 +4,7 @@
         @foreach($tasklists as $tasklist)
             <ul>
                 <li class='sub-menu'>
-                    <a href='#settings'>
+                    <a id="to-sort" href='#settings'>
                         <div class='fa fa-user'></div>
                         {{$tasklist->name}}
                         <div class='fa fa-caret-down right'></div>
@@ -27,15 +27,19 @@
                             </a>
                         </li>
                     </ul>
-                    @foreach($tasklist->tasks as $task)
-                        <ul>
-                            <li>
-                                <a href='#'>
-                                    {{$task->task_desc}}
-                                </a>
-                            </li>
+                        <ul id="sortable-row">
+                            <form action="" name="frmQA"  class="sort_form">
+                                <input type = "hidden" name="row_order" id="row_order">
+                            @foreach($tasklist->tasks as $task)
+                                <li id="{{$tasklist->id}}:{{$task->id}}">
+                                    <a href='#'>
+                                        {{$task->task_desc}}
+                                    </a>
+                                </li>
+                            @endforeach
+                                <input id="{{$tasklist->id}}" type="submit" class="btnSave" name="submit"  value="Save order" onClick="saveOrder(this.id);" />
+                            </form>
                         </ul>
-                    @endforeach
                 </li>
             </ul>
         @endforeach
@@ -62,6 +66,20 @@
             </li>
         </ul>
     </nav>
+
+    <script>
+
+            $( "form.sort_form" ).sortable();
+
+        function saveOrder() {
+            var selectedLanguage = [];
+            $('.sub-menu').find('form.sort_form li').each(function() {
+                selectedLanguage.push($(this).attr("id"));
+            });
+            document.getElementById("row_order").value = selectedLanguage;
+        }
+
+    </script>
 @endsection
 
 
