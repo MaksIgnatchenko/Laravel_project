@@ -19,7 +19,7 @@
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Task id</label>
-                                        <input type="hidden" name="tasklist_id" value="{{ $tasklist->id }}">
+                                        <input id="tasklist_id" type="hidden" name="tasklist_id" value="{{ $tasklist->id }}">
                                         <br>
                                         <input class="litel" type="submit" value="Добавить задачу">
                                     </div>
@@ -28,17 +28,14 @@
                         </li>
                     </ul>
                         <ul id="sortable-row">
-                            <form name="frmQA" method="post" class="sort_form">
-                                <input type = "hidden" name="row_order" id="row_order">
                             @foreach($tasklist->tasks as $task)
-                                <li id="{{$task->id}}">
+                                <li id="{{$tasklist->id}}:{{$task->id}}">
                                     <a href='#'>
-                                        {{$task->task_desc}}dsfdsdfasdasdas
+                                        {{$task->task_desc}}
                                     </a>
                                 </li>
                             @endforeach
-                                <input type="submit" class="btnSave" name="submit" value="Save Order" onClick="saveOrder();" />
-                            </form>
+                                <input id="{{ $tasklist->id }}" type="submit" class="btnSave" name="submit" value="Save Order" onClick="saveOrder(this.id);" />
                         </ul>
                 </li>
             </ul>
@@ -69,15 +66,39 @@
 
     <script>
 
-            $( "form.sort_form" ).sortable();
+            $("ul#sortable-row").sortable();
 
-        function saveOrder() {
-            var selectedLanguage = [];
-            $('.sub-menu').find('form.sort_form li').each(function() {
-                selectedLanguage.push($(this).attr("id"));
-            });
-            document.getElementById("row_order").value = selectedLanguage;
-        }
+            function saveOrder(id) {
+                var task_list_order = [];
+                $('.sub-menu').find('ul#sortable-row li').each(function() {
+                    if($(this).attr("id").slice(':')[0] == id){
+                        task_list_order.push($(this).attr("id"));
+                    }
+                });
+                var order = [];
+
+                for(var prop in task_list_order){
+                    order.push(task_list_order[prop].slice(':')[2]);
+                }
+
+                order = order.join();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '{{ route('taskListsStore') }}',
+                    cache: false,
+                    type: 'POST',
+                    data: {
+                        'id' : id,
+                        'order' : order
+                    },
+                    success: function(){
+                        alert('ok');
+                    }
+                })
+            }
 
     </script>
 @endsection

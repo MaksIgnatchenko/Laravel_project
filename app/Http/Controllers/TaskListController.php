@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\TasklistTask;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Tasklist;
 use App\Task;
+use Illuminate\Support\Facades\DB;
 
 class TasklistController extends Controller
 {
     public function index()
     {
-        $tasklists = Tasklist::all();
+        $tasklists = DB::table('tasklists')
+            ->join('tasklist_task', 'tasklists.id', '=', 'tasklist_task.tasklist_id')
+            ->join('tasks', 'tasks.id', '=', 'tasklist_task.task_id')
+            ->orderBy('order_id')
+            ->get();
+
+        dd($tasklists);
         return view('adminTasklist', compact('tasklists'));
     }
 
@@ -35,33 +43,10 @@ class TasklistController extends Controller
 
     public function menuStore(Request $request)
     {
+        $tasks = explode(',', $_POST['order']);
 
-        if($request->query) {
-            dd($request->all());
-            $id_ary = explode(",",$request->row_order);
-            for($i=0;$i<count($id_ary);$i++) {
-                TasklistTask::where(['task_id' => $id_ary[$i], 'tasklist_id' => $request->tasklist_id])->update(['order_id' => $i]);
-            }
+        foreach($tasks as $key => $value){
+            TasklistTask::where(['task_id' => $value, 'tasklist_id' => $_POST['id']])->update(['order_id' => $key+1]);
         }
-
-          return redirect()->route('tasklists');
-
-
-    }
-
-    public function menuStore(Request $request)
-    {
-
-        if($request->query) {
-            dd($request->all());
-            $id_ary = explode(",",$request->row_order);
-            for($i=0;$i<count($id_ary);$i++) {
-                TasklistTask::where(['task_id' => $id_ary[$i], 'tasklist_id' => $request->tasklist_id])->update(['order_id' => $i]);
-            }
-        }
-
-          return redirect()->route('tasklists');
-
-
     }
 }
