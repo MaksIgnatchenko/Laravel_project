@@ -9,7 +9,7 @@
 }
 .nav ul li a {
     display: block;
-
+    background: rgba(41, 107, 164, 0.73);
     padding: 10px 15px;
     color: #fff;
     text-decoration: none;
