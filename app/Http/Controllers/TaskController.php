@@ -16,15 +16,8 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-
-        if($request->query())
-        {
-            $id_ary = $request->id;
-        }
-
-
         $dto = new PaginationDto();
         $tasks = Task::paginate(3);
         $dto->setTasks($tasks)

@@ -56,11 +56,9 @@
 
 @section('sidebar')
     <h5>Task list</h5>
-    <form name="frmQA" method="POST">
-    <input type = "hidden" name="row_order" id="row_order">
-    <ul id="sortable-row">
+    <ul>
         @foreach($dto->getTasks() as $task)
-        <li id="{{$task->id}}">
+        <li>
                 <div class="task_left">
                     <span class="task_level">{{$task->difficulty}} level</span>
                     <span class="task_level">{{$task->user->name}}</span>
@@ -74,8 +72,6 @@
         </li>
         @endforeach
     </ul>
-        <input type="submit" class="btnSave" name="submit" value="Save Order" onClick="saveOrder();">
-    </form>
 
     <div class="content_detail__pagination cdp" actpage="{{$dto->getActpage()}}">
         <a href="{{$dto->getPath()}}?page={{$dto->getActPage() - 1}}" class="cdp_i">prev</a>
@@ -86,41 +82,5 @@
 
         <a href="{{$dto->getPath()}}?page={{$dto->getActPage()+1}}" class="cdp_i">next</a>
     </div>
-
-    <script>
-
-        $("#sortable-row").sortable({
-            update: function (e, u) {
-                var data = $(this).sortable('serialize');
-                $.ajax({
-                    url: "{{ route('main') }}",
-                    type: 'post',
-                    data: data,
-                    success: function (result) {
-
-                    },
-                    complete: function () {
-
-                    }
-                });
-            }
-        });
-
-
-
-
-        /*$(function() {
-            $( "#sortable-row" ).sortable();
-        });
-
-        function saveOrder() {
-            var selectedLanguage = [];
-            $('ul#sortable-row li').each(function() {
-                selectedLanguage.push($(this).attr("id"));
-            });
-            document.getElementById("row_order").value = selectedLanguage;
-        }*/
-
-    </script>
 
 @endsection
