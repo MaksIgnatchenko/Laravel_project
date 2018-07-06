@@ -2,6 +2,7 @@ p {
     color: #fff;
 }
 #left-content {
+
     float: left;
     width: 40%;
     margin-top: 30px;
@@ -46,6 +47,11 @@ p {
     margin-left: 15px;
 }
 #left-content .task_description {
+    border-radius: 7px;
+    -moz-box-shadow:0 0 10px #ffffff;
+    -webkit-box-shadow:0 0 10px #ffffff;
+    box-shadow:0 0 10px #ffffff;
+
     margin-top: 35px;
     width: 600px;
     height: 300px;
@@ -70,6 +76,7 @@ p {
 	margin-right: 15px;
 }
 #right-content .solution {
+    border-radius: 7px 7px 0 0;
     width: 700px;
     height: 50px;
     background-color: rgba(35, 35, 35, 0.6);

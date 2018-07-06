@@ -3,6 +3,11 @@ h1 {
     text-align: center;
 }
 #left-content {
+    border-radius: 7px;
+    -moz-box-shadow:0 0 10px #ffffff;
+    -webkit-box-shadow:0 0 10px #ffffff;
+    box-shadow:0 0 10px #ffffff;
+
     float: left;
     width: 48%;
     background-color: rgba(35, 35, 35, 0.6);
