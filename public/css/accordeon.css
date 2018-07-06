@@ -53,7 +53,24 @@
 .left {
     float: left;
 }
-
+.btnSave {
+    margin: 10px 0 0 10px;
+    border: 2px; color: white;
+    background-color: #3883b9 !important;
+    border-radius: 5px;
+    font-size:12px;
+    padding:5px 5px 5px 5px;
+    display:block;
+    width:130px;
+    border:none;
+    border-bottom:1px solid #757575;
+    cursor: pointer;
+    transition: 1s;
+}
+.btnSave:hover {
+    transition: 1s;
+    background-color: #00aeff !important;
+}
 
 
 
@@ -64,6 +81,7 @@
 /* SIDEBAR */
 
 #sidebar1 {
+    float: right;
     width: 50%;
     height: auto;
     background-color: rgba(42, 42, 42, 0.6);

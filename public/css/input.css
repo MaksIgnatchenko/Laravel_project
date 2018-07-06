@@ -102,4 +102,9 @@ input:focus ~ .highlight {
     width:130px;
     border:none;
     border-bottom:1px solid #757575;
+    cursor: pointer;
+}
+.litel:hover {
+    transition: 1s;
+    background-color: #00aeff !important;
 }
