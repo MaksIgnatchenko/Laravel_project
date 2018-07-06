@@ -89,7 +89,7 @@
                     'order' : order
                 },
                 success: function(){
-                    alert('ok');
+                    window.location = "{{route('tasklists')}}";
                 }
             })
         }
