@@ -8,7 +8,12 @@
     /* Sub Menu */
 }
 .nav ul li a {
+    -moz-box-shadow:0 0 10px #ffffff;
+    -webkit-box-shadow:0 0 10px #ffffff;
+    box-shadow:0 0 10px #ffffff;
+
     display: block;
+    border-radius: 7px;
     background: rgba(41, 107, 164, 0.73);
     padding: 10px 15px;
     color: #fff;
@@ -20,7 +25,7 @@
     transition: 0.2s linear;
 }
 .nav ul li a:hover {
-    background: rgba(41, 107, 164, 0.73);
+    background: rgba(88, 169, 195, 0.73);
 }
 .nav ul li a .fa {
     width: 16px;
