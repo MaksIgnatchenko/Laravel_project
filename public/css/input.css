@@ -93,6 +93,11 @@ input:focus ~ .highlight {
     to 	{ width:0; background:transparent; }
 }
 .litel{
+    border-radius: 7px;
+    -moz-box-shadow:0 0 10px #ffffff;
+    -webkit-box-shadow:0 0 10px #ffffff;
+    box-shadow:0 0 5px #ffffff;
+
     border: 2px; color: white;
     background-color: #3883b9 !important;
     border-radius: 5px;
