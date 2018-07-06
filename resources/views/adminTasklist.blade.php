@@ -28,7 +28,7 @@
                         </li>
                     </ul>
                     <ul id="sortable-row">
-                        @foreach($tasklist->tasks as $task)
+                        @foreach($tasklist->tasks()->orderBy('order_id')->get() as $task)
                             <li id="{{$tasklist->id}}:{{$task->id}}">
                                 <a href='#'>
                                     {{$task->task_desc}}

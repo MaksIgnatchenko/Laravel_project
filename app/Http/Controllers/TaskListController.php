@@ -10,12 +10,7 @@ class TasklistController extends Controller
 {
     public function index()
     {
-        $tasklists = DB::table('tasklists')
-            ->join('tasklist_task', 'tasklists.id', '=', 'tasklist_task.tasklist_id')
-            ->join('tasks', 'tasks.id', '=', 'tasklist_task.task_id')
-            ->orderBy('order_id')
-            ->get();
-        dd($tasklists);
+        $tasklists = Tasklist::all();
         return view('adminTasklist', compact('tasklists'));
     }
     public function create(Request $request)
