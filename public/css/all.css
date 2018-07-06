@@ -521,6 +521,10 @@ header #profile .sub-menu hr {
 	transform: rotate(6deg) translate(100px, -18px);
 }
 nav .menu {
+	border-radius: 7px;
+	-moz-box-shadow:0 0 10px #ffffff;
+	-webkit-box-shadow:0 0 10px #ffffff;
+	box-shadow:0 0 10px #ffffff;
 	float: right;
 }
 
