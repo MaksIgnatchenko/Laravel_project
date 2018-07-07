@@ -20,8 +20,8 @@ class TasksTableSeeder extends Seeder
         $task->short_desc = 'Cумма';
         $task->task_view = <<<'TASKVIEW'
 function my_sum($arr) {
-    return array_sum($arr);        
-        }
+    // Your code here
+}
 TASKVIEW;
         $task->check_code = <<<'TEXT'
 function test($received, $expected) {
@@ -56,6 +56,7 @@ DESC;
         $task->short_desc = 'Cтроки';
         $task->task_view = <<<'TASKVIEW'
 function shortener($shortMe) {
+    // Your code here
 }
 TASKVIEW;
         $task->check_code = <<<'TEXT'
@@ -109,6 +110,7 @@ DESC;
         $task->short_desc = 'Массивы';
         $task->task_view = <<<'TASKVIEW'
 function compare_ends($shortMe) {
+    // Your code here
 }
 TASKVIEW;
         $task->check_code = <<<'TEXT'
@@ -140,6 +142,7 @@ DESC;
         $task->short_desc = 'Строки';
         $task->task_view = <<<'TASKVIEW'
 function reverse_string($str) {
+    // Your code here
 }
 TASKVIEW;
         $task->check_code = <<<'TEXT'

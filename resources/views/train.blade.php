@@ -30,13 +30,7 @@
     </div>
     <form action="../test/@if(isset($taskResult->task_id)){{$taskResult->task_id}}@else{{$task->id}}@endif" method="post">
         {{csrf_field()}}
-        <textarea name="editor">
-            @if(isset($taskResult->userCode))
-                {{ $taskResult->userCode }}
-            @else
-                {{ $task->task_view }}
-            @endif
-        </textarea>
+    <textarea name="editor">@if(isset($taskResult->userCode)){{ $taskResult->userCode }}@else{{ $task->task_view }}@endif</textarea>
         <div id="editor"></div>
         <input type="submit" value="Check solution" name="test" id="btn">
         <br><br>
