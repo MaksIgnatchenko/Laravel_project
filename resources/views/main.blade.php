@@ -40,15 +40,10 @@
         <div class="tags">
             <span>Tags:</span>
             <ul class="tags_items">
-                <li class="tags_item"><a href="">Algorithms</a></li>
-                <li class="tags_item"><a href="">Fundamentals</a></li>
-                <li class="tags_item"><a href="">Arrays</a></li>
-                <li class="tags_item"><a href="">Strings</a></li>
-                <li class="tags_item"><a href="">Numbers</a></li>
-                <li class="tags_item"><a href="">Logic</a></li>
-                <li class="tags_item"><a href="">Algebra</a></li>
-                <li class="tags_item"><a href="">Geometry</a></li>
-                <li class="tags_item"><a href="">Mathematics</a></li>
+                <li class="tags_item"><a href="/main/">All tasks</a></li>
+                @foreach($tagslist as $taglist)
+                <li class="tags_item"><a href="/main/{{$taglist->theme}}">{{$taglist->theme}}</a></li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -62,11 +57,11 @@
                 <div class="task_left">
                     <span class="task_level">{{$task->difficulty}} level</span>
                     <span class="task_level">{{$task->user->name}}</span>
-                    <a href="train/{{$task->id}}"  name="main" class="task_name">{{$task->short_desc}}</a><br>
+                    <a href="/train/{{$task->id}}"  name="main" class="task_name">{{$task->short_desc}}</a><br>
                     <div class="task_tag"><a href="#">{{$task->theme}}</a></div>
                 </div>
                 <div class="task_right">
-                    <img src="images/php-icon.jpg">
+                    <img src="/images/php-icon.jpg">
                 </div>
                 <hr>
         </li>

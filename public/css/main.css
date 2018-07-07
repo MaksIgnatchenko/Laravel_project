@@ -88,6 +88,9 @@
 #content .task .tags .tags_items .tags_item a {
 	color: #B6C0B6;
 }
+#content .task .tags .tags_items .tags_item:first-letter {
+	text-transform: uppercase;
+}
 #content .task .tags .tags_items .tags_item a:hover {
 	color: #5AEFFF;
 }
