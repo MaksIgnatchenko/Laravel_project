@@ -29,6 +29,7 @@
         <p>Solution:</p>
     </div>
     <form action="../test/@if(isset($taskResult->task_id)){{$taskResult->task_id}}@else{{$task->id}}@endif" method="post">
+        {{csrf_field()}}
         <textarea name="editor">
             @if(isset($taskResult->userCode))
                 {{ $taskResult->userCode }}
