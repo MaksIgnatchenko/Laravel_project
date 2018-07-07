@@ -196,10 +196,4 @@ class TaskController extends Controller
         }
     }
 
-    public function orderTask(Request $request)
-    {
-
-    }
-
-
 }

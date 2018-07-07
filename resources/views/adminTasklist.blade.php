@@ -89,7 +89,7 @@
                     'order' : order
                 },
                 success: function(){
-                    window.location = "{{route('tasklists')}}";
+                    alert('Order has been changed');
                 }
             })
         }
