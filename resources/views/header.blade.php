@@ -63,7 +63,7 @@
                     @auth
                         <li>
                             <a href="/account" title="Create task">
-                                <i class="fa fa-buysellads" aria-hidden="true"></i>
+                                <i class="fa fa-cog" aria-hidden="true"></i>
                                 <span class="link-text">Account</span>
                             </a>
                         </li>

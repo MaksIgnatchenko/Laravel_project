@@ -4,6 +4,7 @@
     <title>SourcePlanet</title>
     <link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/flat-seo-web-ikooni/128/flat_seo2-37-128.png">
     <link rel="stylesheet" href="{{asset('css/all.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/train.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/button.css')}}" type="text/css">

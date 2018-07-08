@@ -2,36 +2,64 @@
 {{--/** @var PaginationDto $dto*/--}}
 @section('sidebar')
 <div class="account">
-    <div>User Name:
+    <nav class='animated bounceInDown nav'>
+        <ul>
+            <li><a>
+                    <div><span class="t1">User Name: </span>
         {{ $user->name }}
-    </div>
-    <div>E-mail:
+    </div></a></li>
+            <li><a>
+                    <div><span class="t1">E-mail:</span>
         {{ $user->email }}
-    </div>
-    <div>Role:
+    </div></a></li>
+            <li><a>
+                    <div><span class="t1">Role:</span>
         {{ $user->role }}
-    </div>
+    </div></a></li>
+            <li class='sub-menu'>
     @if($user->role === 'user')
         <a href="#">
-            <div class="buttons">
-                request for a teacher role
-            </div>
+                Request for a teacher role
         </a>
     @endif
+                </li>
+            <li>
     <a href="#" id="changePasswordForm">
-        <div class="buttons">
-        change password
-        </div>
+        Change password
     </a>
+            </li>
+
     <div id="passForm">
         {{csrf_field()}}
-        <div>Current password <input type="password" name="currentPass" id="currentPass" required></div>
-        <div>New password <input type="password" name="newPass" id="newPass" required></div>
-        <div>Repeat new password <input type="password" name="newPass2" id="newPass2" required></div>
-        <div><button id="changePassButton">Change password</button></div>
-    </div>
-</div>
+        <div class="group">
+            <input type="password" required name="currentPass" id="currentPass">
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Current password</label>
+            <br>
+        </div>
 
+        <div class="group">
+            <input type="password" required name="newPass" id="newPass">
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>New password</label>
+            <br>
+        </div>
+
+        <div class="group">
+            <input type="password" required name="newPass2" id="newPass2">
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Repeat new password</label>
+            <br>
+        </div>
+
+        <div><button class="litel" id="changePassButton">Change password</button></div>
+    </div>
+            </ul>
+    </nav>
+</div>
 
 @endsection
 

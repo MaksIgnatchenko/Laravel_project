@@ -1,11 +1,6 @@
 .account {
-    color: black;
-    margin: 20px;
-    font-size: 22px;
-}
-
-.account div {
-    margin: 20px;
+    margin-bottom: 15px;
+    margin-right: 15px;
 }
 
 .buttons {
@@ -19,10 +14,9 @@
 
 #passForm {
     display: none;
-    border: 1px black solid;
     width: 300px;
     height: 300px;
-    margin: 0px;
+    margin: 20px;
     padding: 0px;
     color: black;
 }
