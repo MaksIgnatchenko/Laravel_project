@@ -17,7 +17,7 @@ Route::get('test/{id}', 'TaskController@test');
 Route::post('test/{task}', 'TaskController@test');
 
 
-Route::get('main', 'TaskController@index')->name('main');
+Route::get('main/{filter?}', 'TaskController@index')->name('main');
 Route::get('train/{task}', 'TaskController@train');
 Route::get('next/{id}', 'TaskController@next');
 Route::get('create',function (){
