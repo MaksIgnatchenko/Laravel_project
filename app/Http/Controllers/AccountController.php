@@ -12,4 +12,12 @@ class AccountController extends Controller
         $user = Auth::user();
         return view('account', compact('user'));
     }
+
+    public function changePassword(Request $request)
+    {
+        $newPass = $request->newPass;
+        $user = Auth::user();
+        $user->password = bcrypt($newPass);
+        $user->save();
+    }
 }

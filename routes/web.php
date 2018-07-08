@@ -64,6 +64,7 @@ Route::get('auth/google/callback',
 );
 
 Route::get('/account', 'AccountController@index');
+Route::post('/changePassword', 'AccountController@changePassword')->name('changePassword');
 
 //Route::get('auth/google', 'GoogleController@redirectToProvider')->name('google.login');
 //Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
