@@ -62,6 +62,12 @@
                     </li>
                     @auth
                         <li>
+                            <a href="#" title="Create task">
+                                <i class="fa fa-buysellads" aria-hidden="true"></i>
+                                <span class="link-text">Account</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
