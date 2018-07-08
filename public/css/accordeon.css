@@ -93,13 +93,11 @@
     -moz-box-shadow:0 0 10px #ffffff;
     -webkit-box-shadow:0 0 10px #ffffff;
     box-shadow:0 0 10px #ffffff;
-
+margin: 30px;
     float: right;
     width: 50%;
     height: auto;
     background-color: rgba(42, 42, 42, 0.6);
-    margin-right: 20px;
-    margin-top: 20px;
 }
 #sidebar1 h5 {
     color: #fff;
@@ -121,7 +119,7 @@
 #sidebar1 ul li {
     display: block;
     position: relative;
-    margin: 15px 0 0 15px;
+    margin: 15px 15px 15px 15px;
 }
 #sidebar1 ul li .task_left {
     float: left;

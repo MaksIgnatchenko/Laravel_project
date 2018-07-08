@@ -98,6 +98,7 @@
 /* SIDEBAR */
 
 #sidebar {
+
 	border-radius: 7px;
 	-moz-box-shadow:0 0 10px #ffffff;
 	-webkit-box-shadow:0 0 10px #ffffff;
@@ -118,6 +119,7 @@
 }
 #sidebar  ul {
 	display: block;
+
 }
 #sidebar ul hr {
 	width: 100%;
