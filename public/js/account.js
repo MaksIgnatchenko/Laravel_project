@@ -21,21 +21,22 @@ newPass2.addEventListener('input', checkNewPass);
 changePassButton.addEventListener('click', changePassword);
 
 function checkNewPass() {
-    if (isWarning) {
-        passForm.removeChild(isWarning);
-        isWarning = null;
+    warnings();
+    if (newPass == "") {
+        warnings('Enter new password');
     }
-    if((newPass2.value != newPass.value) && (newPass.value != "") && (newPass2.value != "")) {
-        warning = document.createElement('div');
-        warning.innerHTML = 'Passwords do no match';
-        warning.class = 'warning';
-        passForm.appendChild(warning);
-        isWarning = warning;
+    if (newPass2 == "") {
+        warnings('Repeat the new password');
+    }
+    if (newPass2.value != newPass.value) {
+        warnings('Repeat the new password correctly');
+    }
+    if (currentPass.value == "") {
+        warnings('Enter current password');
     }
 }
 function changePassword() {
     if ((currentPass.value != "") && (newPass2.value == newPass.value) && (newPass2.value != "")) {
-        console.log(newPass2.value);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': token
@@ -44,11 +45,34 @@ function changePassword() {
             cache: false,
             type: 'POST',
             data: {
-                'newPass': newPass2.value
+                'newPass' : newPass2.value,
+                'currentPass' : currentPass.value
             },
-            success: function () {
-                alert('Password has been changed');
+            success: function (response) {
+                if (response.status == 'ok') {
+                    warnings('Your password has been changed', 'ok');
+                } else {
+                    warnings('The entered current password is incorrect');
+                }
             }
         })
+    }
+}
+
+function warnings(message, correct) {
+    if (isWarning) {
+        passForm.removeChild(isWarning);
+        isWarning = null;
+    }
+    if (message) {
+        var warning = document.createElement('div');
+        warning.innerHTML = message;
+        if (correct) {
+            warning.style.color = "Green";
+        } else {
+            warning.style.color = "Red";
+        }
+        passForm.appendChild(warning);
+        isWarning = warning;
     }
 }
