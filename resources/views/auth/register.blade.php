@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+        <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 panel-default">
+                <div class="page-header">
+                    <h1>Register</h1>
+                </div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -70,8 +69,5 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
-    </div>
-</div>
 @endsection

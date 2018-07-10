@@ -19,8 +19,38 @@
     </style>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
 </head>
 <body>
+
+
+<div>
+    <a href="/">
+        <div class="stage">
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+        </div>
+    </a>
+
+</div>
 
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -43,40 +73,58 @@
                         &nbsp;
                     </ul>
 
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="create">Добавить задачу</a></li>
-                        <li><a href="edit">Редактировать задачу</a></li>
-                        <!-- Authentication Links -->
-                                 <li>  @section('sidebar')
-                                             <a href="main">Пройти тестирование</a>
-                                        @show
+                    <nav>
+                        <div class="menu">
+                            <ul class="clear">
+                                <li>
+                                    <a href="/create">
+                                        <i class="fa fa-tasks" aria-hidden="true"></i>
+                                        <span class="link-text">Add task</span>
+                                    </a>
                                 </li>
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/edit">
+                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                        <span class="link-text">Edit task</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/main">
+                                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                                        <span class="link-text">Pass a test</span>
+                                    </a>
+                                </li>
+                                @guest
+                                <li>
+                                    <a href="{{ route('login') }}">
+                                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                        <span class="link-text">Login</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}">
+                                        <i class="fa fa-registered" aria-hidden="true"></i>
+                                        <span class="link-text">Register</span>
+                                    </a>
+                                </li>
+                                @else
                                     <li>
                                         <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
+                                           onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                            <span class="link-text">Sign Out</span>
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
+                                @endguest
+                            </ul>
+                        </div>
+                    </nav>
+
                 </div>
             </div>
         </nav>

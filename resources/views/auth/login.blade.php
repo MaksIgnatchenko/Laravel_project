@@ -1,7 +1,69 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 loginpage-wrapper">
+        <div class="page-header">
+            <h1>Login</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-login-email">
+                <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    {{ csrf_field() }}
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input class="form-control" type="email" name="email" placeholder="Email" value="" required>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <input class="form-control" type="password" name="password" placeholder="Password" required>
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary btn-lg" type="submit" style="min-width: 100px;">
+                            Войти
+                        </button>
+                    </div>
+                    <input type='hidden' name='csrfmiddlewaretoken' value='nWvVfQWhK1LeUef98KhlcYRhxgPS4nIPGS2z26NSg3LvNhvmbEfiOJYGjY8dgqSk' />
+                </form>
+            </div>
+
+            <div class="col-sm-6 col-social-login">
+                <form method="post">
+                    <p><a class="btn btn-primary" href="#"><i class="icon-social-login icon-social-login__github">
+                            </i>Войти через GitHub</a></p>
+                    <p><a class="btn btn-primary" href="{!! URL::route('auth/google') !!}"><i class="icon-social-login icon-social-login__google">
+                            </i>Войти через Google</a></p>
+                    <p><a class="btn btn-primary" href="#"><i class="icon-social-login icon-social-login__facebook">
+                            </i>Войти через Facebook</a></p>
+                    <input type='hidden' name='csrfmiddlewaretoken' value='nWvVfQWhK1LeUef98KhlcYRhxgPS4nIPGS2z26NSg3LvNhvmbEfiOJYGjY8dgqSk' />
+                </form>
+            </div>
+        </div>
+
+        <br><br>
+
+        <p><a href="{{ route('password.request') }}">Забыли пароль?</a></p>
+        <p>Нет аккаунта? Войдите через соцсеть или <a href="{{ route('register') }}">зарегистрируйтесь</a>.</p>
+    </div>
+
+
+    {{--<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -66,6 +128,6 @@
             </div>
         </div>
     </div>
-</div>
+</div>--}}
 
 @endsection
