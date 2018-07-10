@@ -70,6 +70,7 @@ function warnings(message, correct) {
     }
     if (message) {
         var warning = document.createElement('div');
+        warning.className =('t2');
         warning.innerHTML = message;
         if (correct) {
             warning.style.color = "Green";
