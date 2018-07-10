@@ -49,15 +49,18 @@ function changePassword() {
                 'newPass' : newPass2.value,
                 'currentPass' : currentPass.value
             },
-            success: function (response) {
+            success: function (data, textStatus, xhr) {
                 currentPass.value = "";
                 newPass.value = "";
                 newPass2.value = "";
-                if (response.status == 'ok') {
                     warnings('Your password has been changed', 'ok');
-                } else {
-                    warnings('The entered current password is incorrect');
+            },
+            error :function(err) {
+                let message = "";
+                for (var i in err.responseJSON.errors) {
+                    message += err.responseJSON.errors[i] + "<br>";
                 }
+                warnings(message);
             }
         })
     }
@@ -82,3 +85,4 @@ function warnings(message, correct) {
 
     }
 }
+

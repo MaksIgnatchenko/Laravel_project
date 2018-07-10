@@ -3,33 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Rules\CurrentPassword;
 use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        if (!Auth::check()) {
-            return redirect(url('/login'));
-        }
-        $user = Auth::user();
-        return view('account', compact('user'));
+        return view('account');
     }
 
     public function changePassword(Request $request)
     {
-        if (!Auth::check()) {
-            return false;
-        }
-        $user = Auth::user();
-        if (!Hash::check($request->currentPass, $user->password)) {
-            return response()->json(['status' => 'error']);
-        } else {
-            $newPass = $request->newPass;
-            $user->password = bcrypt($newPass);
-            $user->save();
-            return response()->json(['status' => 'ok']);
-        }
+        $validationData = $request->validate([
+            'currentPass' => ['required', new CurrentPassword],
+            'newPass' => 'required|min:5|max:255'
+        ]);
+        $user = \Auth::user();
+        $user->password = Hash::make($request->newPass);
+        $user->save();
+        return response()->json($validationData);
     }
 }
