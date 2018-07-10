@@ -56,6 +56,7 @@
         </div>
 
         <div><button class="litel" id="changePassButton">Change password</button></div>
+    </br>
     </div>
             </ul>
     </nav>

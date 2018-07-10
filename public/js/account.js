@@ -8,6 +8,7 @@ var changePassButton = document.getElementById('changePassButton');
 var isWarning = false;
 changePasswordForm.Clicked = false;
 changePasswordForm.addEventListener('click', function() {
+
     if(this.Clicked == false) {
         passForm.style.display = 'block';
         this.Clicked = true;
@@ -48,12 +49,18 @@ function changePassword() {
                 'newPass' : newPass2.value,
                 'currentPass' : currentPass.value
             },
-            success: function (response) {
-                if (response.status == 'ok') {
+            success: function (data, textStatus, xhr) {
+                currentPass.value = "";
+                newPass.value = "";
+                newPass2.value = "";
                     warnings('Your password has been changed', 'ok');
-                } else {
-                    warnings('The entered current password is incorrect');
+            },
+            error :function(err) {
+                let message = "";
+                for (var i in err.responseJSON.errors) {
+                    message += err.responseJSON.errors[i] + "<br>";
                 }
+                warnings(message);
             }
         })
     }
@@ -66,6 +73,7 @@ function warnings(message, correct) {
     }
     if (message) {
         var warning = document.createElement('div');
+        warning.className =('t2');
         warning.innerHTML = message;
         if (correct) {
             warning.style.color = "Green";
@@ -74,5 +82,7 @@ function warnings(message, correct) {
         }
         passForm.appendChild(warning);
         isWarning = warning;
+
     }
 }
+
