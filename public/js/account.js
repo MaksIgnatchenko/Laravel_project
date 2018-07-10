@@ -8,6 +8,7 @@ var changePassButton = document.getElementById('changePassButton');
 var isWarning = false;
 changePasswordForm.Clicked = false;
 changePasswordForm.addEventListener('click', function() {
+
     if(this.Clicked == false) {
         passForm.style.display = 'block';
         this.Clicked = true;
@@ -49,6 +50,9 @@ function changePassword() {
                 'currentPass' : currentPass.value
             },
             success: function (response) {
+                currentPass.value = "";
+                newPass.value = "";
+                newPass2.value = "";
                 if (response.status == 'ok') {
                     warnings('Your password has been changed', 'ok');
                 } else {
@@ -74,5 +78,6 @@ function warnings(message, correct) {
         }
         passForm.appendChild(warning);
         isWarning = warning;
+
     }
 }
