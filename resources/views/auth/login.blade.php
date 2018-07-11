@@ -9,7 +9,7 @@
 
         <div class="row">
             <div class="col-sm-6 col-login-email">
-                <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                <iv c class="form-horizontal" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <input class="form-control" type="email" name="email" placeholder="Email" value="" required>
@@ -45,12 +45,9 @@
 
             <div class="col-sm-6 col-social-login">
                 <form method="post">
-                    <p><a class="btn btn-primary" href="#"><i class="icon-social-login icon-social-login__github">
-                            </i>Войти через GitHub</a></p>
-                    <p><a class="btn btn-primary" href="{!! URL::route('auth/google') !!}"><i class="icon-social-login icon-social-login__google">
-                            </i>Войти через Google</a></p>
-                    <p><a class="btn btn-primary" href="#"><i class="icon-social-login icon-social-login__facebook">
-                            </i>Войти через Facebook</a></p>
+                    <p class="litel1"><a href="#">Войти через Github<i class="fa fa-github" aria-hidden="true"></i></a></p>
+                    <p class="litel1"><a href="{!! URL::route('auth/google') !!}">Войти через Google<i class="fa fa-google " aria-hidden="true"></i></a></p>
+                    <p class="litel1"><a href="#">Войти через Facebook<i class="fa fa-facebook " aria-hidden="true"></i></a></p>
                     <input type='hidden' name='csrfmiddlewaretoken' value='nWvVfQWhK1LeUef98KhlcYRhxgPS4nIPGS2z26NSg3LvNhvmbEfiOJYGjY8dgqSk' />
                 </form>
             </div>

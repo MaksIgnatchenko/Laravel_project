@@ -94,15 +94,33 @@ input:focus ~ .highlight {
     to 	{ width:0; background:transparent; }
 }
 .litel{
-    border-radius: 7px;
-    -moz-box-shadow:0 0 10px #ffffff;
-    -webkit-box-shadow:0 0 10px #ffffff;
-    box-shadow:0 0 5px #ffffff;
+     border-radius: 7px;
+     -moz-box-shadow:0 0 10px #ffffff;
+     -webkit-box-shadow:0 0 10px #ffffff;
+     box-shadow:0 0 5px #ffffff;
 
+     border: 2px; color: white;
+     background-color: #3883b9 !important;
+     border-radius: 5px;
+     font-size:12px;
+     padding:5px 5px 5px 5px;
+     display:block;
+     width:130px;
+     border:none;
+     border-bottom:1px solid #757575;
+     cursor: pointer;
+ }
+.litel:hover {
+    transition: 1s;
+    background-color: rgba(0, 174, 255, 0) !important;
+}
+.litel1{
+    margin: 5px;
+    border-radius: 7px;
     border: 2px; color: white;
-    background-color: #3883b9 !important;
-    border-radius: 5px;
-    font-size:12px;
+    background-color: rgb(246, 246, 255) !important;
+    font-size:15px;
+    font-weight: bold;
     padding:5px 5px 5px 5px;
     display:block;
     width:130px;
@@ -110,7 +128,30 @@ input:focus ~ .highlight {
     border-bottom:1px solid #757575;
     cursor: pointer;
 }
-.litel:hover {
-    transition: 1s;
-    background-color: #00aeff !important;
+.litel1:hover {
+
+    border-radius: 7px;
+    -moz-box-shadow:0 0 10px #ffffff;
+    -webkit-box-shadow:0 0 10px #ffffff;
+    box-shadow:0 0 5px #ffffff;
+    transition: 0.5s;
+    background-color: rgba(0, 174, 255, 0) !important;
+}
+.litel1  i {
+    margin:5px;
+    color: black;
+    float: right
+}
+
+.litel1:hover i{
+    margin:5px;
+    color: #f6f6ff;
+    float: right
+}
+.litel1:hover a{
+        color: white;
+        text-decoration: none;
+    }
+.litel1 a{
+    color: black;
 }

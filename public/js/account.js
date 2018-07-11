@@ -56,7 +56,10 @@ function changePassword() {
                     warnings('Your password has been changed', 'ok');
             },
             error :function(err) {
-                let message = "";
+                currentPass.value = "";
+                newPass.value = "";
+                newPass2.value = "";
+                var message = "";
                 for (var i in err.responseJSON.errors) {
                     message += err.responseJSON.errors[i] + "<br>";
                 }
