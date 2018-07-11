@@ -28,15 +28,13 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                            </label>
+                        <div class="checkbox ">
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> <p>Remember Me</p>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary btn-lg" type="submit" style="min-width: 100px;">
-                            Войти
+                        <button class="litel1" type="submit" style="min-width: 100px;">
+                            <p>Войти</p>
                         </button>
                     </div>
                     <input type='hidden' name='csrfmiddlewaretoken' value='nWvVfQWhK1LeUef98KhlcYRhxgPS4nIPGS2z26NSg3LvNhvmbEfiOJYGjY8dgqSk' />
