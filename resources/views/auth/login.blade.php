@@ -9,7 +9,7 @@
 
         <div class="row">
             <div class="col-sm-6 col-login-email">
-                <iv c class="form-horizontal" method="POST" action="{{ route('login') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <input class="form-control" type="email" name="email" placeholder="Email" value="" required>
