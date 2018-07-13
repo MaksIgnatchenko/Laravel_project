@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tasklist;
 use Illuminate\Http\Request;
 use App\Group;
 use App\User;
@@ -11,7 +12,8 @@ class GroupController extends Controller
     public function index($error = null)
     {
         $groups = Group::all();
-        return view('admingroup', compact('groups', 'error'));
+        $tasklists = Tasklist::all();
+        return view('admingroup', compact('groups', 'tasklists', 'error'));
     }
 
     public function create(Request $request)
@@ -35,5 +37,12 @@ class GroupController extends Controller
         $group->users()->attach($user->id);
         return redirect()->route('groups');
     }
-}
 
+    public function addTasklist(Request $request)
+    {
+        $group = Group::find($request->group_id);
+        $tasklist = Tasklist::find($request->choose_tasklist);
+        $group->tasklists()->attach($tasklist->id);
+        return redirect()->route('groups');
+    }
+}

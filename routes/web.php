@@ -42,6 +42,7 @@ Route::get('users', 'GroupController@index');
 Route::get('admingroup/{error?}', 'GroupController@index')->name('groups');
 Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
+Route::post('addtasklist, 'GroupController@addTasklist');
 
 Route::get('/admintasklists', 'TasklistController@index')->name('tasklists');
 Route::post('/admintasklists', 'TasklistController@menuStore')->name('taskListsStore');
