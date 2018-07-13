@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 panel-default">
+        <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 loginpage-wrapper">
                 <div class="page-header">
                     <h1>Register</h1>
                 </div>
@@ -62,8 +62,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
+                                <button class="litel1" type="submit" style="min-width: 100px;">
+                                    <p>Register</p>
                                 </button>
                             </div>
                         </div>
