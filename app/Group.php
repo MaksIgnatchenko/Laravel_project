@@ -10,4 +10,9 @@ class Group extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    public function tasklists()
+    {
+        return $this->belongsToMany('App\Tasklist', 'tasklist_group');
+    }
 }

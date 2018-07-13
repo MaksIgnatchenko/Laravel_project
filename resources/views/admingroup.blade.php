@@ -12,7 +12,7 @@
                     {{$group->name}}
                     <div class='fa fa-caret-down right'></div>
                 </a>
-                <ul>
+                <ul style="display:flex; width:50%;">
                     <li>
                         <a href='#'>
                             <form action="{{ action('GroupController@addUser') }}" method="POST">
@@ -25,6 +25,25 @@
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <br>
                                     <input class="litel" type="submit" value="Добавить ученика">
+                                </div>
+                            </form>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <form action="{{ action('GroupController@addTasklist') }}" method="POST">
+                                {{csrf_field()}}
+                                <div class="group">
+                                    <select name="choose_tasklist">
+                                        @foreach($tasklists as $tasklist)
+                                            <option value="{{ $tasklist->id }}">{{ $tasklist->name }}</option>
+                                            @endforeach
+                                    </select>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                    <br>
+                                    <input class="litel" type="submit" value="Assign tasklist to group">
                                 </div>
                             </form>
                         </a>
