@@ -42,7 +42,7 @@ class GroupController extends Controller
     {
         $group = Group::find($request->group_id);
         $tasklist = Tasklist::find($request->choose_tasklist);
-        $group->tasklists()->attach($tasklist->id);
+        $group->tasklists()->attach($tasklist->id, [ 'created_at' => now(),'updated_at' => now()]);
         return redirect()->route('groups');
     }
 }

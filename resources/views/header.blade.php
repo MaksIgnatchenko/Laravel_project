@@ -49,6 +49,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/adminusertasklists" title="Admin usertasklists">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                            <span class="link-text">User Moduls</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/edit" title="Update task">
                             <i class="fa fa-edit" aria-hidden="true"></i>
                             <span class="link-text">Update task</span>
