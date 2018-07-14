@@ -20,6 +20,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $groups = $user->groups;
+        $tasklists = [];
         foreach ($groups as $group){
             $tasklists["$group->name"] = $group->tasklists;
         }

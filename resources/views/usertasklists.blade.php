@@ -2,7 +2,7 @@
 @section('sidebar')
 
     <nav class='animated bounceInDown nav'>
-        @foreach($tasklists as $key => $value)
+        @forelse($tasklists as $key => $value)
             <ul>
                 <li class="sub-menu">
                     <a>{{$key}}</a>
@@ -10,9 +10,11 @@
                     <ul>
                         <li><a>{{$tasklist->name}}</a></li>
                     </ul>
-                        @endforeach
+                    @endforeach
                 </li>
             </ul>
-    @endforeach
+            @empty
+                <h2>Вы еще не зарегистрированы в группе</h2>
+    @endforelse
     </nav>
     @endsection
