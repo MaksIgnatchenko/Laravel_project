@@ -8,7 +8,7 @@
                     <a>{{$key}}</a>
                     @foreach($value as $tasklist)
                     <ul>
-                        <li><a>{{$tasklist->name}}</a></li>
+                        <li><a href="/module-train/{{ $tasklist->id }}">{{$tasklist->name}}</a></li>
                     </ul>
                     @endforeach
                 </li>

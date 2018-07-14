@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Group;
 use App\TasklistTask;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -33,5 +34,11 @@ class TasklistController extends Controller
         foreach($tasks as $key => $value){
             TasklistTask::where(['task_id' => $value, 'tasklist_id' => $_POST['id']])->update(['order_id' => $key+1]);
         }
+    }
+
+    public function moduleTrain(Tasklist $tasklist)
+    {
+        $tasklist = $tasklist->tasks;
+        return view('user_module', compact('tasklist'));
     }
 }

@@ -19,7 +19,7 @@ class AccountController extends Controller
         return view('account');
     }
 
-    public function changePassword(Request $request)
+    public function changePassword(ChangePAsswordRequest $request)
     {
         $validationData = $request->validate([
             'currentPass' => ['required', new CurrentPassword],

@@ -196,4 +196,11 @@ class TaskController extends Controller
         }
     }
 
+    public function showTask(Request $request)
+    {
+        $id = $request->id;
+        $task = Task::find($id);
+        return response()->json($task);
+    }
+
 }

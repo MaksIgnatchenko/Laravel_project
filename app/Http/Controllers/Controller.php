@@ -12,8 +12,10 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public $user;
     public function __construct()
     {
+        $this->user =
         $this->middleware(function ($request, $next) {
             view()->share('signed_in', Auth::check());
             view()->share('user', Auth::user());
