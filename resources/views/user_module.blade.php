@@ -7,7 +7,7 @@
             @foreach($tasklist as $task)
                 <ul>
                     <li class="sub-menu">
-                        <a id="{{ $task->id }}" onclick="showTask(this.id)">{{$task->short_desc}}</a>
+                        <a id="{{ $task->id }}" onclick="showTask(this.id)">{{$task->task_desc}}</a>
                     </li>
                     <br>
                 </ul>

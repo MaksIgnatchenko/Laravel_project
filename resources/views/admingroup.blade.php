@@ -34,7 +34,7 @@
                             <form action="{{ action('GroupController@addTasklist') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <select name="choose_tasklist">
+                                    <select  name="choose_tasklist">
                                         @foreach($tasklists as $tasklist)
                                             <option value="{{ $tasklist->id }}">{{ $tasklist->name }}</option>
                                             @endforeach
