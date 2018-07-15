@@ -45,4 +45,13 @@ class GroupController extends Controller
         $group->tasklists()->attach($tasklist->id, [ 'created_at' => now(),'updated_at' => now()]);
         return redirect()->route('groups');
     }
+
+    public function deleteGroup(Group $group)
+    {
+        $group->delete();
+        return redirect()->route('groups');
+    }
+
+
+
 }

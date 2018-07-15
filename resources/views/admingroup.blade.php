@@ -8,12 +8,14 @@
         <ul>
             <li class='sub-menu'>
                 <a href='#settings'>
-                    <div class='fa fa-user'></div>
+                    <div class='fa fa-users'></div>
                     {{$group->name}}
-                    <div class='fa fa-caret-down right'></div>
+                    <a style="all: unset" href="/deleteGroup/{{$group->id}}">
+                        <i class="fa fa-trash delete" aria-hidden="true"></i>
+                    </a>
                 </a>
-                <ul style="display:flex; width:50%;">
-                    <li>
+                <ul style="display: inline-flex">
+                    <li style="width: 50%;">
                         <a href='#'>
                             <form action="{{ action('GroupController@addUser') }}" method="POST">
                                 {{csrf_field()}}
@@ -29,14 +31,16 @@
                             </form>
                         </a>
                     </li>
-                    <li>
+                    <li style="width: 60%">
                         <a href='#'>
                             <form action="{{ action('GroupController@addTasklist') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
                                     <select  name="choose_tasklist">
-                                        @foreach($tasklists as $tasklist)
-                                            <option value="{{ $tasklist->id }}">{{ $tasklist->name }}</option>
+                                            @foreach($tasklists as $tasklist)
+                                                     <option>
+                                                         {{$tasklist->name}}
+                                                     </option>
                                             @endforeach
                                     </select>
                                     <span class="highlight"></span>
@@ -64,9 +68,8 @@
         <ul>
             <li class='sub-menu'>
                 <a href='#settings'>
-                    <div class='fa fa-user'></div>
+                    <div class='fa fa-plus'></div>
                         Создать новую группу
-                    <div class='fa fa-caret-down right'></div>
                 </a>
                 <ul>
                     <li>

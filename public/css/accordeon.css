@@ -183,3 +183,19 @@ margin: 30px;
     color: #5AEFFF;
 }
 
+.delete{
+
+    color: #cacaca;
+    float: right;
+    margin-top: -25px;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.delete:hover{
+    color: rgb(255, 255, 255);
+    -webkit-transform: scale(2) rotateZ(10deg);
+    -ms-transform: scale(2) rotateZ(10deg);
+    transform: scale(2) rotateZ(10deg);
+}
+
