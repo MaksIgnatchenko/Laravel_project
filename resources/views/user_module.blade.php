@@ -48,7 +48,9 @@
                 },
                 success: function (data, textStatus, xhr) {
                     var editor = ace.edit('editor');
-                    $('#sidebar2').show(1500);
+                    $('#sidebar2').show(1500,function(){
+                        editor.setTheme("ace/theme/cobalt");
+                    });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
                 },
