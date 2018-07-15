@@ -104,8 +104,9 @@ input:focus ~ .highlight {
      border-radius: 5px;
      font-size:12px;
      padding:5px 5px 5px 5px;
-     display:block;
-     width:130px;
+     margin-left: 10px;
+     display:inline-block;
+     width:145px;
      border:none;
      border-bottom:1px solid #757575;
      cursor: pointer;
