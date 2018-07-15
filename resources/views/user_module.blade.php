@@ -35,6 +35,7 @@
             var sidebar = document.getElementById('sidebar');
             var taskDescription = document.getElementById('taskDescription');
             var textCode = document.getElementById('textCode');
+            var editor = document.getElementById('editor');
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': token
@@ -46,16 +47,9 @@
                     'id' : id
                 },
                 success: function (data, textStatus, xhr) {
-                    //editor.setValue(data.task_view);
-                    //sidebar.style.display = 'block';
+                    var editor = ace.edit('editor');
+                    editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
-                    //editor.setValue("the new text here");
-//                    editor.session.setValue("the new text here");
-                     textCode.innerHTML = data.task_view;
-
-                    //editorDiv.innerHTML = data.task_view;
-                     console.log(editor);
-
                 },
                 error :function(err) {
 
@@ -63,7 +57,5 @@
             })
         }
     </script>
-    {{--<script src="{{asset('js/src/ace.js')}}" type="text/javascript" charset="utf-8"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>--}}
 @endsection
 
