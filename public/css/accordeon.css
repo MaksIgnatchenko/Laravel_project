@@ -50,6 +50,9 @@
     background: #333;
     border-left: 1px solid #3498db;
 }
+.block {
+    width: 300px;
+}
 /* Float Right/Left */
 .right {
     float: right;

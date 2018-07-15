@@ -48,6 +48,7 @@
                 },
                 success: function (data, textStatus, xhr) {
                     var editor = ace.edit('editor');
+                    $('#sidebar2').show(1500);
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
                 },

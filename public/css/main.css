@@ -8,12 +8,11 @@
 	float: left;
 	width: 28%;
 	height: auto;
-	margin: 15px;
+	margin: 45px 15px 15px 15px;
 	background-color: rgba(164, 34, 8, 0.4);
 }
 #content .task {
 	margin:15px;
-	margin-right: 28px;
 	padding-left: 15px;
 	padding-top: 10px;
 }
@@ -109,8 +108,7 @@
 	width: 67%;
 	height: auto;
 	background-color: rgba(42, 42, 42, 0.6);
-	margin-right: 20px;
-	margin-top: 20px;
+	margin: 40px 20px 0 20px;
 }
 #sidebar h5 {
 	color: #fff;
@@ -199,15 +197,13 @@
 /*sidebar for user_mioduls*/
 
 #sidebar2 {
-
-
-
 	float: right;
 	width: 50%;
 	height: auto;
 	background-color: rgba(42, 42, 42, 0);
-	margin-right: 20px;
+	margin-right: 60px;
 	margin-top: 20px;
+	display: none;
 }
 #sidebar2 h5 {
 	color: #fff;
@@ -295,4 +291,11 @@
 
 #taskDescription{
 	color: white;
+	margin-bottom: 20px;
+}
+.solution {
+	font-size: 18px !important;
+}
+#content ul li a {
+	cursor: pointer;
 }

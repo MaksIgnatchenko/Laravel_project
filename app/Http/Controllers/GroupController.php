@@ -26,6 +26,12 @@ class GroupController extends Controller
 
     public function addUser(Request $request)
     {
+        if($request->has('delete')) {
+            $group = Group::find($request->group_id);
+            $user = User::where('email', $request->user_email)->first();
+            $group->users()->detach($user->id);
+            return redirect()->route('groups');
+        }
         $group = Group::find($request->group_id);
         $user = User::where('email', $request->user_email)->first();
         if (!$user) {
@@ -34,14 +40,24 @@ class GroupController extends Controller
         if ($group->users->firstWhere('id', $user->id)) {
             return redirect()->route('groups', ['error' => 'This user is already exists in the group']);
         }
-        $group->users()->attach($user->id);
+        $group->users()->attach($user->id, [ 'created_at' => now(),'updated_at' => now()]);
         return redirect()->route('groups');
     }
 
     public function addTasklist(Request $request)
     {
+        if($request->has('delete')) {
+            $group = Group::find($request->group_id);
+            $tasklist = Tasklist::find($request->choose_tasklist);
+            $group->tasklists()->detach($tasklist->id);
+            return redirect()->route('groups');
+        }
+
         $group = Group::find($request->group_id);
         $tasklist = Tasklist::find($request->choose_tasklist);
+        if($group->tasklists->firstWhere('id', $tasklist->id)) {
+            return redirect()->route('groups', ['error' => 'This module has been already added to this group']);
+        }
         $group->tasklists()->attach($tasklist->id, [ 'created_at' => now(),'updated_at' => now()]);
         return redirect()->route('groups');
     }
