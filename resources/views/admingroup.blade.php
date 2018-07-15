@@ -2,42 +2,45 @@
 @section('sidebar')
     <nav class='animated bounceInDown nav'>
         @if ($error)
-            <p class="t1" style="color: red;">{{ $error }}</p>
+            <p class="t1">{{ $error }}</p>
         @endif
         @foreach($groups as $group)
         <ul>
             <li class='sub-menu'>
                 <a href='#settings'>
-                    <div class='fa fa-user'></div>
+                    <div class='fa fa-users'></div>
                     {{$group->name}}
-                    <div class='fa fa-caret-down right'></div>
+                    <a style="all: unset" href="/deleteGroup/{{$group->id}}">
+                        <i class="fa fa-trash delete" aria-hidden="true"></i>
+                    </a>
                 </a>
                 <ul style="display: inline-flex">
                     <li style="width: 50%;">
-                        <a style="width: 435px">
+                        <a href='#'>
                             <form action="{{ action('GroupController@addUser') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <input type="text" required name="user_email" style="border-radius: 5px;">
+                                    <input type="text" required name="user_email">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <label>Student login</label>
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <br>
-                                    <input class="litel" type="submit" value="Add student">
-                                    <input class="litel" name="delete" type="submit" value="Delete student">
+                                    <input class="litel" type="submit" value="Добавить ученика">
                                 </div>
                             </form>
                         </a>
                     </li>
                     <li style="width: 60%">
-                        <a style="width: 435px">
+                        <a href='#'>
                             <form action="{{ action('GroupController@addTasklist') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <select name="choose_tasklist" style="width: 150px; height: 32px; font-size: 16px; border-radius: 5px;">
-                                        @foreach($tasklists as $tasklist)
-                                            <option value="{{ $tasklist->id }}" style="font-size: 16px">{{ $tasklist->name }}</option>
+                                    <select  name="choose_tasklist">
+                                            @foreach($tasklists as $tasklist)
+                                                     <option>
+                                                         {{$tasklist->name}}
+                                                     </option>
                                             @endforeach
                                     </select>
                                     <span class="highlight"></span>
@@ -45,7 +48,6 @@
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <br>
                                     <input class="litel" type="submit" value="Assign tasklist to group">
-                                    <input class="litel" type="submit" name="delete" value="Delete tasklist from group">
                                 </div>
                             </form>
                         </a>
