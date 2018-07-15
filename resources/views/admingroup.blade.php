@@ -36,12 +36,10 @@
                             <form action="{{ action('GroupController@addTasklist') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <select  name="choose_tasklist">
-                                            @foreach($tasklists as $tasklist)
-                                                     <option>
-                                                         {{$tasklist->name}}
-                                                     </option>
-                                            @endforeach
+                                    <select name="choose_tasklist" style="width: 150px; height: 32px; font-size: 16px; border-radius: 5px;">
+                                        @foreach($tasklists as $tasklist)
+                                            <option value="{{ $tasklist->id }}" style="font-size: 16px">{{ $tasklist->name }}</option>
+                                        @endforeach
                                     </select>
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
