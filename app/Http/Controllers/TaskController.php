@@ -203,4 +203,14 @@ class TaskController extends Controller
         return response()->json($task);
     }
 
+    public function ajaxTest(Request $request)
+    {
+        $task = Task::find($request->task['id']);
+        $taskResult = $task->test($request->editor);
+        if ($taskResult->isPassed === true) {
+            SolutionController::create($taskResult);
+        }
+        return response()->json($taskResult);
+    }
+
 }

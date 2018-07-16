@@ -1,0 +1,17 @@
+#checkOk {
+    font-size: 70px;
+    color: green;
+    display: none;
+}
+
+#checkNo {
+    font-size: 70px;
+    color: red;
+    display: none;
+}
+
+#syntaxError {
+    font-size: 25px;
+    color: red;
+    display : none;
+}

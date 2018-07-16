@@ -22,20 +22,69 @@
     <div class="solution">
         <p>Solution:</p>
     </div>
-    <form action="" method="post">
-        {{csrf_field()}}
-        <textarea name="editor" id="textCode"></textarea>
-        <div id="editor"></div>
-        <br>
-        <input class="litel" type="submit" value="Check solution" name="test" id="btn">
-        <br><br>
-    </form>
+    {{csrf_field()}}
+    <textarea name="editor" id="textCode"></textarea>
+    <div id="editor"></div>
+    <br>
+    <button class="litel" id="buttonCheck">Check solution</button>>
+    <br><br>
+    <div id="syntaxError"></div>
+    <div id="checkOk">
+        <span>&#10004; Task is solved</span>
+    </div>
+    <div id="checkNo">
+        <span>&#10008; The decision is wrong</span>
+    </div>
     <script>
+        var sidebar = document.getElementById('sidebar');
+        var taskDescription = document.getElementById('taskDescription');
+        var textCode = document.getElementById('textCode');
+        var editor = document.getElementById('editor');
+        var buttonCheck = document.getElementById("buttonCheck");
+        var task;
+        var CheckOk = document.getElementById('checkOk');
+        var CheckNo = document.getElementById('checkNo');
+        var syntaxError = document.getElementById('syntaxError');
+        buttonCheck.addEventListener('click', checkSolution);
+        CheckOk.addEventListener('click', hideCheckStatus);
+        CheckNo.addEventListener('click', hideCheckStatus);
+        syntaxError.addEventListener('click', hideCheckStatus);
+
+        function checkSolution() {
+            hideCheckStatus();
+            var editor = ace.edit('editor');
+            var userCode = editor.getValue();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': token
+                },
+                url: '/ajaxTest',
+                cache: false,
+                type: 'POST',
+                data: {
+                    'task' : task,
+                    'editor' : userCode
+                },
+                success: function (data, textStatus, xhr) {
+                    if (data.isPassed) {
+                        checkOk.style.display = "block";
+                    } else {
+                        if (data.error) {
+                            syntaxError.innerHTML = data.error;
+                            syntaxError.style.display = "block"
+                        }
+                        checkNo.style.display = "block";
+                    }
+                },
+                error :function(err) {
+
+                }
+            })
+        }
+
         function showTask(id) {
-            var sidebar = document.getElementById('sidebar');
-            var taskDescription = document.getElementById('taskDescription');
-            var textCode = document.getElementById('textCode');
-            var editor = document.getElementById('editor');
+            hideCheckStatus();
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': token
@@ -47,6 +96,8 @@
                     'id' : id
                 },
                 success: function (data, textStatus, xhr) {
+
+                    task = data;
                     var editor = ace.edit('editor');
                     $('#sidebar2').show(1500,function(){
                         editor.setTheme("ace/theme/cobalt");
@@ -58,6 +109,12 @@
 
                 }
             })
+        }
+
+        function hideCheckStatus() {
+            CheckOk.style.display = 'none';
+            CheckNo.style.display = 'none';
+            syntaxError.style.display = 'none';
         }
     </script>
 @endsection

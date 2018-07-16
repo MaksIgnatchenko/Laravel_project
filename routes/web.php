@@ -46,7 +46,6 @@ Route::get('admingroup/{error?}', 'GroupController@index')->name('groups');
 Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
 Route::post('addtasklist', 'GroupController@addTasklist');
-Route::post('show-task', 'TaskController@showTask');
 
 Route::get('/admintasklists', 'TasklistController@index')->name('tasklists');
 Route::post('/admintasklists', 'TasklistController@menuStore')->name('taskListsStore');
@@ -74,4 +73,7 @@ Route::get('/user', 'AccountController@user');
 
 Route::get('/adminusertasklists', 'UserController@showModules');
 Route::get('/module-train/{tasklist}', 'TaskListController@moduleTrain');
+
+Route::post('show-task', 'TaskController@showTask');
+Route::post('ajaxTest', 'TaskController@ajaxTest');
 
