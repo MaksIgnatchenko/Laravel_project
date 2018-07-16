@@ -33,7 +33,7 @@
         <span>&#10004; Task is solved</span>
     </div>
     <div id="checkNo">
-        <span>&#10008; The decision is wrong</span>
+        <span>&#10008; The solution is wrong</span>
     </div>
     <script>
         var sidebar = document.getElementById('sidebar');
