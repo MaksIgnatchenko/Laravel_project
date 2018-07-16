@@ -1,11 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 use App\Group;
+use App\Solution;
 use App\TasklistTask;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Tasklist;
 use App\Task;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class TasklistController extends Controller
 {
@@ -39,7 +41,18 @@ class TasklistController extends Controller
     public function moduleTrain(Tasklist $tasklist)
     {
         $tasklist = $tasklist->tasks;
-        return view('user_module', compact('tasklist'));
+        $solutions = [];
+        foreach ($tasklist as $key => $task) {
+            $solution = Solution::where('task_id', $task->id)
+                                    ->where('user_id', Auth::id())
+                                    ->first();
+            if ($solution) {
+                $solutions[$key] = true;
+            } else {
+                $solutions[$key] = false;
+            }
+        }
+        return view('user_module', compact('tasklist', 'solutions'));
     }
 
     public function deleteTasklist(Tasklist $tasklist)
