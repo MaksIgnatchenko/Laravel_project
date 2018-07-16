@@ -15,3 +15,18 @@
     color: red;
     display : none;
 }
+
+.passedCheck {
+    font-size: 30px !important;
+    color: green !important;
+}
+
+.noPassedCheck {
+    font-size: 30px !important;
+    color: red !important;
+}
+
+.checkmark {
+    font-size: 30px !important;
+    display: none;
+}
