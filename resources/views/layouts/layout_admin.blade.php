@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">
     <script type="text/javascript" src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
+
 </head>
 <body>
 

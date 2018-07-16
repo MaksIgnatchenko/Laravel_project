@@ -7,7 +7,7 @@
             @foreach($tasklist as $task)
                 <ul>
                     <li class="sub-menu">
-                        <a id="{{ $task->id }}" onclick="showTask(this.id)">{{$task->short_desc}}</a>
+                        <a id="{{ $task->id }}" onclick="showTask(this.id)">{{$task->task_desc}}</a>
                     </li>
                     <br>
                 </ul>
@@ -99,6 +99,9 @@
 
                     task = data;
                     var editor = ace.edit('editor');
+                    $('#sidebar2').show(1500,function(){
+                        editor.setTheme("ace/theme/cobalt");
+                    });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
                 },
