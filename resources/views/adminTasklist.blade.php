@@ -5,9 +5,11 @@
             <ul>
                 <li class='sub-menu'>
                     <a id="to-sort" href='#settings'>
-                        <div class='fa fa-user'></div>
+                        <div class='fa fa-bars'></div>
                         {{$tasklist->name}}
-                        <div class='fa fa-caret-down right'></div>
+                        <a style="all: unset" href="/deleteTasklist/{{$tasklist->id}}">
+                            <i class="fa fa-trash delete" aria-hidden="true"></i>
+                        </a>
                     </a>
                     <ul>
                         <li>
@@ -43,9 +45,8 @@
         <ul>
             <li class='sub-menu'>
                 <a href='#settings'>
-                    <div class='fa fa-user'></div>
+                    <div class='fa fa-plus-circle'></div>
                     Создать новый задачник
-                    <div class='fa fa-caret-down right'></div>
                 </a>
                 <ul>
                     <li>

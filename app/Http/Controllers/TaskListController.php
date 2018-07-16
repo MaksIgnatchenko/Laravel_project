@@ -41,4 +41,10 @@ class TasklistController extends Controller
         $tasklist = $tasklist->tasks;
         return view('user_module', compact('tasklist'));
     }
+
+    public function deleteTasklist(Tasklist $tasklist)
+    {
+        $tasklist->delete();
+        return redirect()->route('tasklists');
+    }
 }

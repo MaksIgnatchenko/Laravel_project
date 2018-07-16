@@ -38,6 +38,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('edit', 'TaskController@showedit');
 Route::get('editTask/{task}', 'TaskController@edit');
 Route::get('deleteGroup/{group}', 'GroupController@deleteGroup');
+Route::get('deleteTasklist/{tasklist}', 'TasklistController@deleteTasklist');
 
 
 Route::get('users', 'GroupController@index');
