@@ -30,4 +30,14 @@
     color: black;
 }
 
+#nameForm {
+    display: none;
+    width: 300px;
+    height: 200px;
+    margin: 20px;
+    padding: 0px;
+    color: black;
+}
+
+
 

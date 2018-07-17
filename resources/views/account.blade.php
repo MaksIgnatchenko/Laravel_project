@@ -5,12 +5,19 @@
     <nav class='animated bounceInDown nav'>
         <ul>
             <li><a>
-                    <div><span class="t1">User Name: </span>
-        {{ $user->name }}
+                    <div id="nameFormButton"><span class="t1">User Name: </span>
+                        <span id="viewName">{{ $user->name }}</span>
     </div></a></li>
+            <div id="nameForm">
+                <div class="group">
+                    <input type="text" required id="newName">
+                    <label>Your new email</label>
+                </div>
+                <div><button class="litel" id="changeNameButton">Change mail</button></div>
+            </div>
             <li><a>
                     <div id="mailFormButton"><span class="t1">E-mail:</span>
-        {{ $user->email }}
+            <span id="viewMail">{{ $user->email }}</span>
         (Click to change)
     </div></a></li>
             <div id="mailForm">
