@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ChangeMailRequest;
 use Illuminate\Http\Request;
-use App\Rules\CurrentPassword;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ChangePassRequest;
 
 class AccountController extends Controller
 {
@@ -19,15 +19,20 @@ class AccountController extends Controller
         return view('account');
     }
 
-    public function changePassword(ChangePAsswordRequest $request)
+
+    public function changePassword(ChangePassRequest $request)
     {
-        $validationData = $request->validate([
-            'currentPass' => ['required', new CurrentPassword],
-            'newPass' => 'required|min:5|max:255'
-        ]);
         $user = \Auth::user();
         $user->password = Hash::make($request->newPass);
         $user->save();
-        return response()->json($validationData);
+        return response()->json($request);
+    }
+
+    public function changeMail(ChangeMailRequest $request)
+    {
+        $user = \Auth::user();
+        $user->email = $request->newMail;
+        $user->save();
+        return response()->json($request->newMail);
     }
 }

@@ -69,6 +69,7 @@ Route::get('auth/google/callback',
 
 Route::get('/account', 'AccountController@index');
 Route::post('/changePassword', 'AccountController@changePassword')->name('changePassword');
+Route::post('/changeMail', 'AccountController@changeMail');
 Route::get('/user', 'AccountController@user');
 
 Route::get('/adminusertasklists', 'UserController@showModules');

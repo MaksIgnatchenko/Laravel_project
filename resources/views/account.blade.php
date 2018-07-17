@@ -9,9 +9,17 @@
         {{ $user->name }}
     </div></a></li>
             <li><a>
-                    <div><span class="t1">E-mail:</span>
+                    <div id="mailFormButton"><span class="t1">E-mail:</span>
         {{ $user->email }}
+        (Click to change)
     </div></a></li>
+            <div id="mailForm">
+                <div class="group">
+                    <input type="text" required id="newMail">
+                    <label>Your new email</label>
+                </div>
+                <div><button class="litel" id="changeMailButton">Change mail</button></div>
+            </div>            
             <li><a>
                     <div><span class="t1">Role:</span>
         {{ $user->role }}
