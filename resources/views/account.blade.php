@@ -18,7 +18,7 @@
                     <input type="text" required id="newMail">
                     <label>Your new email</label>
                 </div>
-                <div><button class="litel" id="changeMailButton">Change mail</button></div>
+                <div><button class="litel" id="changeMailButton">Change mail</button></div><br>
             </div>            
             <li><a>
                     <div><span class="t1">Role:</span>
