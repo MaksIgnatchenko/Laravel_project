@@ -11,9 +11,9 @@
             <div id="nameForm">
                 <div class="group">
                     <input type="text" required id="newName">
-                    <label>Your new email</label>
+                    <label>Your new name</label>
                 </div>
-                <div><button class="litel" id="changeNameButton">Change mail</button></div>
+                <div><button class="litel" id="changeNameButton">Change name</button></div><br>
             </div>
             <li><a>
                     <div id="mailFormButton"><span class="t1">E-mail:</span>
