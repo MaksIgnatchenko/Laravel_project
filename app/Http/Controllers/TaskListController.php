@@ -58,6 +58,7 @@ class TasklistController extends Controller
     public function deleteTasklist(Tasklist $tasklist)
     {
         $tasklist->delete();
+        $tasklist->tasks()->detach();
         return redirect()->route('tasklists');
     }
 }
