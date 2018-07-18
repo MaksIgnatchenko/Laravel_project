@@ -111,7 +111,7 @@ function changeName() {
                 'newName' : newName.value,
             },
             success: function (data, textStatus, xhr) {
-                newMail.value = "";
+                newName.value = "";
                 nameWarnings('Your name has been changed', 'ok');
                 viewName.innerText = newName.value;
             },
