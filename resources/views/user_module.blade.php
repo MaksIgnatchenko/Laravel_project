@@ -29,7 +29,7 @@
     <textarea name="editor" id="textCode"></textarea>
     <div id="editor"></div>
     <br>
-    <button class="litel" id="buttonCheck">Check solution</button>>
+    <button class="litel" id="buttonCheck">Check solution</button>
     <br><br>
     <div id="syntaxError"></div>
     <div id="checkOk">

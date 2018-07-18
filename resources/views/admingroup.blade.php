@@ -7,7 +7,7 @@
         @foreach($groups as $group)
         <ul>
             <li class='sub-menu'>
-                <a href='#settings'>
+                <a href='#settings' id="{{$group->id}}" onclick="getGroupId(this.id)">
                     <div class='fa fa-users'></div>
                     {{$group->name}}
                     <a style="all: unset" href="/deleteGroup/{{$group->id}}">
@@ -32,8 +32,8 @@
                             </form>
                         </a>
                     </li>
-                    <li>
-                        <a style="width: 435px">
+                    <li style="position: relative">
+                        <a style="width: 435px; display: flex;">
                             <form action="{{ action('GroupController@addTasklist') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
@@ -47,6 +47,20 @@
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <br>
                                     <input class="litel" type="submit" value="Assign tasklist to group">
+                                </div>
+                            </form>
+                            <form action="{{ action('GroupController@deleteTasklist') }}" method="POST">
+                                {{csrf_field()}}
+                                <div class="group">
+                                    <select name="delete_tasklist" style="width: 150px; height: 32px; font-size: 16px; border-radius: 5px;">
+                                        @foreach($group->tasklists()->get() as $item)
+                                        <option value="{{ $item->id }}" style="font-size: 16px">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                    <br>
                                     <input class="litel" type="submit" name="delete" value="Delete tasklist from group">
                                 </div>
                             </form>
