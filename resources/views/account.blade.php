@@ -4,16 +4,37 @@
 <div class="account">
     <nav class='animated bounceInDown nav'>
         <ul>
+            @empty(!$user->avatar)
+            <div>
+                <img src="{{ $user->avatar }}" alt="">
+            </div>
+            @endisset
+            <li>
+                <a>
+                    <div id="setPhoto">
+                        @if(empty($user->avatar))
+                            Add your photo
+                        @else
+                            Change your photo
+                            @endif
+                    </div>
+                </a>
+            </li>
+                <div id="avatarForm">
+                    <input type="file" name="image" width="50">
+                    <button class="litel" id="changeAvatar">Apply</button>
+                </div>
             <li><a>
                     <div id="nameFormButton"><span class="t1">User Name: </span>
                         <span id="viewName">{{ $user->name }}</span>
+                        (Click to change)
     </div></a></li>
             <div id="nameForm">
                 <div class="group">
                     <input type="text" required id="newName">
-                    <label>Your new email</label>
+                    <label>Your new name</label>
                 </div>
-                <div><button class="litel" id="changeNameButton">Change mail</button></div>
+                <div><button class="litel" id="changeNameButton">Change name</button></div>
             </div>
             <li><a>
                     <div id="mailFormButton"><span class="t1">E-mail:</span>
