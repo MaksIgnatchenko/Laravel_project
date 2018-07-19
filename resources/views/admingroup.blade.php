@@ -16,14 +16,15 @@
                 </a>
                 <ul style="display: inline-flex">
                     <li>
-                        <a style="width: 435px">
+                        <a style="width: 325px">
+                            <p>Add student to the group:</p>
                             <form action="{{ action('GroupController@addUser') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <input type="text" required name="user_email" style="border-radius: 5px;">
+                                    <input type="text" required name="user_email" style="border-radius: 5px; margin-left: 5px">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Student login</label>
+                                    <label style="margin-left: 5px">Student login</label>
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <br>
                                     <input class="litel" type="submit" value="Add student">
@@ -33,7 +34,8 @@
                         </a>
                     </li>
                     <li style="position: relative">
-                        <a style="width: 435px; display: flex;">
+                        <a style="width: 242px; display: block;">
+                            <p>Assign module to the group:</p>
                             <form action="{{ action('GroupController@addTasklist') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
@@ -46,24 +48,33 @@
                                     <span class="bar"></span>
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <br>
-                                    <input class="litel" type="submit" value="Assign tasklist to group">
+                                    <input class="litel" type="submit" value="Assign">
                                 </div>
                             </form>
+                        </a>
+                    </li>
+                    <li style="position: relative">
+                        <a style="width: 242px; display: block;">
+                            @if(count($group->tasklists()->get()) == 0)
+                                <p>There are no modules assigned in this group yet</p>
+                            @else
+                            <p>Delete module from the group:</p>
                             <form action="{{ action('GroupController@deleteTasklist') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <select name="delete_tasklist" style="width: 150px; height: 32px; font-size: 16px; border-radius: 5px;">
-                                        @foreach($group->tasklists()->get() as $item)
-                                        <option value="{{ $item->id }}" style="font-size: 16px">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="highlight"></span>
-                                    <span class="bar"></span>
-                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                    <br>
-                                    <input class="litel" type="submit" name="delete" value="Delete tasklist from group">
+                                        <select name="delete_tasklist" style="width: 150px; height: 32px; font-size: 16px; border-radius: 5px;">
+                                            @foreach($group->tasklists()->get() as $item)
+                                            <option value="{{ $item->id }}" style="font-size: 16px">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                        <br>
+                                        <input class="litel" type="submit" name="delete" value="Delete">
                                 </div>
                             </form>
+                            @endif
                         </a>
                     </li>
                 </ul>

@@ -51,7 +51,7 @@
                     <li>
                         <a href="/adminusertasklists" title="Admin usertasklists">
                             <i class="fa fa-book" aria-hidden="true"></i>
-                            <span class="link-text">User Moduls</span>
+                            <span class="link-text">User Modules</span>
                         </a>
                     </li>
                     <li>
@@ -103,16 +103,35 @@
             </div>
         </nav>
     @endif
+    @if(Auth::user())
     <ul id="profile">
         <li class="menu-item">
             <a href="">
                 <div>
-                    <img src="{{asset('images/avatar.png')}}">
+                    <img src="{{asset('/images/avatar.png')}}">
                 </div>
                 <div class="rang">
-                    <span>Master (1050)</span>
+                    <span>{{Auth::user()->name}}
+                        @foreach(Auth::user()->groups()->get() as $user_group)
+                        ({{$user_group->name}})
+                        @endforeach
+                    </span>
                 </div>
             </a>
         </li>
     </ul>
+        @else
+        <ul id="profile">
+            <li class="menu-item">
+                <a href="">
+                    <div>
+                        <img src="{{asset('/images/avatar.png')}}">
+                    </div>
+                    <div class="rang">
+                        <span>Guest</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        @endif
 </header>
