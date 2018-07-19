@@ -16,12 +16,15 @@ var changeNameButton = document.getElementById('changeNameButton');
 var newMail = document.getElementById('newMail');
 var viewMail = document.getElementById('viewMail');
 var viewName = document.getElementById('viewName');
+var setPhoto = document.getElementById('setPhoto');
+var avatarForm = document.getElementById('avatarForm');
 var isWarning = false;
 var isMailWarning = false;
 var isNameWarning = false;
 changePasswordForm.Clicked = false;
 mailFormButton.Clicked = false;
 nameFormButton.Clicked = false;
+setPhoto.Clicked = false;
 changePasswordForm.addEventListener('click', function() {
 
     if(this.Clicked == false) {
@@ -32,6 +35,18 @@ changePasswordForm.addEventListener('click', function() {
         this.Clicked = false;
     }
 });
+
+setPhoto.addEventListener('click', function() {
+
+    if(this.Clicked == false) {
+        avatarForm.style.display = 'block';
+        this.Clicked = true;
+    } else {
+        avatarForm.style.display = 'none';
+        this.Clicked = false;
+    }
+});
+
 newPass.addEventListener('input', checkNewPass);
 newPass2.addEventListener('input', checkNewPass);
 changePassButton.addEventListener('click', changePassword);
@@ -96,17 +111,16 @@ function changeName() {
                 'newName' : newName.value,
             },
             success: function (data, textStatus, xhr) {
-                newMail.value = "";
-                console.log(data);
+                newName.value = "";
                 nameWarnings('Your name has been changed', 'ok');
                 viewName.innerText = newName.value;
             },
             error :function(err) {
-                console.log(err);
                 let message = "";
                 for (var i in err.responseJSON.errors) {
                     message += err.responseJSON.errors[i] + "<br>";
                 }
+                nameWarnings(message);
             }
         })
         nameWarnings('your name has been changed', 'ok');
@@ -117,7 +131,6 @@ function changeName() {
 
 function changeMail() {
     if (validateEmail(newMail.value)) {
-        console.log(newMail.value);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': token

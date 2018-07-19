@@ -9,7 +9,7 @@ use App\User;
 
 class GroupController extends Controller
 {
-    public function index($error = null)
+    public function index(Request $request, $error = null)
     {
         $groups = Group::all();
         $tasklists = Tasklist::all();
@@ -46,15 +46,9 @@ class GroupController extends Controller
 
     public function addTasklist(Request $request)
     {
-        if($request->has('delete')) {
-            $group = Group::find($request->group_id);
-            $tasklist = Tasklist::find($request->choose_tasklist);
-            $group->tasklists()->detach($tasklist->id);
-            return redirect()->route('groups');
-        }
-
         $group = Group::find($request->group_id);
         $tasklist = Tasklist::find($request->choose_tasklist);
+
         if($group->tasklists->firstWhere('id', $tasklist->id)) {
             return redirect()->route('groups', ['error' => 'This module has been already added to this group']);
         }
@@ -68,6 +62,13 @@ class GroupController extends Controller
         return redirect()->route('groups');
     }
 
-
+    public function deleteTasklist(Request $request)
+    {
+        /*dd($request->group_id, $request->delete_tasklist);*/
+        $group = Group::find($request->group_id);
+        $tasklist = Tasklist::find($request->delete_tasklist);
+        $group->tasklists()->detach($tasklist->id);
+        return redirect()->route('groups');
+    }
 
 }

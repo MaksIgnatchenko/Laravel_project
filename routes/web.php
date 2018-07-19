@@ -43,9 +43,11 @@ Route::get('deleteTasklist/{tasklist}', 'TasklistController@deleteTasklist');
 
 Route::get('users', 'GroupController@index');
 Route::get('admingroup/{error?}', 'GroupController@index')->name('groups');
+Route::post('admingroup', 'GroupController@index');
 Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
 Route::post('addtasklist', 'GroupController@addTasklist');
+Route::post('deletetasklist', 'GroupController@deleteTasklist');
 
 Route::get('/admintasklists', 'TasklistController@index')->name('tasklists');
 Route::post('/admintasklists', 'TasklistController@menuStore')->name('taskListsStore');
