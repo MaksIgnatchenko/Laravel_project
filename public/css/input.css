@@ -106,7 +106,7 @@ input:focus ~ .highlight {
      padding:5px 5px 5px 5px;
      margin-left: 10px;
      display:inline-block;
-     width:145px;
+     width:100px;
      border:none;
      border-bottom:1px solid #757575;
      cursor: pointer;
@@ -115,7 +115,9 @@ input:focus ~ .highlight {
     transition: 1s;
     background-color: rgba(0, 174, 255, 0) !important;
 }
-
+p {
+    margin-bottom: 10px;
+}
 
 
 
