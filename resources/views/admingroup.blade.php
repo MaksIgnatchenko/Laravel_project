@@ -78,15 +78,21 @@
                         </a>
                     </li>
                 </ul>
-                @foreach($group->users as $user)
                 <ul>
+                    <li>
+                        <a href='/total-marks/{{$group->id}}'>
+                            <div class='fa fa-users'></div>
+                            Посмотреть успеваемость
+                        </a>
+                    </li>
+                    @foreach($group->users as $user)
                     <li>
                         <a href='#'>
                             {{$user->name}}
                         </a>
                     </li>
+                    @endforeach
                 </ul>
-                @endforeach
             </li>
         </ul>
         @endforeach

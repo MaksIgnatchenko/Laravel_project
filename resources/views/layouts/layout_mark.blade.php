@@ -18,14 +18,8 @@
 
 @include('header')
 
-<div id="content">
-    @yield('content')
-</div>
-<div id="sidebar1">
-    @yield('sidebar')
-</div>
 <div id="sidebar3">
-    @yield('sidebar3')
+    @yield('sidebar')
 </div>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script type="text/javascript" src="{{asset('js/accordeon.js')}}"></script>

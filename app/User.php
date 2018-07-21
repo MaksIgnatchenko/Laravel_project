@@ -32,4 +32,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Group');
     }
 
+    public function tasklists()
+    {
+        return $this->groups()->where('id', 3);
+    }
+
 }

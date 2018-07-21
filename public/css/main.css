@@ -299,3 +299,94 @@
 #content ul li a {
 	cursor: pointer;
 }
+/*sidebar for user_mioduls*/
+
+#sidebar3 {
+	width: 100%;
+	height: auto;
+	background-color: rgba(42, 42, 42, 0);
+	margin-top: 50px;
+}
+#sidebar3 h5 {
+	color: #fff;
+	margin-right: 800px;
+	margin-top: 5px;
+	margin-left: 15px;
+}
+#sidebar3  ul {
+	display: block;
+
+}
+#sidebar3 ul hr {
+	width: 100%;
+	margin-top: 20px;
+	background-color:#555; /*для Firefox, Opera, Safari*/
+	border:0px none;
+	height:1px; /* высота 1px IE, Firefox, Opera, Safari */
+	clear:both; /* для очистки, если тег идет после float елемента */
+}
+#sidebar3 ul li {
+	display: block;
+	margin: 15px 0 0 15px;
+}
+#sidebar3 ul li .task_left {
+	float: left;
+	width: 700px;
+}
+#sidebar3 ul li .task_right {
+	float: right;
+}
+#sidebar3 ul li .task_right img {
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
+	line-height: 50%;
+}
+#sidebar3 ul li .task_left .task_level {
+	margin-top: 5px;
+	color: #fff;
+	padding: 2px 9px;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	background-color: #000;
+}
+#sidebar3 ul li a {
+	color: #fff;
+}
+#sidebar3 ul li .task_left .task_name {
+	font-size: 18px;
+	margin-left: 20px;
+}
+#sidebar3 ul li .task_left .task_name:hover {
+	color: #5AEFFF;
+}
+#sidebar3 ul li .task_left .task_tag {
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+#sidebar3 ul li .task_left .task_tag a {
+	padding: 2px 4px;
+	background-color: #303130;
+	border-radius: 5px;
+}
+#sidebar3 ul li .task_left .task_tag a:hover {
+	color: #5AEFFF;
+}
+#sidebar3 .pagination {
+	display: inline-block;
+	margin-left: 40%;
+	background-color: rgba(182, 192, 182, 0.4);
+	padding-right: 5px;
+	margin-bottom: 10px;
+}
+#sidebar3 .pagination li {
+	display: inline-block;
+	padding: 0 10px 10px 0;
+}
+#sidebar3 .pagination li a:hover {
+	text-decoration: none;
+	color: #5AEFFF;
+}
+#sidebar3 .pagination .active span{
+	color: #5AEFFF;
+}

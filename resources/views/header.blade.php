@@ -108,7 +108,7 @@
         <li class="menu-item">
             <a href="">
                 <div>
-                    <img id="profile_photo" name="profile_avatar" src="images/avatars/{{Auth::user()->avatar}}" width="100px" height="90px">
+                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}" width="100px" height="90px">
                     <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
                         <input id="my_avatar" type="file" name="avatar" class="hidden">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -129,7 +129,7 @@
             <li class="menu-item">
                 <a href="">
                     <div>
-                        <img src="images/avatars/default.png">
+                        <img src="/images/avatars/default.png">
                     </div>
                     <div class="rang">
                         <span>Guest</span>
