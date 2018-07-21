@@ -91,12 +91,10 @@ header #profile:hover {
 }
 header #profile li img {
 	position: absolute;
-	height: 90px;
-	width: 100px;
 	right: 145px;
 	top: 10px;
 	cursor: pointer;
-	border-radius:40%
+	border-radius:10%
 }
 input[type='file'].hidden {
     margin: 0;
