@@ -111,9 +111,9 @@ function changeName() {
                 'newName' : newName.value,
             },
             success: function (data, textStatus, xhr) {
-                newName.value = "";
                 nameWarnings('Your name has been changed', 'ok');
                 viewName.innerText = newName.value;
+                newName.value = "";
             },
             error :function(err) {
                 let message = "";
@@ -142,9 +142,9 @@ function changeMail() {
                 'newMail' : newMail.value,
             },
             success: function (data, textStatus, xhr) {
-                newMail.value = "";
                 mailWarnings('Your mail has been changed', 'ok');
                 viewMail.innerText = newMail.value;
+                newMail.value = "";
             },
             error :function(err) {
                 let message = "";
