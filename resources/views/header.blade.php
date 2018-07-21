@@ -1,4 +1,4 @@
-<header>
+<header style="position: relative">
     <div>
         <a href="/">
             <div class="stage">
@@ -108,7 +108,11 @@
         <li class="menu-item">
             <a href="">
                 <div>
-                    <img src="{{asset('/images/avatar.png')}}">
+                    <img id="profile_photo" name="profile_avatar" src="images/avatars/{{Auth::user()->avatar}}" width="100px" height="90px">
+                    <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
+                        <input id="my_avatar" type="file" name="avatar" class="hidden">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    </form>
                 </div>
                 <div class="rang">
                     <span>{{Auth::user()->name}}
@@ -125,7 +129,7 @@
             <li class="menu-item">
                 <a href="">
                     <div>
-                        <img src="{{asset('/images/avatar.png')}}">
+                        <img src="images/avatars/default.png">
                     </div>
                     <div class="rang">
                         <span>Guest</span>
@@ -135,3 +139,11 @@
         </ul>
         @endif
 </header>
+
+<script type="text/javascript">
+
+    $("#my_avatar").on("change", function() {
+        $("#profile_form").submit();
+    });
+
+</script>

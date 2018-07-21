@@ -77,30 +77,43 @@ header #logo a img {
 header #profile {
 	float: right;
 	width: 250px;
-	height: 70px;
+	height: 110px;
 	position: relative;
 	transition: .6s;
+	border-radius: 7px;
+	-moz-box-shadow:0 0 10px #ffffff;
+	-webkit-box-shadow:0 0 10px #ffffff;
+	box-shadow:0 0 10px #ffffff;
 }
 header #profile:hover {
 	transition: 1s;
-	background-color: #2A2A2A;
+	background-color: rgba(42, 42, 42, 0.71);
 }
 header #profile li img {
 	position: absolute;
-	height: 40px;
-	width: 40px;
-	right: 180px;
-	top: 15px;
+	height: 90px;
+	width: 100px;
+	right: 145px;
+	top: 10px;
 	cursor: pointer;
-	transition: .6s;
+	border-radius:40%
 }
-header #profile:hover li img {
-	transition: .6s;
-	filter: invert(40%);
+input[type='file'].hidden {
+    margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100px;
+	cursor: pointer;
+	opacity: 0;
+    -moz-opacity: 0;
+    filter: Alpha(Opacity=0);
 }
 header #profile li .rang {
-	margin-left: 90px;
-	margin-top: 25px;
+	margin-left: 120px;
+	margin-top: 45px;
 }
 header #profile li .rang span {
 	color: #fff;
@@ -701,5 +714,4 @@ textarea{
 
 .m-b-md {
 	margin-bottom: 30px;
-
 }
