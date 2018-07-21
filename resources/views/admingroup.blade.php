@@ -56,7 +56,7 @@
                     <li style="position: relative">
                         <a style="width: 242px; display: block;">
                             @if(count($group->tasklists()->get()) == 0)
-                                <p>There are no modules assigned in this group yet</p>
+                                <p>There are no modules assigned to this group yet</p>
                             @else
                             <p>Delete module from the group:</p>
                             <form action="{{ action('GroupController@deleteTasklist') }}" method="POST">
@@ -78,15 +78,21 @@
                         </a>
                     </li>
                 </ul>
-                @foreach($group->users as $user)
                 <ul>
+                    <li>
+                        <a href='/total-marks/{{$group->id}}'>
+                            <div class='fa fa-users'></div>
+                            Посмотреть успеваемость
+                        </a>
+                    </li>
+                    @foreach($group->users as $user)
                     <li>
                         <a href='#'>
                             {{$user->name}}
                         </a>
                     </li>
+                    @endforeach
                 </ul>
-                @endforeach
             </li>
         </ul>
         @endforeach

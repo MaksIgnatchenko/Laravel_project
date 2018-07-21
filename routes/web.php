@@ -81,3 +81,6 @@ Route::get('/module-train/{tasklist}', 'TaskListController@moduleTrain');
 Route::post('show-task', 'TaskController@showTask');
 Route::post('ajaxTest', 'TaskController@ajaxTest');
 
+Route::post('profile', 'UserController@userProfile');
+
+Route::get('/total-marks/{group}', 'TotalMarkController@index');
