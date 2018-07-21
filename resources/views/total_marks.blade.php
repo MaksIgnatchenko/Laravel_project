@@ -4,14 +4,17 @@
     <table class="simple-little-table">
         <tr>
             <th>Users/Moduls</th>
-            @foreach($group->tasklists()->get() as $module)
-            <th>{{$module->name}}</th>
+            @foreach($tasklists as $tasklist)
+            <th>{{$tasklist->name}}</th>
             @endforeach
         </tr>
-        @foreach($group->users()->get() as $student)
-        <tr>
-            <td>{{$student->name}}</td>
-        </tr>
+        @foreach($array as $user => $moduls)
+            <tr>
+                <td>{{$user}}</td>
+                @foreach($moduls as $user => $rate)
+                <td>{{$rate}}</td>
+                @endforeach
+            </tr>
         @endforeach
     </table>
 @endsection

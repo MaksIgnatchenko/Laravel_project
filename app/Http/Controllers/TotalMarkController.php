@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Tasklist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,10 +11,18 @@ class TotalMarkController extends Controller
 {
     public function index(Group $group)
     {
-        $user = Auth::user();
 
-        dd($user->tasklists);
+        $tasklists = $group->tasklists;
+        $users = $group->users;
+            foreach ($users as $user) {
+                foreach ($tasklists as $tasklist) {
+                $array[$user->name][$tasklist->name] = $group->rate($user, $tasklist);
+            }
+        }
 
-        return view('total_marks', compact('group'));
+
+        $rate = $group->rate($user, $tasklist);
+
+        return view('total_marks', compact('group', 'array', 'tasklists'));
     }
 }
