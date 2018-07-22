@@ -85,14 +85,48 @@ header #profile {
 	-webkit-box-shadow:0 0 10px #ffffff;
 	box-shadow:0 0 10px #ffffff;
 }
+
+header #profile_default  {
+	float: right;
+	width: 150px;
+	height: 93px;
+	position: relative;
+	transition: .6s;
+	border-radius: 7px;
+	-moz-box-shadow:0 0 10px #ffffff;
+	-webkit-box-shadow:0 0 10px #ffffff;
+	box-shadow:0 0 10px #ffffff;
+}
+header #profile_default img{
+	width: 40%;
+	margin-top: 10%;
+	margin-left: 10%;
+}
+
+header #profile_default span{
+
+color: white;
+	float: right;
+	margin-top: -25%;
+	margin-right: 15px;
+}
+
+header #profile_default span:hover{
+
+	color: #07f2ff;
+	float: right;
+	margin-top: -25%;
+	margin-right: 15px;
+}
+
 header #profile:hover {
 	transition: 1s;
 	background-color: rgba(42, 42, 42, 0.71);
 }
 header #profile li img {
 	position: absolute;
-	top: 8px;
-	left: 15px;
+	top: 6px;
+	left: 10px;
 	cursor: pointer;
 	border-radius:10%
 }

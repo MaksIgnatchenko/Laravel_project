@@ -126,7 +126,7 @@
         </li>
     </ul>
         @else
-        <ul id="profile">
+        <ul id="profile_default">
             <li class="menu-item">
                 <a href="">
                     <div>
