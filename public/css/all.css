@@ -76,8 +76,8 @@ header #logo a img {
 }
 header #profile {
 	float: right;
-	width: 250px;
-	height: 110px;
+	width: 150px;
+	height: 93px;
 	position: relative;
 	transition: .6s;
 	border-radius: 7px;
@@ -91,8 +91,8 @@ header #profile:hover {
 }
 header #profile li img {
 	position: absolute;
-	right: 145px;
-	top: 10px;
+	top: 8px;
+	left: 15px;
 	cursor: pointer;
 	border-radius:10%
 }
@@ -110,7 +110,7 @@ input[type='file'].hidden {
     filter: Alpha(Opacity=0);
 }
 header #profile li .rang {
-	margin-left: 120px;
+	margin-left: 100px;
 	margin-top: 45px;
 }
 header #profile li .rang span {
@@ -559,8 +559,8 @@ nav .menu ul {
 
 nav .menu ul li {
 	float: left;
-	width: 128px;
-	height: 110px;
+	width: 98px;
+	height: 90px;
 	border-right: 1px solid black;
 	border-color: #e3e3e3;
 	background-color: rgba(42, 42, 42, 0.6);
@@ -612,10 +612,10 @@ nav .menu a i:before {
 
 nav .menu a .link-text {
 	position: absolute;
-	bottom: 13px;
+	bottom: 8px;
 	right: 15px;
 	color: #fff;
-	font-size: 14px;
+	font-size: 10px;
 	text-transform: uppercase;
 	-moz-transition: all 0.2s linear 0s;
 	-ms-transition: all 0.2s linear 0s;
