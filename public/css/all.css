@@ -144,8 +144,9 @@ input[type='file'].hidden {
     filter: Alpha(Opacity=0);
 }
 header #profile li .rang {
-	margin-left: 100px;
-	margin-top: 45px;
+	margin-left: 80px;
+	margin-top: 25px;
+
 }
 header #profile li .rang span {
 	color: #fff;
