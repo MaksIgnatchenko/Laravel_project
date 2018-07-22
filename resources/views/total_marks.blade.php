@@ -3,10 +3,11 @@
 @section('sidebar')
     <table class="simple-little-table">
         <tr>
-            <th style="font-size: 30px;text-shadow: 2px 2px 0px #b5b5b5;">
+            <th style="font-size: 30px;text-shadow: 2px 2px 0px #fcfcfc; width: 50%">
                 {{$group->name}}
             </th>
         </tr>
+        <br>
         <tr>
             <th>Users/Moduls</th>
             @foreach($tasklists as $tasklist)
