@@ -31,7 +31,7 @@ class Group extends Model
             $tasks_id[] = $task->id;
         }
 
-        return count(Solution::where('user_id', $user->id)->whereIn('task_id', $tasks_id)->get());
+        return Solution::where('user_id', $user->id)->whereIn('task_id', $tasks_id)->get();
 
     }
 

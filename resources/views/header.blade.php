@@ -151,9 +151,9 @@
         originalHeight=80,
         hoverHeight=160;
     $("#my_avatar").hover(function(){
-    $('#profile_photo').stop().animate({height:hoverHeight},speed);
+    $('#profile_photo').stop().animate({height:hoverHeight,marginLeft: 80,borderRadius:0 },speed);
     },function(){
-        $('#profile_photo').stop().animate({height:originalHeight},speed);
+        $('#profile_photo').stop().animate({height:originalHeight, margin: 0, borderRadius:40},speed);
         })
 
 </script>

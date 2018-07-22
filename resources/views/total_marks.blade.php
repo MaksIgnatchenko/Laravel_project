@@ -3,6 +3,11 @@
 @section('sidebar')
     <table class="simple-little-table">
         <tr>
+            <th style="font-size: 30px">
+                {{$group->name}}
+            </th>
+        </tr>
+        <tr>
             <th>Users/Moduls</th>
             @foreach($tasklists as $tasklist)
             <th>{{$tasklist->name}}</th>
@@ -12,7 +17,11 @@
             <tr>
                 <td>{{$user}}</td>
                 @foreach($moduls as $user => $rate)
-                <td>{{$rate}}</td>
+                <td>
+                    @foreach($rate as $task)
+                        solved task:{{$task->id}}<br>
+                    @endforeach
+                </td>
                 @endforeach
             </tr>
         @endforeach
