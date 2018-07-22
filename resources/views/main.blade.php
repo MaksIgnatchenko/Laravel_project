@@ -77,5 +77,4 @@
 
         <a href="{{$dto->getPath()}}?page={{$dto->getActPage()+1}}" class="cdp_i">next</a>
     </div>
-
 @endsection

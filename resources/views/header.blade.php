@@ -105,7 +105,7 @@
         </nav>
     @endif
     @if(Auth::user())
-    <ul id="profile">
+    <ul id="profile"  >
         <li class="menu-item">
             <a href="">
                 <div>
@@ -139,8 +139,6 @@
             </li>
         </ul>
         @endif
-
-
 </header>
 
 <script type="text/javascript">
@@ -148,5 +146,14 @@
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
     });
+
+    var speed=500,
+        originalHeight=80,
+        hoverHeight=160;
+    $("#my_avatar").hover(function(){
+    $('#profile_photo').stop().animate({height:hoverHeight},speed);
+    },function(){
+        $('#profile_photo').stop().animate({height:originalHeight},speed);
+        })
 
 </script>

@@ -81,7 +81,7 @@
                 <ul>
                     <li>
                         <a href='/total-marks/{{$group->id}}'>
-                            <div class='fa fa-users'></div>
+                            <div class='fa fa-eye'></div>
                             Посмотреть успеваемость
                         </a>
                     </li>
