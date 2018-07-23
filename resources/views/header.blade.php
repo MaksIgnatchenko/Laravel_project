@@ -1,3 +1,4 @@
+
 <header style="position: relative">
     <div>
         <a href="/">
@@ -104,11 +105,11 @@
         </nav>
     @endif
     @if(Auth::user())
-    <ul id="profile">
+    <ul id="profile"  >
         <li class="menu-item">
             <a href="">
                 <div>
-                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}" width="100px" height="90px">
+                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
                     <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
                         <input id="my_avatar" type="file" name="avatar" class="hidden">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -125,7 +126,7 @@
         </li>
     </ul>
         @else
-        <ul id="profile">
+        <ul id="profile_default">
             <li class="menu-item">
                 <a href="">
                     <div>
@@ -145,5 +146,14 @@
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
     });
+
+    var speed=500,
+        originalHeight=80,
+        hoverHeight=160;
+    $("#my_avatar").hover(function(){
+    $('#profile_photo').stop().animate({height:hoverHeight,left: -150,borderRadius:0 },speed);
+    },function(){
+        $('#profile_photo').stop().animate({height:originalHeight, left: 0, borderRadius:40},speed);
+        })
 
 </script>

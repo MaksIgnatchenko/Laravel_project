@@ -17,6 +17,8 @@ class TotalMarkController extends Controller
             foreach ($users as $user) {
                 foreach ($tasklists as $tasklist) {
                 $array[$user->name][$tasklist->name] = $group->rate($user, $tasklist);
+//                print_r($group->rate($user, $tasklist)->toArray());
+//                echo "<br>";
             }
         }
 

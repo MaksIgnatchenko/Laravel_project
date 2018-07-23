@@ -109,7 +109,7 @@ TEXT;
 DESC;
         $task->short_desc = 'Массивы';
         $task->task_view = <<<'TASKVIEW'
-function compare_ends($shortMe) {
+function compare_ends($arr) {
     // Your code here
 }
 TASKVIEW;

@@ -16,7 +16,7 @@
             color: #fff;
             background-color:#f0f0f0;
             font-family:helvetica;
-            background:url('http://clevertechie.com/img/bnet-bg.jpg') #0f2439 no-repeat center top;
+            background-image: url("images/bg.jpg");
         }
     </style>
     <!-- Styles -->
@@ -75,7 +75,7 @@
                         &nbsp;
                     </ul>
 
-                    <nav>
+                    <nav style="margin: 5px">
                         <div class="menu">
                             <ul class="clear">
                                 <li>

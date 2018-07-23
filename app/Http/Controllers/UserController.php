@@ -35,31 +35,29 @@ class UserController extends Controller
         if($request->hasFile('avatar')){
 
             $avatar = $request->file('avatar');
-
-            /*$im = imagecreatefromjpeg($avatar);
-
-            $imageData = getimagesize($avatar);
-
-            $oldWidth = $imageData[0];
-            $oldHeight = $imageData[1];
-
+            list($oldWidth,$oldHeight) = getimagesize($avatar);
             if($oldWidth < $oldHeight)
             {
                 //*vertical image
-                $newWidth = 100;
-                $newHeight = 90 * ($oldHeight / $oldWidth) ;
+                $newWidth = 65;
+                $newHeight = 65 * ($oldHeight / $oldWidth) ;
+                $startX = 0;
+                $startY = ( $newHeight - 80 ) / 2;
             }
             else
             {
                 //*horizontal image
-                $newHeight =  90 ;
-                $newWidth =  100 * ($oldWidth / $oldHeight) ;
-            }*/
-
-
+                $newHeight =  80 ;
+                $newWidth =  80 * ($oldWidth / $oldHeight) ;
+                $startX = ( $newWidth - 65 ) / 2;
+                $startY = 0;
+            }
+            $thumb = imagecreatetruecolor($newWidth, $newHeight);
+            $im = imagecreatefromjpeg($avatar);
+            imagecopyresampled($thumb, $im, 0,0, 0, 0, $newWidth, $newHeight, $oldWidth, $oldHeight);
+            $im = imagecrop($thumb,['x' => $startX, 'y' => $startY, 'width' => 65, 'height' => 80]);
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save( public_path('/images/avatars/' . $filename ) );
-
+            Image::make($im)->save( public_path('/images/avatars/' . $filename ) );
             $user = Auth::user();
             $user->avatar = $filename;
             $user->save();

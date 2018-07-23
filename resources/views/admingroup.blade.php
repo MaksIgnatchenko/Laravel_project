@@ -16,12 +16,12 @@
                 </a>
                 <ul style="display: inline-flex">
                     <li>
-                        <a style="width: 325px">
+                        <a style="width: 225px">
                             <p>Add student to the group:</p>
                             <form action="{{ action('GroupController@addUser') }}" method="POST">
                                 {{csrf_field()}}
                                 <div class="group">
-                                    <input type="text" required name="user_email" style="border-radius: 5px; margin-left: 5px">
+                                    <input type="text" required name="user_email" style="border-radius: 5px;">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <label style="margin-left: 5px">Student login</label>
@@ -33,8 +33,8 @@
                             </form>
                         </a>
                     </li>
-                    <li style="position: relative">
-                        <a style="width: 242px; display: block;">
+                    <li style="position: relative; right: 15px ">
+                        <a style="width: 200px; display: block;">
                             <p>Assign module to the group:</p>
                             <form action="{{ action('GroupController@addTasklist') }}" method="POST">
                                 {{csrf_field()}}
@@ -53,7 +53,7 @@
                             </form>
                         </a>
                     </li>
-                    <li style="position: relative">
+                    <li style="position: relative; right: 30px">
                         <a style="width: 242px; display: block;">
                             @if(count($group->tasklists()->get()) == 0)
                                 <p>There are no modules assigned to this group yet</p>
@@ -81,7 +81,7 @@
                 <ul>
                     <li>
                         <a href='/total-marks/{{$group->id}}'>
-                            <div class='fa fa-users'></div>
+                            <div class='fa fa-eye'></div>
                             Посмотреть успеваемость
                         </a>
                     </li>
