@@ -11,7 +11,6 @@ class TotalMarkController extends Controller
 {
     public function index(Group $group)
     {
-
         $tasklists = $group->tasklists;
         $users = $group->users;
             foreach ($users as $user) {

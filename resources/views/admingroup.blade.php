@@ -79,12 +79,14 @@
                     </li>
                 </ul>
                 <ul>
+                    @if(count($group->tasklists()->get()))
                     <li>
                         <a href='/total-marks/{{$group->id}}'>
                             <div class='fa fa-eye'></div>
                             Посмотреть успеваемость
                         </a>
                     </li>
+                    @endif
                     @foreach($group->users as $user)
                     <li>
                         <a href='#'>
