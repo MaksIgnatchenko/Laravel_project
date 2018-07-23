@@ -60,6 +60,7 @@ body{
 	background-attachment: fixed;
 }
 header {
+
 	width:100%;
 	height:110px;
 	position: relative;
@@ -75,6 +76,7 @@ header #logo a img {
     height: 140px;
 }
 header #profile {
+    margin-top: 10px;
 	float: right;
 	width: 150px;
 	height: 93px;
@@ -87,6 +89,7 @@ header #profile {
 }
 
 header #profile_default  {
+	margin-top: 10px;
 	float: right;
 	width: 150px;
 	height: 93px;
@@ -436,12 +439,12 @@ header #profile .sub-menu hr {
 }
 
 .layer:nth-child(n+11):after {
-	-webkit-text-stroke: 15px rgba(127, 164, 222, 0.38);
+	-webkit-text-stroke: 15px rgba(45, 122, 204, 0.59);
 	text-shadow: 6px 0 6px #00366b, 5px 5px 5px #002951, 0 6px 6px #00366b;
 }
 
 .layer:nth-child(n+12):after {
-	-webkit-text-stroke: 15px rgba(127, 164, 222, 0.42);
+	-webkit-text-stroke: 15px rgba(33, 170, 204, 0.62);
 }
 
 .layer:last-child:after {
@@ -449,7 +452,7 @@ header #profile .sub-menu hr {
 }
 
 .layer:first-child:after {
-	color: #fff;
+	color: #effec7;
 	text-shadow: none;
 }
 
@@ -580,6 +583,7 @@ header #profile .sub-menu hr {
 	transform: rotate(6deg) translate(100px, -18px);
 }
 nav .menu {
+	margin: 10px;
 	border-radius: 7px;
 	-moz-box-shadow:0 0 10px #ffffff;
 	-webkit-box-shadow:0 0 10px #ffffff;

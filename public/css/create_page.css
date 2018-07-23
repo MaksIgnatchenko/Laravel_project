@@ -11,9 +11,12 @@ h1 {
     float: left;
     width: 48%;
     background-color: rgba(35, 35, 35, 0.6);
+    margin-left: 10px;
+    padding-bottom: 20px;
 }
 #left-content textarea {
     width: 90%;
+    margin-left: 20px;
 }
 #left-content legend {
     color: #fff;

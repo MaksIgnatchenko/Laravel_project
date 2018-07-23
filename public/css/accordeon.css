@@ -96,9 +96,9 @@
     -moz-box-shadow:0 0 10px #ffffff;
     -webkit-box-shadow:0 0 10px #ffffff;
     box-shadow:0 0 10px #ffffff;
-margin: 30px;
+    margin: 20px;
     float: right;
-    width: 70%;
+    width: 50%;
     height: auto;
     background-color: rgba(42, 42, 42, 0.6);
 }
