@@ -24,7 +24,7 @@
     border-bottom:1px solid #e0e0e0;
 
     background: #bd5a35;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(153, 163, 180)));
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(180, 180, 180)));
     background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
 }
 .simple-little-table th:first-child{
@@ -57,7 +57,7 @@
     border-left: 1px solid #e0e0e0;
 
     background: #fafafa;
-    background: -webkit-gradient(linear, left top, left bottom, from(#72829d), to(#c8c9ca));
+    background: -webkit-gradient(linear, left top, left bottom, from(#e0e0e0), to(#e0e0e0));
     background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
 }
 .simple-little-table tr:nth-child(even) td{
