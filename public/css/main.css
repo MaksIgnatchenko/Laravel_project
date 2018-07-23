@@ -9,7 +9,7 @@
 	width: 28%;
 	height: auto;
 	margin: 45px 15px 15px 15px;
-	background-color: rgba(164, 34, 8, 0.4);
+	background-color:rgba(41, 107, 164, 0.73);
 }
 #content .task {
 	margin:15px;
@@ -86,13 +86,17 @@
 	margin-bottom: 10px;
 }
 #content .task .tags .tags_items .tags_item a {
-	color: #B6C0B6;
+	color: #ffffff;
 }
 #content .task .tags .tags_items .tags_item:first-letter {
 	text-transform: uppercase;
 }
 #content .task .tags .tags_items .tags_item a:hover {
-	color: #5AEFFF;
+	/*color: #5AEFFF;*/
+
+    font-weight: bold;
+	transition: 0.5s;
+	margin-left: 5px;
 }
 
 /* SIDEBAR */
@@ -154,14 +158,17 @@
 	background-color: #000;
 }
 #sidebar ul li a {
-	color: #fff;
-}
+	 color: #fff;
+ }
+
 #sidebar ul li .task_left .task_name {
 	font-size: 18px;
 	margin-left: 20px;
 }
 #sidebar ul li .task_left .task_name:hover {
-	color: #5AEFFF;
+	font-weight: bold;
+	transition: 0.5s;
+	margin-left: 3px;
 }
 #sidebar ul li .task_left .task_tag {
 	margin-top: 25px;
@@ -173,7 +180,9 @@
 	border-radius: 5px;
 }
 #sidebar ul li .task_left .task_tag a:hover {
-	color: #5AEFFF;
+	font-weight: bold;
+	transition: 0.5s;
+	margin-left: 5px;
 }
 #sidebar .pagination {
 	display: inline-block;

@@ -1,6 +1,7 @@
 @extends('layouts.layout_mark')
 
 @section('sidebar')
+
     <table class="simple-little-table" >
         <tr>
             <th colspan="{{count($tasklists)+1}}"
@@ -28,12 +29,12 @@
                 <td>{{$user}}</td>
                 @foreach($moduls as $user => $rate)
                     @if(count($rate))
-                <td>
-                    @foreach($rate as $task)
-                        solved task: {{$task->id}}<br><br>
-                    @endforeach
-                </td>
-                        @else
+                        <td>
+                        @foreach($rate as $task)
+                                solved task: {{$task->id}}<br><br>
+                        @endforeach
+                        </td>
+                    @else
                         <td>
                             no solutions yet
                         </td>

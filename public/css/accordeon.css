@@ -67,7 +67,7 @@
 
     margin: 10px 0 0 10px;
     border: 2px; color: white;
-    background-color: #3883b9 !important;
+    background-color:rgba(41, 107, 164, 0.73) !important;
     border-radius: 5px;
     font-size:12px;
     padding:5px 5px 5px 5px;
@@ -80,7 +80,7 @@
 }
 .btnSave:hover {
     transition: 1s;
-    background-color: #00aeff !important;
+    background-color: rgba(0, 174, 255, 0) !important;
 }
 
 

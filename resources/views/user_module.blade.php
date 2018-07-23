@@ -6,7 +6,7 @@
         <nav class='animated bounceInDown nav'>
             @foreach($tasklist as $key=>$task)
                 <ul>
-                    <li class="sub-menu">
+                    <li class="sub-menu" style="background-color:rgba(0,0,0,0.73)">
                         <a id="{{ $task->id }}" onclick="showTask(this.id)">
                             {{$task->task_desc}}
                             <span id="{{ $task->id }}checkmark" class="checkmark"></span>
