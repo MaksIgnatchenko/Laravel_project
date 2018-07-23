@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>SourcePlanet</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/flat-seo-web-ikooni/128/flat_seo2-37-128.png">
     <link rel="stylesheet" href="{{asset('css/all.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">

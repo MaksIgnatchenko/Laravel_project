@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class TaskController extends Controller
 {
@@ -16,15 +17,18 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($filter = null)
+    public function index(Request $request, $filter = null)
     {
+        $difficulties = Task::select('difficulty')->distinct()->get();
         $tagslist = Task::select('theme')->distinct()->get();
+
+        echo $request->name;
 
         $dto = new PaginationDto();
 
         if($filter){
-            $tasks = Task::where('theme', '=', $filter)->paginate(3);
-        }else{
+            $tasks = Task::where('difficulty', '=', $filter)->paginate(3);
+        } else{
             $tasks = Task::paginate(3);
         }
         $dto->setTasks($tasks)
@@ -32,7 +36,7 @@ class TaskController extends Controller
             ->setActpage($tasks->currentPage())
             ->setTotalPageCount($tasks->lastPage());
 
-        return view('main', compact('dto', 'tagslist'));
+        return view('main', compact('dto', 'tagslist', 'difficulties', 'url'));
     }
 
     public function showedit()
