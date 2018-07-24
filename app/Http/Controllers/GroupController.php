@@ -59,7 +59,7 @@ class GroupController extends Controller
     public function deleteGroup(Group $group)
     {
         $group->delete();
-        return redirect()->route('groups');
+        return back();
     }
 
     public function deleteTasklist(Request $request)

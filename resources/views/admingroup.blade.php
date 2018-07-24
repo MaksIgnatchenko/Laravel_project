@@ -91,6 +91,9 @@
                     <li>
                         <a href='#'>
                             {{$user->name}}
+                            <a style="all: unset" href="/deleteUser/{{$user->id}}">
+                                <i class="fa fa-trash delete" aria-hidden="true"></i>
+                            </a>
                         </a>
                     </li>
                     @endforeach
