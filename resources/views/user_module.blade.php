@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="task">
+        <input  id="tasklist" type="hidden" name="_token" value="{{$tasklist}}">
         <h5>Choose your task:</h5>
         <nav class='animated bounceInDown nav'>
             @foreach($tasklist as $key=>$task)
@@ -26,10 +27,11 @@
         <p>Solution:</p>
     </div>
     {{csrf_field()}}
+
     <textarea name="editor" id="textCode"></textarea>
     <div id="editor"></div>
-    <br>
-    <button class="litel" id="buttonCheck">Check solution</button>
+    <button  style="margin: 10px; margin-left: 300px" class="litel" id="buttonCheck" >Check solution</button>
+
     <br><br>
     <div id="syntaxError"></div>
     <div id="checkOk">
@@ -82,6 +84,12 @@
                         checkMark.innerHTML = "&#10004;";
                         checkMark.style.display = 'inline';
                         checkMark.style.color = 'green';
+                        var tasklist = $('#tasklist')[0].value
+                        console.log(JSON.parse(tasklist))
+                        setTimeout(showTaskInterval, 2000);
+                        function showTaskInterval(){
+                            showTask(data.task_id+1)
+                        }
                     } else {
                         if (data.error) {
                             syntaxError.innerHTML = data.error;

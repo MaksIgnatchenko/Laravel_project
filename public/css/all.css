@@ -124,7 +124,7 @@ header #profile_default span:hover{
 
 header #profile:hover {
 	transition: 1s;
-	background-color: rgba(42, 42, 42, 0.71);
+	background-color: rgba(42, 42, 42, 0);
 }
 header #profile li img {
 	position: absolute;
