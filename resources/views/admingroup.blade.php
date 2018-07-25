@@ -79,24 +79,33 @@
                         </li>
                     </ul>
                     <ul>
-                        @if(count($group->tasklists()->get()))
-                            <li>
+                        <li class="sub-menu" style="width: 250px">
+                            <a href='#settings' style="background: rgba(41, 107, 164, 0.73);">
+                                <div class='fa fa-users'></div>
+                                Students list
+                            </a>
+                            <ul>
+                                @foreach($group->users as $user)
+                                    <li>
+                                        <a href='#'>
+                                            {{$user->name}}
+                                            <a style="all: unset" href="/deleteUser/{{$user->id}}">
+                                                <i class="fa fa-trash delete" aria-hidden="true"></i>
+                                            </a>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        @if(count($group->tasklists()->get()) == 0)
+                        @else
+                            <li style="width: 250px">
                                 <a href='/total-marks/{{$group->id}}'>
                                     <div class='fa fa-eye'></div>
                                     Посмотреть успеваемость
                                 </a>
                             </li>
                         @endif
-                        @foreach($group->users as $user)
-                            <li>
-                                <a href='#'>
-                                    {{$user->name}}
-                                    <a style="all: unset" href="/deleteUser/{{$user->id}}">
-                                        <i class="fa fa-trash delete" aria-hidden="true"></i>
-                                    </a>
-                                </a>
-                            </li>
-                        @endforeach
                     </ul>
                 </li>
             </ul>
