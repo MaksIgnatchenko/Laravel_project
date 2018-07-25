@@ -116,7 +116,7 @@ color: white;
 
 header #profile_default span:hover{
 
-	color: #07f2ff;
+	color: #6288bb;
 	float: right;
 	margin-top: -25%;
 	margin-right: 15px;
@@ -157,7 +157,7 @@ header #profile li .rang span {
 	cursor: pointer;
 }
 header #profile li .rang span:hover {
-	color: #5AEFFF;
+	color: #6288bb;
 }
 header #profile .sub-menu {
 	position: absolute;
@@ -178,7 +178,7 @@ header #profile .sub-menu li a {
 	font-size: 16px;
 }
 header #profile .sub-menu li a:hover {
-	color: #5AEFFF;
+	color: #6288bb;
 }
 header #profile .sub-menu hr {
 	width: 150px;
@@ -202,7 +202,7 @@ header #profile .sub-menu hr {
 	text-transform: uppercase;
 }
 .links > a:hover {
-	color: #5AEFFF;
+	color: #6288bb;
 }
 .t2 {
 	color: rgba(246, 246, 255, 0);
@@ -594,12 +594,14 @@ nav .menu {
 nav .menu ul {
 	list-style-type: none;
 	display: inline-block;
+	border-radius: 7px;
 }
 
 nav .menu ul li {
 	float: left;
 	width: 98px;
 	height: 90px;
+	border-radius: 4px;
 	border-right: 1px solid black;
 	border-color: #e3e3e3;
 	background-color: rgba(42, 42, 42, 0.6);
@@ -664,8 +666,8 @@ nav .menu a .link-text {
 }
 
 nav .menu ul li:hover {
-	background-color: #7AA1DA;
-	border-color: #7AA1DA;
+	background-color: rgba(41, 107, 164, 0.73);
+	border-color: rgba(41, 107, 164, 0.73);
 }
 
 nav .menu ul li:hover .link-text {
@@ -673,7 +675,7 @@ nav .menu ul li:hover .link-text {
 }
 
 nav .menu ul li:hover i {
-	color: #565a60;
+	color: #ffffff;
 	font-size: 43px;
 }
 

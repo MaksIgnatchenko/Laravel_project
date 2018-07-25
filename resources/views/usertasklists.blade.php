@@ -1,6 +1,5 @@
 @extends('layouts.layout_admin')
 @section('sidebar')
-
     <nav class='animated bounceInDown nav'>
         @forelse($tasklists as $key => $value)
             <ul>
