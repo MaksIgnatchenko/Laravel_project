@@ -21,8 +21,11 @@
                 </a>
             </li>
                 <div id="avatarForm">
-                    <input type="file" name="image" width="50">
-                    <button class="litel" id="changeAvatar">Apply</button>
+                    <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
+                    <input  id="my_avatar" type="file" name="avatar" style="width: 400px"><br>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="litel" id="changeAvatar">Apply</button>
+                    </form>
                 </div>
             <li><a>
                     <div id="nameFormButton"><span class="t1">User Name: </span>
@@ -98,5 +101,10 @@
     </nav>
 </div>
 
+<script>
+    $("#my_avatar").on("change", function() {
+        $("#profile_form").submit();
+    });
+</script>
 @endsection
 
