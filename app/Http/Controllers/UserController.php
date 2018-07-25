@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image as Image;
-
 class UserController extends Controller
 {
     public function test()
@@ -17,7 +14,6 @@ class UserController extends Controller
             echo "user $group->name, id: $group->id <br>";
         }
     }
-
     public  function showModules()
     {
         $user = Auth::user();
@@ -26,16 +22,12 @@ class UserController extends Controller
         foreach ($groups as $group){
             $tasklists["$group->name"] = $group->tasklists;
         }
-       return view('usertasklists', compact('tasklists'));
+        return view('usertasklists', compact('tasklists'));
     }
-
-    public function userMiniProfile(Request $request)
+    public function userProfile(Request $request)
     {
         // Handle the user upload of avatar
         if($request->hasFile('avatar')){
-
-            $full_avatar = $request->file('avatar');
-
             $avatar = $request->file('avatar');
             list($oldWidth,$oldHeight) = getimagesize($avatar);
             if($oldWidth < $oldHeight)
@@ -61,22 +53,14 @@ class UserController extends Controller
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($im)->save( public_path('/images/avatars/' . $filename ) );
             $user = Auth::user();
-
-            $filename_full_avatar = time() . '.' . $full_avatar->getClientOriginalExtension();
-            Image::make($full_avatar)->resize(300,300)->save( public_path('/images/avatars/big/' . $filename_full_avatar ) );
-
-            $user->big_avatar = $filename_full_avatar;
             $user->avatar = $filename;
             $user->save();
-
             return back();
         }
     }
-
-    public function userProfile(Request $request, $user_id)
+    public function deleteUser(User $user)
     {
-        $user = User::where('id', $user_id)->get();
-
-        return view('profile', compact('user'));
+        $user->delete();
+        return back();
     }
 }
