@@ -12,3 +12,4 @@ yarn-error.log
 .env
 public/code.php
 public/check.php
+public/images/avatars

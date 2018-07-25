@@ -29,10 +29,12 @@ class UserController extends Controller
        return view('usertasklists', compact('tasklists'));
     }
 
-    public function userProfile(Request $request)
+    public function userMiniProfile(Request $request)
     {
         // Handle the user upload of avatar
         if($request->hasFile('avatar')){
+
+            $full_avatar = $request->file('avatar');
 
             $avatar = $request->file('avatar');
             list($oldWidth,$oldHeight) = getimagesize($avatar);
@@ -59,10 +61,22 @@ class UserController extends Controller
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             Image::make($im)->save( public_path('/images/avatars/' . $filename ) );
             $user = Auth::user();
+
+            $filename_full_avatar = time() . '.' . $full_avatar->getClientOriginalExtension();
+            Image::make($full_avatar)->resize(300,300)->save( public_path('/images/avatars/big/' . $filename_full_avatar ) );
+
+            $user->big_avatar = $filename_full_avatar;
             $user->avatar = $filename;
             $user->save();
 
             return back();
         }
+    }
+
+    public function userProfile(Request $request, $user_id)
+    {
+        $user = User::where('id', $user_id)->get();
+
+        return view('profile', compact('user'));
     }
 }

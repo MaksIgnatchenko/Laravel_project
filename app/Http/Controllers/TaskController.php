@@ -17,17 +17,14 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $filter = null)
+    public function index($filter = null)
     {
-        $difficulties = Task::select('difficulty')->distinct()->get();
         $tagslist = Task::select('theme')->distinct()->get();
-
-        echo $request->name;
 
         $dto = new PaginationDto();
 
         if($filter){
-            $tasks = Task::where('difficulty', '=', $filter)->paginate(3);
+            $tasks = Task::where('theme', '=', $filter)->paginate(3);
         } else{
             $tasks = Task::paginate(3);
         }
@@ -36,7 +33,7 @@ class TaskController extends Controller
             ->setActpage($tasks->currentPage())
             ->setTotalPageCount($tasks->lastPage());
 
-        return view('main', compact('dto', 'tagslist', 'difficulties', 'url'));
+        return view('main', compact('dto', 'tagslist'));
     }
 
     public function showedit()

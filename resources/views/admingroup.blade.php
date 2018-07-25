@@ -79,19 +79,30 @@
                     </li>
                 </ul>
                 <ul>
-                    <li>
+                    <li class="sub-menu" style="width: 250px">
+                        <a href='#settings' style="background: rgba(41, 107, 164, 0.73);">
+                            <div class='fa fa-users'></div>
+                            Students list
+                        </a>
+                        <ul>
+                            @foreach($group->users as $user)
+                                <li>
+                                    <a href='/user-profile/{{$user->id}}'>
+                                        {{$user->name}}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    @if(count($group->tasklists()->get()) == 0)
+                    @else
+                    <li style="width: 250px">
                         <a href='/total-marks/{{$group->id}}'>
                             <div class='fa fa-eye'></div>
                             Посмотреть успеваемость
                         </a>
                     </li>
-                    @foreach($group->users as $user)
-                    <li>
-                        <a href='#'>
-                            {{$user->name}}
-                        </a>
-                    </li>
-                    @endforeach
+                    @endif
                 </ul>
             </li>
         </ul>
