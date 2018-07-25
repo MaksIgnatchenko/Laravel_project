@@ -14,7 +14,7 @@
                 </li>
             </ul>
             @empty
-                <h2>Вы еще не зарегистрированы в группе</h2>
+                <h2 style="color: #fff;">Вы еще не зарегистрированы в группе</h2>
     @endforelse
     </nav>
     @endsection

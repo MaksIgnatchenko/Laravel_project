@@ -91,7 +91,7 @@ function checkNewPass() {
 
 function checkName() {
     nameWarnings();
-    if (newName.value.length < 4) {
+    if (newName.value.length < 2) {
         return false;
     } else {
         return true;
