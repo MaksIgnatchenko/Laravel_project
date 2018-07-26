@@ -84,12 +84,23 @@
                         checkMark.innerHTML = "&#10004;";
                         checkMark.style.display = 'inline';
                         checkMark.style.color = 'green';
+
+                             //pagination tasks//
                         var tasklist = $('#tasklist')[0].value
-                        console.log(JSON.parse(tasklist))
-                        setTimeout(showTaskInterval, 2000);
-                        function showTaskInterval(){
-                            showTask(data.task_id+1)
+                        tasklist = JSON.parse(tasklist)
+                        for(var i = 0; i < tasklist.length; i++){
+                           if(tasklist[i].id == data.task_id){
+                               var curentIndex = i;
+                           }
                         }
+                        var nextIndex = curentIndex + 1;
+                        if(nextIndex < tasklist.length) {
+                            setTimeout(showTaskInterval, 2000);
+                            function showTaskInterval() {
+                                showTask(tasklist[nextIndex].id)
+                            }
+                        }
+
                     } else {
                         if (data.error) {
                             syntaxError.innerHTML = data.error;
