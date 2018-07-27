@@ -72,6 +72,7 @@ header #logo a img {
     width: 160px;
     height: 140px;
 }
+
 header #profile {
     margin-top: 10px;
 	float: right;
@@ -144,14 +145,23 @@ input[type='file'].hidden {
     filter: Alpha(Opacity=0);
 }
 header #profile li .rang {
-	margin-left: 80px;
-	margin-top: 25px;
+	margin-left: 90px;
+	margin-top: -15px;
 
 }
-header #profile li .rang span {
+header #profile li .load {
+	margin-top: 15px;
+	margin-left: 5px;
+	color: white;
+}
+header #profile li .fa {
+	margin-left: 20px;
+}
+header #profile li .rang  {
 	color: #fff;
 	font-size: 18px;
 	cursor: pointer;
+margin-top: -80px;
 }
 header #profile li .rang span:hover {
 	color: #6288bb;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <link rel="stylesheet" href="{{asset('css/all.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/accordeon.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/easyzoom.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/table.css')}}" type="text/css">

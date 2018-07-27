@@ -33,16 +33,6 @@
 
 @include('header')
 
-<div class="easyzoom easyzoom--overlay">
-    <a href="images/1_zoom.jpg">
-        <img src="/images/1_standard.jpg" alt="" width="640" height="360" />
-    </a>
-</div>
-<script src="/js/zoom/dist/easyzoom.js"></script>
-<script>
-    var $easyzoom = $('.easyzoom').easyZoom();
-</script>
-
 <div id="content">
     @yield('content')
 </div>

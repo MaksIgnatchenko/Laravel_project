@@ -202,3 +202,10 @@
     transform: scale(2) rotateZ(10deg);
 }
 
+.delete1{
+
+    color: #ffffff;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.9);
+    transform: scale(1.9);
+}

@@ -2,7 +2,7 @@
 <header style="position: relative">
     <div>
         <a href="/">
-            <div class="stage">
+            <div  class="stage">
                 <div class="layer"></div>
                 <div class="layer"></div>
                 <div class="layer"></div>
@@ -25,11 +25,13 @@
                 <div class="layer"></div>
             </div>
         </a>
-
     </div>
+
     @if (Route::has('login'))
         <nav>
+
             <div class="menu">
+
                 <ul class="clear">
                     <li>
                         <a href="/main" title="Main">
@@ -113,22 +115,31 @@
         </nav>
     @endif
     @if(Auth::user())
+
+        <div class="easyzoom easyzoom--overlay" >
+            <a href="/images/avatars/{{Auth::user()->big_avatar}}">
+                <img id="av_img" src="/images/avatars/{{Auth::user()->avatar}}"/>
+            </a>
+        </div>
+
     <ul id="profile"  >
         <li class="menu-item">
             <a href="">
                 <div>
-                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+
                     <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
-                        <input id="my_avatar" type="file" name="avatar" class="hidden">
+                        <p class="load"><i style="" class="fa fa-download delete1" aria-hidden="true"></i><br><br>load avatar<input id="my_avatar" type="file" name="avatar" class="hidden"></p>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     </form>
                 </div>
                 <div class="rang">
-                    <span>{{Auth::user()->name}}
+                    <span>
+                        {{Auth::user()->name}}
                         @foreach(Auth::user()->groups()->get() as $user_group)
-                        ({{$user_group->name}})
+                        {{$user_group->name}}
                         @endforeach
                     </span>
+
                 </div>
             </a>
         </li>
@@ -149,19 +160,18 @@
         @endif
 </header>
 
+<script src="/js/zoom/dist/easyzoom.js"></script>
 <script type="text/javascript">
 
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
     });
-
-    var speed=500,
-        originalHeight=80,
-        hoverHeight=160;
-    $("#my_avatar").hover(function(){
-    $('#profile_photo').stop().animate({height:hoverHeight,left: -150,borderRadius:0 },speed);
+    var $easyzoom = $('.easyzoom').easyZoom()
+    var speed=500
+    $easyzoom.hover(function() {
+        $('#av_img').stop().animate({height:300, width:300, borderRadius:0, opacity: 0.0,},speed);
     },function(){
-        $('#profile_photo').stop().animate({height:originalHeight, left: 0, borderRadius:40},speed);
-        })
+        $('#av_img').stop().animate({height:65, width:65, borderRadius:40,opacity: 1, },speed);
+    })
 
 </script>

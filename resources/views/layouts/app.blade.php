@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/flat-seo-web-ikooni/128/flat_seo2-37-128.png">
     <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">
-
+    <link rel="stylesheet" href="{{asset('css/easyzoom.css')}}" type="text/css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

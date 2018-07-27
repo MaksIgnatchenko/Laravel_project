@@ -51,9 +51,12 @@ class UserController extends Controller
             imagecopyresampled($thumb, $im, 0,0, 0, 0, $newWidth, $newHeight, $oldWidth, $oldHeight);
             $im = imagecrop($thumb,['x' => $startX, 'y' => $startY, 'width' => 65, 'height' => 66]);
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $filename_big = time() . '_big.' . $avatar->getClientOriginalExtension();
             Image::make($im)->save( public_path('/images/avatars/' . $filename ) );
+            Image::make($avatar)->save( public_path('/images/avatars/' . $filename_big ));
             $user = Auth::user();
             $user->avatar = $filename;
+            $user->big_avatar = $filename_big;
             $user->save();
             return back();
         }
