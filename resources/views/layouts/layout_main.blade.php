@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="https://cdn2.iconfinder.com/data/icons/flat-seo-web-ikooni/128/flat_seo2-37-128.png">
     <link rel="stylesheet" href="{{asset('css/all.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/easyzoom.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/train.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/button.css')}}" type="text/css">
@@ -23,10 +24,22 @@
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/account.js')}}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
 </head>
 <body>
 
 @include('header')
+
+<div class="easyzoom easyzoom--overlay">
+    <a href="images/1_zoom.jpg">
+        <img src="/images/1_standard.jpg" alt="" width="640" height="360" />
+    </a>
+</div>
+<script src="/js/zoom/dist/easyzoom.js"></script>
+<script>
+    var $easyzoom = $('.easyzoom').easyZoom();
+</script>
 
 <div id="content">
     @yield('content')

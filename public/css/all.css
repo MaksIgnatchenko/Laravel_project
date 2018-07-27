@@ -17,10 +17,7 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
-img {
-	border-style:none;
-	max-width:100%;
-}
+
 a {text-decoration:none;}
 a:hover {text-decoration:none;}
 input, textarea, select {
@@ -131,7 +128,7 @@ header #profile li img {
 	top: 6px;
 	left: 10px;
 	cursor: pointer;
-	border-radius:60%
+	border-radius:40px
 }
 input[type='file'].hidden {
     margin: 0;
@@ -754,3 +751,5 @@ textarea{
 .m-b-md {
 	margin-bottom: 30px;
 }
+
+
