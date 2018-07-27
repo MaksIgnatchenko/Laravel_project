@@ -55,13 +55,14 @@
                     <div><span class="t1">Role:</span>
         {{ $user->role }}
     </div></a></li>
-            <li class='sub-menu'>
+            <li class='sub-menu' id="changeRoleRequest">
     @if($user->role === 'user')
         <a href="#">
                 Request for a teacher role
         </a>
     @endif
                 </li>
+    <input type="hidden" id="userId" value="{{ $user->id }}">
             <li>
     <a href="#" id="changePasswordForm">
         Change password

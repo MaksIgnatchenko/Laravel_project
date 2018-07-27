@@ -86,3 +86,9 @@ Route::post('ajaxTest', 'TaskController@ajaxTest');
 Route::post('profile', 'UserController@userProfile');
 
 Route::get('/total-marks/{group}', 'TotalMarkController@index');
+
+Route::post('/change-role', 'RoleRequestController@store');
+Route::get('/change-role-request', 'RoleRequestController@checkRequests');
+Route::get('/show-requests', 'RoleRequestController@index');
+Route::post('/apply-request', 'RoleRequestController@applyRequest');
+Route::post('/decline-request', 'RoleRequestController@declineRequest');

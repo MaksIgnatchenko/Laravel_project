@@ -128,7 +128,7 @@ header #profile li img {
 	top: 6px;
 	left: 10px;
 	cursor: pointer;
-	border-radius:40px
+	border-radius:60%
 }
 input[type='file'].hidden {
     margin: 0;
@@ -751,5 +751,3 @@ textarea{
 .m-b-md {
 	margin-bottom: 30px;
 }
-
-

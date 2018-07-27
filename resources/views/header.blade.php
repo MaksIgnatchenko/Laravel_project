@@ -74,6 +74,14 @@
                                 <span class="link-text">Account</span>
                             </a>
                         </li>
+                    @if ($user->role === 'admin')
+                        <li>                            
+                        <a href="/show-requests" title="Requests">
+                            <i class="fa fa-envelope" aria-hidden="true" id="roleRequests"></i>
+                            <span class="link-text">Requests</span>
+                        </a>
+                    </li>
+                    @endif
                         <li>
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
