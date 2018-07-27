@@ -131,7 +131,7 @@ header #profile li img {
 	top: 6px;
 	left: 10px;
 	cursor: pointer;
-	border-radius:40%
+	border-radius:60%
 }
 input[type='file'].hidden {
     margin: 0;

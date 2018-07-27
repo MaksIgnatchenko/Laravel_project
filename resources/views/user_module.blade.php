@@ -100,7 +100,7 @@
                                 showTask(tasklist[nextIndex].id)
                             }
                         }
-
+                            //end pagination tasks//
                     } else {
                         if (data.error) {
                             syntaxError.innerHTML = data.error;
