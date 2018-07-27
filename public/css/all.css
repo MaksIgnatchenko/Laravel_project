@@ -754,3 +754,17 @@ textarea{
 .m-b-md {
 	margin-bottom: 30px;
 }
+
+.apply {
+	margin-left: 15px;
+	margin-right: 15px;
+	font-size: 20px;
+	color: green;
+}
+
+.decline {
+	margin-left: 15px;
+	margin-right: 15px;
+	font-size: 20px;
+	color: red;
+}
