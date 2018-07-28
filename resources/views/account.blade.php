@@ -1,7 +1,7 @@
 @extends('layouts.layout_main')
 {{--/** @var PaginationDto $dto*/--}}
 @section('sidebar')
-<div class="account">
+<div class="account" id="mainDiv">
     <nav class='animated bounceInDown nav'>
         <ul>
             @empty(!$user->avatar)

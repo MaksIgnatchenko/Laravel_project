@@ -7,6 +7,7 @@
 @section('body')
 
     <form action="/distribute/{{$task->id}}" method="post">
+        {{csrf_field()}}
         <legend>Выберите язык программирования</legend>
         <select name="language" id="">
             <option value="php">PHP</option>

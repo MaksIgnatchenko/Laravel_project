@@ -24,8 +24,8 @@
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/account.js')}}" defer></script>
     @if (Route::has('login'))
-        @if (Auth::user()->role === 'admin')
-        <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
+        @if ($user->role === 'admin')
+            <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
         @endif
     @endif
 </head>
@@ -33,16 +33,12 @@
 
 @include('header')
 
-<div id="content">
-    @yield('content')
+<div id="content1">
+    @yield('content1')
 </div>
 
 <div id="sidebar">
     @yield('sidebar')
-</div>
-
-<div id="sidebar2">
-    @yield('sidebar2')
 </div>
 
 </body>

@@ -10,7 +10,7 @@ use Socialite;
 class GoogleController extends Controller
 {
     /**
-     * Redirect the user to the GitHub authentication page.
+     * Redirect the user to the Google authentication page.
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,20 +20,18 @@ class GoogleController extends Controller
     }
 
     /**
-     * Obtain the user information from GitHub.
+     * Obtain the user information from Google.
      *
      * @return \Illuminate\Http\Response
      */
     public function handleProviderCallback()
     {
-        try{
+        try {
             $user = Socialite::driver('google')->user();
         } catch(\Exception $e)
         {
             return redirect('auth/google');
         }
-
-
 
         $authUser = $this->createUser($user);
 
@@ -41,21 +39,27 @@ class GoogleController extends Controller
         return redirect()->route('main');
     }
 
-    public function createUser($user)
+    public function createUser($userData)
     {
-        $userAuth = User::where('name', $user->name)->where('email', $user->email)->first();
+        if ( $user = $this->userRecordExists($userData) ) {
+            $user->google_id = $userData->id;
+            $user->name = $userData->name;
+            $user->avatar = $userData->avatar;
+            $user->save();
 
-        if($userAuth)
-        {
-            return $userAuth;
+            return $user;
         }
 
-        return User::create([
-            'name' => $user->name,
-            'email' => $user->email,
-            'google_id' => $user->id,
-            'avatar' => $user->avatar
+        return $this->user->firstOrCreate([
+            'email'      => $userData->email,
+            'google_id'  => $userData->id,
+            'name'       => $userData->name,
+            'avatar'     => $userData->avatar
         ]);
+    }
 
+    private function userRecordExists($userData)
+    {
+        return User::where('email', $userData->email)->first();
     }
 }

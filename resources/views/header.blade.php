@@ -76,8 +76,8 @@
                                 <span class="link-text">Account</span>
                             </a>
                         </li>
-                    @if ($user->role === 'admin')
-                        <li>                            
+                    @if (Auth::user()->role === 'admin')
+                        <li>
                         <a href="/show-requests" title="Requests">
                             <i class="fa fa-envelope" aria-hidden="true" id="roleRequests"></i>
                             <span class="link-text">Requests</span>
@@ -115,20 +115,17 @@
         </nav>
     @endif
     @if(Auth::user())
-
-        <div class="easyzoom easyzoom--overlay" >
-            <a href="/images/avatars/{{Auth::user()->big_avatar}}">
-                <img id="av_img" src="/images/avatars/{{Auth::user()->avatar}}"/>
-            </a>
-        </div>
-
-    <ul id="profile"  >
+    <ul id="profile">
         <li class="menu-item">
             <a href="">
                 <div>
-
+                    @if(Auth::user()->avatar === 'default.png')
+                        <img name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                    @else
+                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                    @endif
                     <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
-                        <p class="load"><i style="" class="fa fa-download delete1" aria-hidden="true"></i><br><br>load avatar<input id="my_avatar" type="file" name="avatar" class="hidden"></p>
+                        <input id="my_avatar" type="file" name="avatar" class="hidden">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     </form>
                 </div>
@@ -136,7 +133,9 @@
                     <span>
                         {{Auth::user()->name}}
                         @foreach(Auth::user()->groups()->get() as $user_group)
+                            @if(Auth::user()->role === 'user')
                         {{$user_group->name}}
+                            @endif
                         @endforeach
                     </span>
 
@@ -160,18 +159,19 @@
         @endif
 </header>
 
-<script src="/js/zoom/dist/easyzoom.js"></script>
 <script type="text/javascript">
 
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
     });
-    var $easyzoom = $('.easyzoom').easyZoom()
-    var speed=500
-    $easyzoom.hover(function() {
-        $('#av_img').stop().animate({height:300, width:300, borderRadius:0, opacity: 0.0,},speed);
+
+    var speed=500,
+        originalHeight=80,
+        hoverHeight=160;
+    $("#my_avatar").hover(function(){
+        $('#profile_photo').stop().animate({height:hoverHeight,left: -150,borderRadius:0 },speed);
     },function(){
-        $('#av_img').stop().animate({height:65, width:65, borderRadius:40,opacity: 1, },speed);
+        $('#profile_photo').stop().animate({height:originalHeight, left: 0, borderRadius:40},speed);
     })
 
 </script>

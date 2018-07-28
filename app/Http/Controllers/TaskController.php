@@ -187,7 +187,6 @@ class TaskController extends Controller
 
     public function distribute(Request $request, Task $task)
     {
-
         if ($request->action === 'check') {
             return $this->check($request, $task);
         } elseif ($request->action === 'update') {

@@ -50,6 +50,7 @@ Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
 Route::post('addtasklist', 'GroupController@addTasklist');
 Route::post('deletetasklist', 'GroupController@deleteTasklist');
+Route::get('change-role/{user}', 'RoleRequestController@changeRole');
 
 Route::get('/admintasklists', 'TasklistController@index')->name('tasklists');
 Route::post('/admintasklists', 'TasklistController@menuStore')->name('taskListsStore');

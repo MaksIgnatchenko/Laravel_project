@@ -55,6 +55,7 @@ strong {}
 body{
     background-image: url("../images/bg.jpg");
 	background-attachment: fixed;
+	font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
 }
 header {
 
@@ -146,7 +147,6 @@ input[type='file'].hidden {
 }
 header #profile li .rang {
 	margin-left: 90px;
-	margin-top: -15px;
 
 }
 header #profile li .load {
@@ -161,7 +161,6 @@ header #profile li .rang  {
 	color: #fff;
 	font-size: 18px;
 	cursor: pointer;
-margin-top: -80px;
 }
 header #profile li .rang span:hover {
 	color: #6288bb;
@@ -760,4 +759,17 @@ textarea{
 
 .m-b-md {
 	margin-bottom: 30px;
+}
+
+.apply {
+	margin-left: 15px;
+	margin-right: 15px;
+	font-size: 20px;
+	color: green;
+}
+.decline {
+	margin-left: 15px;
+	margin-right: 15px;
+	font-size: 20px;
+	color: red;
 }

@@ -99,6 +99,22 @@
 	margin-left: 5px;
 }
 
+#content1 {
+	border-radius: 7px;
+	-moz-box-shadow:0 0 10px #ffffff;
+	-webkit-box-shadow:0 0 10px #ffffff;
+	box-shadow:0 0 10px #ffffff;
+
+	float: left;
+	width: 28%;
+	height: auto;
+	margin: 45px 15px 15px 15px;
+	background-color: rgba(42, 42, 42, 0.6);
+}
+#content1 ul {
+	margin: 10px;
+}
+
 /* SIDEBAR */
 
 #sidebar {

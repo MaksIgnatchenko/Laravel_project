@@ -11,14 +11,17 @@ class RoleRequestController extends Controller
 {
     public function index()
     {
+        $users = User::all();
+        $teachers = User::where('role', 'teacher')->get();
+
         $roleRequests = RoleRequest::whereNull('processed')->get();
         if (count($roleRequests) > 0) {
             // return view('requests', compact('roleRequests'));
             return view('requests', compact('roleRequests'));
         } else {
             $noRequests = 'There are no unprocessed requests for teacher role at this moment';
-            return view('requests', compact('noRequests'));
-        }        
+            return view('requests', compact('noRequests', 'teachers', 'users'));
+        }
     }
     
     
@@ -27,7 +30,6 @@ class RoleRequestController extends Controller
         $user_id = \Auth::id();
         $roleRequest = new RoleRequest();
         $roleRequest->sender_id = $user_id;
-        $roleRequest->processed = null;
         $roleRequest->save();
         return response()->json($roleRequest);
     }
@@ -60,5 +62,12 @@ class RoleRequestController extends Controller
         $roleRequest->processed = 1;
         $roleRequest->decline = 1;
         $roleRequest->save();
+    }
+
+    public function changeRole(User $user)
+    {
+        $user->role = 'user';
+        $user->save();
+        return back();
     }
 }
