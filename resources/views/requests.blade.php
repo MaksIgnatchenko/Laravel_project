@@ -8,12 +8,12 @@
     			<span>{{ $roleRequest->sender->name }}</span>
 				<span>Request for a teacher role</span>				
 				<a id="apply{{ $roleRequest->id }}" href="#"
-				 onclick="processRequest(this.id)">
+				 	onclick="processRequest(this.id)">
 					<span class="apply" >&#10004; Apply</span>
 				</a>
 				<a class="decline" id="decline{{ $roleRequest->id }}" href="#"
-				 onclick="processRequest(this.id)">
-				<span class="decline">&#10008; Decline</span>
+				 	onclick="processRequest(this.id)">
+					<span class="decline">&#10008; Decline</span>
 			</a>			
     		</li>
     		@endforeach

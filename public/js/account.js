@@ -20,9 +20,11 @@ var setPhoto = document.getElementById('setPhoto');
 var avatarForm = document.getElementById('avatarForm');
 var changeRoleRequest = document.getElementById('changeRoleRequest');
 var userId = document.getElementById('userId').value;
+var mainDiv = document.getElementById('mainDiv');
 var isWarning = false;
 var isMailWarning = false;
 var isNameWarning = false;
+var isRoleWarning = false;
 changePasswordForm.Clicked = false;
 mailFormButton.Clicked = false;
 nameFormButton.Clicked = false;
@@ -113,14 +115,14 @@ function changeRole() {
                 'userId' : userId
             },
             success: function (data, textStatus, xhr) {
-                nameWarnings('Your request on teacher role has been sent', 'ok');
+                roleWarnings('Your request on teacher role has been sent', 'ok');
             },
             error :function(err) {
                 let message = "";
                 for (var i in err.responseJSON.errors) {
                     message += err.responseJSON.errors[i] + "<br>";
                 }
-                nameWarnings(message);
+                roleWarnings(message);
             }
         })
 }
@@ -238,6 +240,7 @@ function warnings(message, correct) {
     }
 }
 
+
 function mailWarnings(message, correct) {
     if (isMailWarning) {
         mailForm.removeChild(isMailWarning);
@@ -273,6 +276,26 @@ function nameWarnings(message, correct) {
         }
         nameForm.appendChild(warning);
         isNameWarning = warning;
+    }
+}
+
+function roleWarnings(message, correct) {
+    if (isRoleWarning) {
+        mainDiv.removeChild(isRoleWarning);
+        isRoleWarning = null;
+    }
+    if (message) {
+        var warning = document.createElement('div');
+        warning.className =('t2');
+        warning.innerHTML = message;
+        if (correct) {
+            warning.style.color = "Green";
+        } else {
+            warning.style.color = "Red";
+        }
+        mainDiv.appendChild(warning);
+        isRoleWarning = warning;
+        console.log(isRoleWarning);
     }
 }
 

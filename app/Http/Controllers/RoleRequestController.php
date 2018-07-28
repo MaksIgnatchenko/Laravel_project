@@ -27,7 +27,6 @@ class RoleRequestController extends Controller
         $user_id = \Auth::id();
         $roleRequest = new RoleRequest();
         $roleRequest->sender_id = $user_id;
-        $roleRequest->processed = null;
         $roleRequest->save();
         return response()->json($roleRequest);
     }
