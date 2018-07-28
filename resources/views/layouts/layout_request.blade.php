@@ -40,6 +40,8 @@
 <div id="sidebar">
     @yield('sidebar')
 </div>
-
+<div id="sidebar">
+    @yield('sidebar1')
+</div>
 </body>
 </html>

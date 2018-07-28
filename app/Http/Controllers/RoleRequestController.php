@@ -12,12 +12,13 @@ class RoleRequestController extends Controller
     public function index()
     {
         $users = User::all();
+        //dd($users);
         $teachers = User::where('role', 'teacher')->get();
 
         $roleRequests = RoleRequest::whereNull('processed')->get();
         if (count($roleRequests) > 0) {
             // return view('requests', compact('roleRequests'));
-            return view('requests', compact('roleRequests'));
+            return view('requests', compact('roleRequests','users','teachers'));
         } else {
             $noRequests = 'There are no unprocessed requests for teacher role at this moment';
             return view('requests', compact('noRequests', 'teachers', 'users'));
