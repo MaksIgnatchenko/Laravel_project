@@ -1,10 +1,13 @@
-    $("#myInput").click(function(){
+    $(".myInput").click(function(e){
         $.get("/ajax-users", function(data){
             var logins = [];
             for(var i = 0; i < data.length; i++){
                 logins.push(data[i].email)
             }
-            autocomplete(document.getElementById("myInput"), logins);
+            var myInputs = document.getElementsByClassName("myInput");
+            for(var y = 0; y < myInputs.length; y++) {
+                autocomplete(myInputs[y], logins);
+            }
         });
     });
 

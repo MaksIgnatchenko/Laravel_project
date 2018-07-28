@@ -24,7 +24,7 @@
 
 
                                         <div class="autocomplete">
-                                            <input id="myInput" type="text" required name="user_email" placeholder="User login" style="border-radius: 5px;">
+                                            <input class="myInput" type="text" required name="user_email" placeholder="User login" style="border-radius: 5px;">
                                         </div>
                                         <script type="text/javascript" src="{{asset('js/autocomplete.js')}}"></script>
 
