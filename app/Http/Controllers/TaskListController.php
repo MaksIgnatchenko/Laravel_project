@@ -52,7 +52,10 @@ class TasklistController extends Controller
                 $solutions[$key] = false;
             }
         }
-        return view('user_module', compact('tasklist', 'solutions'));
+        foreach ($tasklist as $task){
+            $tasks[] = $task->id;
+        }
+        return view('user_module', compact('tasklist', 'solutions', 'tasks'));
     }
 
     public function deleteTasklist(Tasklist $tasklist)

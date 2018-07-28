@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/all.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/train.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/easyzoom.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/button.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/accordeon.css')}}" type="text/css">
@@ -22,8 +23,11 @@
     <script src="{{asset('js/src/mode-php.js')}}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/account.js')}}" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
+    @if (Route::has('login'))
+        @if (Auth::user()->role === 'admin')
+        <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
+        @endif
+    @endif
 </head>
 <body>
 

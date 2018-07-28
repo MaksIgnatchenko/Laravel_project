@@ -19,10 +19,4 @@ class ChangePassRequest extends FormRequest
             'newPass' => 'required|min:5|max:255'
         ];
     }
-    public function messages()
-    {
-        return [
-            'title.required' => 'Ты тупой'
-        ];
-    }
 }

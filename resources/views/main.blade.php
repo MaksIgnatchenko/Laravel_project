@@ -1,6 +1,7 @@
 @extends('layouts.layout_main')
 {{--/** @var PaginationDto $dto*/--}}
 @section('content')
+
     <div class="task">
         <h5>Choose your task:</h5>
         <div class="sort">

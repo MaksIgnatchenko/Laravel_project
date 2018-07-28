@@ -34,7 +34,7 @@
                             </a>
                         </li>
                         <li style="position: relative; right: 15px ">
-                            <a style="width: 200px; display: block;">
+                            <a style="width: 180px; display: block;">
                                 <p>Assign module to the group:</p>
                                 <form action="{{ action('GroupController@addTasklist') }}" method="POST">
                                     {{csrf_field()}}
@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li style="position: relative; right: 30px">
-                            <a style="width: 242px; display: block;">
+                            <a style="width: 225px; display: block;">
                                 @if(count($group->tasklists()->get()) == 0)
                                     <p>There are no modules assigned to this group yet</p>
                                 @else
@@ -85,13 +85,10 @@
                                 Students list
                             </a>
                             <ul>
-                                @foreach($group->users as $user)
+                                @foreach($group->users()->where('role', 'user')->get() as $user)
                                     <li>
                                         <a href='#'>
                                             {{$user->name}}
-                                            <a style="all: unset" href="/deleteUser/{{$user->id}}">
-                                                <i class="fa fa-trash delete" aria-hidden="true"></i>
-                                            </a>
                                         </a>
                                     </li>
                                 @endforeach

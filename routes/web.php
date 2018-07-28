@@ -50,6 +50,7 @@ Route::post('creategroup', 'GroupController@create');
 Route::post('addstudent', 'GroupController@addUser');
 Route::post('addtasklist', 'GroupController@addTasklist');
 Route::post('deletetasklist', 'GroupController@deleteTasklist');
+Route::get('change-role/{user}', 'RoleRequestController@changeRole');
 
 Route::get('/admintasklists', 'TasklistController@index')->name('tasklists');
 Route::post('/admintasklists', 'TasklistController@menuStore')->name('taskListsStore');
@@ -87,16 +88,8 @@ Route::post('profile', 'UserController@userProfile');
 
 Route::get('/total-marks/{group}', 'TotalMarkController@index');
 
-// github login
-Route::get('auth/github', [
-
-    'as' => 'auth/github',
-    'uses' => 'GitHubController@redirectToProvider'
-    ]
-);
-Route::get('auth/github/callback', [
-
-    'as' => 'auth/github/callback',
-    'uses' => 'GitHubController@handleProviderCallback'
-    ]
-);
+Route::post('/change-role', 'RoleRequestController@store');
+Route::get('/change-role-request', 'RoleRequestController@checkRequests');
+Route::get('/show-requests', 'RoleRequestController@index');
+Route::post('/apply-request', 'RoleRequestController@applyRequest');
+Route::post('/decline-request', 'RoleRequestController@declineRequest');

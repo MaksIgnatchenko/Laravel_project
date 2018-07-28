@@ -36,24 +36,27 @@ class UserController extends Controller
                 $newWidth = 65;
                 $newHeight = 65 * ($oldHeight / $oldWidth) ;
                 $startX = 0;
-                $startY = ( $newHeight - 80 ) / 2;
+                $startY = ( $newHeight - 66 ) / 2;
             }
             else
             {
                 //*horizontal image
-                $newHeight =  80 ;
-                $newWidth =  80 * ($oldWidth / $oldHeight) ;
+                $newHeight =  66 ;
+                $newWidth =  66 * ($oldWidth / $oldHeight) ;
                 $startX = ( $newWidth - 65 ) / 2;
                 $startY = 0;
             }
             $thumb = imagecreatetruecolor($newWidth, $newHeight);
             $im = imagecreatefromjpeg($avatar);
             imagecopyresampled($thumb, $im, 0,0, 0, 0, $newWidth, $newHeight, $oldWidth, $oldHeight);
-            $im = imagecrop($thumb,['x' => $startX, 'y' => $startY, 'width' => 65, 'height' => 80]);
+            $im = imagecrop($thumb,['x' => $startX, 'y' => $startY, 'width' => 65, 'height' => 66]);
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $filename_big = time() . '_big.' . $avatar->getClientOriginalExtension();
             Image::make($im)->save( public_path('/images/avatars/' . $filename ) );
+            Image::make($avatar)->save( public_path('/images/avatars/' . $filename_big ));
             $user = Auth::user();
             $user->avatar = $filename;
+            $user->big_avatar = $filename_big;
             $user->save();
             return back();
         }

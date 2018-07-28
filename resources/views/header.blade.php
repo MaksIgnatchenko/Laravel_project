@@ -2,7 +2,7 @@
 <header style="position: relative">
     <div>
         <a href="/">
-            <div class="stage">
+            <div  class="stage">
                 <div class="layer"></div>
                 <div class="layer"></div>
                 <div class="layer"></div>
@@ -25,11 +25,13 @@
                 <div class="layer"></div>
             </div>
         </a>
-
     </div>
+
     @if (Route::has('login'))
         <nav>
+
             <div class="menu">
+
                 <ul class="clear">
                     <li>
                         <a href="/main" title="Main">
@@ -74,6 +76,14 @@
                                 <span class="link-text">Account</span>
                             </a>
                         </li>
+                    @if (Auth::user()->role === 'admin')
+                        <li>
+                        <a href="/show-requests" title="Requests">
+                            <i class="fa fa-envelope" aria-hidden="true" id="roleRequests"></i>
+                            <span class="link-text">Requests</span>
+                        </a>
+                    </li>
+                    @endif
                         <li>
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -105,14 +115,14 @@
         </nav>
     @endif
     @if(Auth::user())
-    <ul id="profile"  >
+    <ul id="profile">
         <li class="menu-item">
             <a href="">
                 <div>
-                    @if(strpos(Auth::user()->avatar, '://'))
-                        <img id="profile_photo" name="profile_avatar" src="{{Auth::user()->avatar}}">
+                    @if(Auth::user()->avatar === 'default.png')
+                        <img name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
                     @else
-                        <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
                     @endif
                     <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
                         <input id="my_avatar" type="file" name="avatar" class="hidden">
@@ -120,11 +130,15 @@
                     </form>
                 </div>
                 <div class="rang">
-                    <span>{{Auth::user()->name}}
+                    <span>
+                        {{Auth::user()->name}}
                         @foreach(Auth::user()->groups()->get() as $user_group)
-                        ({{$user_group->name}})
+                            @if(Auth::user()->role === 'user')
+                        {{$user_group->name}}
+                            @endif
                         @endforeach
                     </span>
+
                 </div>
             </a>
         </li>
@@ -155,9 +169,9 @@
         originalHeight=80,
         hoverHeight=160;
     $("#my_avatar").hover(function(){
-    $('#profile_photo').stop().animate({height:hoverHeight,left: -150,borderRadius:0 },speed);
+        $('#profile_photo').stop().animate({height:hoverHeight,left: -150,borderRadius:0 },speed);
     },function(){
         $('#profile_photo').stop().animate({height:originalHeight, left: 0, borderRadius:40},speed);
-        })
+    })
 
 </script>

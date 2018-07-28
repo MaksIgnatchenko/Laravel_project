@@ -43,7 +43,7 @@
 
             <div class="col-sm-6 col-social-login">
                 <form method="post">
-                    <p class="litel1"><a href="{!! URL::route('auth/github') !!}">Войти через Github<i class="fa fa-github" aria-hidden="true"></i></a></p>
+                    <p class="litel1"><a href="#">Войти через Github<i class="fa fa-github" aria-hidden="true"></i></a></p>
                     <p class="litel1"><a href="{!! URL::route('auth/google') !!}">Войти через Google<i class="fa fa-google " aria-hidden="true"></i></a></p>
                     <p class="litel1"><a href="#">Войти через Facebook<i class="fa fa-facebook " aria-hidden="true"></i></a></p>
                     <input type='hidden' name='csrfmiddlewaretoken' value='nWvVfQWhK1LeUef98KhlcYRhxgPS4nIPGS2z26NSg3LvNhvmbEfiOJYGjY8dgqSk' />
