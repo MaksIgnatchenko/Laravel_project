@@ -41,5 +41,11 @@ return [
         'redirect' => 'http://source.planet.php.a-level.com.ua/auth/google/callback', // Ссылка на перенаправление при удачной авторизации (3)
     ],
 
+    'github' => [
+        'client_id' => '24886c85f03e15ac5b3c',         // Your GitHub Client ID
+        'client_secret' => 'e3de03213f9a6f5ee7c6dd89cd2118c434257b8c', // Your GitHub Client Secret
+        'redirect' => 'http://source.planet.php.a-level.com.ua/auth/github/callback',
+    ],
+
 
 ];

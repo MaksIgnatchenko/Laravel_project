@@ -86,3 +86,17 @@ Route::post('ajaxTest', 'TaskController@ajaxTest');
 Route::post('profile', 'UserController@userProfile');
 
 Route::get('/total-marks/{group}', 'TotalMarkController@index');
+
+// github login
+Route::get('auth/github', [
+
+    'as' => 'auth/github',
+    'uses' => 'GitHubController@redirectToProvider'
+    ]
+);
+Route::get('auth/github/callback', [
+
+    'as' => 'auth/github/callback',
+    'uses' => 'GitHubController@handleProviderCallback'
+    ]
+);

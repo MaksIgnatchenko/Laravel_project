@@ -109,7 +109,11 @@
         <li class="menu-item">
             <a href="">
                 <div>
-                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                    @if(strpos(Auth::user()->avatar, '://'))
+                        <img id="profile_photo" name="profile_avatar" src="{{Auth::user()->avatar}}">
+                    @else
+                        <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                    @endif
                     <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
                         <input id="my_avatar" type="file" name="avatar" class="hidden">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
