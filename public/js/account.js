@@ -295,7 +295,10 @@ function roleWarnings(message, correct) {
         }
         mainDiv.appendChild(warning);
         isRoleWarning = warning;
-        console.log(isRoleWarning);
+        setTimeout(removeWarning, 5000, isRoleWarning);
+    }
+    function removeWarning(elem) {
+        elem.remove();
     }
 }
 

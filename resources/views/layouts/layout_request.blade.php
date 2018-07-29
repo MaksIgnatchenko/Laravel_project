@@ -23,8 +23,8 @@
     <script src="{{asset('js/src/mode-php.js')}}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/account.js')}}" defer></script>
-    @if (Route::has('login'))
-        @if ($user->role === 'admin')
+    @if ($signed_in)
+        @if (Auth::user()->role === 'admin')
             <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
         @endif
     @endif

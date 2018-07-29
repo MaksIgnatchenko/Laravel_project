@@ -1,4 +1,4 @@
-    $(".myInput").click(function(e){
+    $(".myInput").click(function(){
         $.get("/ajax-users", function(data){
             var logins = [];
             for(var i = 0; i < data.length; i++){

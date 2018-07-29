@@ -1,3 +1,4 @@
+debugger;
 var roleRequests = document.getElementById('roleRequests');
 var backGroundColor = window.getComputedStyle(roleRequests, null).getPropertyValue("background-color");
 
@@ -14,7 +15,6 @@ function checkRequests() {
             	}                
             },
             error :function(err) {
-            	console.log(err);
             }
         })
 }

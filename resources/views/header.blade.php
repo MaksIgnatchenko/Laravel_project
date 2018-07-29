@@ -27,7 +27,6 @@
         </a>
     </div>
 
-    @if (Route::has('login'))
         <nav>
 
             <div class="menu">
@@ -76,7 +75,7 @@
                                 <span class="link-text">Account</span>
                             </a>
                         </li>
-                    @if (Auth::user()->role === 'admin')
+                    @if ($user->role === 'admin')
                         <li>
                         <a href="/show-requests" title="Requests">
                             <i class="fa fa-envelope" aria-hidden="true" id="roleRequests"></i>
@@ -113,7 +112,6 @@
                 </ul>
             </div>
         </nav>
-    @endif
     @if(Auth::user())
     <ul id="profile">
         <li class="menu-item">

@@ -86,6 +86,7 @@
                 <ul id="userList">
                     <li style="margin-bottom: 8px">
                         <a href="">
+                            <img name="profile_avatar" src="/images/avatars/{{$user->avatar}}" width="10%" height="10%">
                             {{ $user->name }}
                             <a style="all: unset" href="/deleteUser/{{$user->id}}" class="userTrash">
                                 <i class="fa fa-trash delete" aria-hidden="true"></i>
