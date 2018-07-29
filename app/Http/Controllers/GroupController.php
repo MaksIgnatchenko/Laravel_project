@@ -72,22 +72,4 @@ class GroupController extends Controller
         return redirect()->route('groups');
     }
 
-    public function autoComplete(Request $request)
-    {
-
-        $term = $request->input('term');
-
-        $queries = DB::table('users')
-            ->where ('email','LIKE', $term.'%')
-            ->take(5)
-            ->get();
-
-        $results = array();
-
-        foreach ($queries as $query) {
-            $results[] = ['email' => $query->email, 'name' => $query->name];
-        }
-        return response()->json($results);
-    }
-
 }
