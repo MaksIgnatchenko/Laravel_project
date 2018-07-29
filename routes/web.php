@@ -93,3 +93,5 @@ Route::get('/change-role-request', 'RoleRequestController@checkRequests');
 Route::get('/show-requests', 'RoleRequestController@index');
 Route::post('/apply-request', 'RoleRequestController@applyRequest');
 Route::post('/decline-request', 'RoleRequestController@declineRequest');
+
+Route::get('/autocomplete', array('as' => 'autocomplete', 'uses'=>'GroupController@autoComplete'));

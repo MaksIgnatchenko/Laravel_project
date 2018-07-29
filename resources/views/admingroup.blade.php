@@ -21,7 +21,7 @@
                                 <form action="{{ action('GroupController@addUser') }}" method="POST">
                                     {{csrf_field()}}
                                     <div class="group">
-                                        <input type="text" required name="user_email" style="border-radius: 5px;">
+                                        <input type="text" id="user_email" required name="user_email" style="border-radius: 5px;">
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label style="margin-left: 5px">Student login</label>
@@ -129,4 +129,16 @@
             </li>
         </ul>
     </nav>
+
+    <script>
+        $('#user_email').autocomplete({
+            source:'{!!URL::route('autocomplete')!!}',
+            minlength:1,
+            autoFocus:true,
+            select:function(e,ui)
+            {
+                $('#user_email').val(ui.item.value);
+            }
+        });
+    </script>
 @endsection
