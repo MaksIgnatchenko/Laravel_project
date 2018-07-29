@@ -32,7 +32,7 @@
         {{csrf_field()}}
     <textarea name="editor">@if(isset($taskResult->userCode)){{ $taskResult->userCode }}@else{{ $task->task_view }}@endif</textarea>
         <div id="editor"></div>
-        <input type="submit" value="Check solution" name="test" id="btn">
+        <input type="submit" style="margin: 10px; margin-left: 300px" name="test" class="litel" id="buttonCheck" id="btn" value="Check solution">
         <br><br>
         @isset($taskResult)
             @if($taskResult->isPassed)

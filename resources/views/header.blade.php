@@ -27,6 +27,7 @@
         </a>
     </div>
 
+    @if (Route::has('login'))
         <nav>
 
             <div class="menu">
@@ -38,24 +39,31 @@
                             <span class="link-text">Main</span>
                         </a>
                     </li>
+                    @if((Auth::user()->role === 'admin') || (Auth::user()->role === 'teacher'))
                     <li>
                         <a href="/admingroup" title="Admin groups">
                             <i class="fa fa-buysellads" aria-hidden="true"></i>
                             <span class="link-text">Admin Group</span>
                         </a>
                     </li>
+                    @endif
+                    @if(Auth::user()->role === 'teacher')
                     <li>
                         <a href="/admintasklists" title="Admin tasklists">
                             <i class="fa fa-bookmark" aria-hidden="true"></i>
                             <span class="link-text">Tasklists</span>
                         </a>
                     </li>
+                    @endif
+                    @if(Auth::user()->role === 'user')
                     <li>
                         <a href="/adminusertasklists" title="Admin usertasklists">
                             <i class="fa fa-book" aria-hidden="true"></i>
                             <span class="link-text">User Modules</span>
                         </a>
                     </li>
+                    @endif
+                    @if(Auth::user()->role === 'teacher')
                     <li>
                         <a href="/edit" title="Update task">
                             <i class="fa fa-edit" aria-hidden="true"></i>
@@ -68,21 +76,22 @@
                             <span class="link-text">Create task</span>
                         </a>
                     </li>
+                    @endif
                     @auth
                         <li>
-                            <a href="/account" title="Create task">
+                            <a href="/account" title="Account">
                                 <i class="fa fa-cog" aria-hidden="true"></i>
                                 <span class="link-text">Account</span>
                             </a>
                         </li>
-                    @if ($user->role === 'admin')
-                        <li>
-                        <a href="/show-requests" title="Requests">
-                            <i class="fa fa-envelope" aria-hidden="true" id="roleRequests"></i>
-                            <span class="link-text">Requests</span>
-                        </a>
-                    </li>
-                    @endif
+                        @if (Auth::user()->role === 'admin')
+                            <li>
+                            <a href="/show-requests" title="Requests">
+                                <i class="fa fa-envelope" aria-hidden="true" id="roleRequests"></i>
+                                <span class="link-text">Requests</span>
+                            </a>
+                        </li>
+                        @endif
                         <li>
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -112,6 +121,7 @@
                 </ul>
             </div>
         </nav>
+    @endif
     @if(Auth::user())
     <ul id="profile">
         <li class="menu-item">
@@ -130,6 +140,8 @@
                 <div class="rang">
                     <span>
                         {{Auth::user()->name}}
+                        <br>
+                        {{Auth::user()->role}}
                         @foreach(Auth::user()->groups()->get() as $user_group)
                             @if(Auth::user()->role === 'user')
                         {{$user_group->name}}
