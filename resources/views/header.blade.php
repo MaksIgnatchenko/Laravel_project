@@ -1,7 +1,7 @@
 
 <header style="position: relative">
     <div>
-        <a href="/">
+        <a href="{{route('main')}}">
             <div  class="stage">
                 <div class="layer"></div>
                 <div class="layer"></div>
@@ -39,6 +39,7 @@
                             <span class="link-text">Main</span>
                         </a>
                     </li>
+                    @auth
                     @if((Auth::user()->role === 'admin') || (Auth::user()->role === 'teacher'))
                     <li>
                         <a href="/admingroup" title="Admin groups">
@@ -77,6 +78,7 @@
                         </a>
                     </li>
                     @endif
+                    @endauth
                     @auth
                         <li>
                             <a href="/account" title="Account">
@@ -140,15 +142,14 @@
                 <div class="rang">
                     <span>
                         {{Auth::user()->name}}
+                        ({{Auth::user()->role}})
                         <br>
-                        {{Auth::user()->role}}
                         @foreach(Auth::user()->groups()->get() as $user_group)
                             @if(Auth::user()->role === 'user')
-                        {{$user_group->name}}
+                        ({{$user_group->name}})
                             @endif
                         @endforeach
                     </span>
-
                 </div>
             </a>
         </li>

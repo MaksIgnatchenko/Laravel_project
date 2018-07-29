@@ -86,6 +86,7 @@
                         </li>
                     </ul>
                     <ul>
+                        @if(count($group->users()->where('role', 'user')->get()) > 0)
                         <li class="sub-menu" style="width: 250px">
                             <a href='#settings' style="background: rgba(41, 107, 164, 0.73);">
                                 <div class='fa fa-users'></div>
@@ -108,6 +109,7 @@
                                     View progress
                                 </a>
                             </li>
+                        @endif
                         @endif
                     </ul>
                 </li>
