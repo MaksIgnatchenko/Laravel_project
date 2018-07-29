@@ -77,7 +77,7 @@ class TaskController extends Controller
     {
         if (isset($request->test)) {
             $taskResult = $task->test($request->editor);
-            if (($taskResult->isPassed) && (Auth::user()->role === 'user')) {
+            if (($taskResult->isPassed) && (Auth::user())) {
                 SolutionController::create($taskResult);
             }
         }

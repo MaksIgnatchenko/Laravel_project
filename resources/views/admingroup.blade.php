@@ -17,14 +17,21 @@
                     <ul style="display: inline-flex">
                         <li>
                             <a style="width: 225px">
-                                <p>Add student to the group:</p>
-                                <form action="{{ action('GroupController@addUser') }}" method="POST">
+                                <p>Add student to the group:</p><br>
+                                <form autocomplete="off" action="{{ action('GroupController@addUser') }}" method="POST">
                                     {{csrf_field()}}
                                     <div class="group">
-                                        <input type="text" id="user_email" required name="user_email" style="border-radius: 5px;">
+
+
+                                        <div class="autocomplete">
+                                            <input class="myInput" type="text" required name="user_email" placeholder="User login" style="border-radius: 5px;">
+                                        </div>
+                                        <script type="text/javascript" src="{{asset('js/autocomplete.js')}}"></script>
+
+
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
-                                        <label style="margin-left: 5px">Student login</label>
+                                        <label style="margin-left: 5px"></label>
                                         <input type="hidden" name="group_id" value="{{ $group->id }}">
                                         <br>
                                         <input class="litel" type="submit" value="Add student">
@@ -94,12 +101,11 @@
                                 @endforeach
                             </ul>
                         </li>
-                        @if(count($group->tasklists()->get()) == 0)
-                        @else
+                        @if(count($group->tasklists()->get()) != 0)
                             <li style="width: 250px">
                                 <a href='/total-marks/{{$group->id}}'>
                                     <div class='fa fa-eye'></div>
-                                    Посмотреть успеваемость
+                                    View progress
                                 </a>
                             </li>
                         @endif
@@ -111,7 +117,7 @@
             <li class='sub-menu'>
                 <a href='#settings'>
                     <div class='fa fa-plus'></div>
-                    Создать новую группу
+                    Create a new group
                 </a>
                 <ul>
                     <li>
@@ -129,16 +135,5 @@
             </li>
         </ul>
     </nav>
-
-    <script>
-        $('#user_email').autocomplete({
-            source:'{!!URL::route('autocomplete')!!}',
-            minlength:1,
-            autoFocus:true,
-            select:function(e,ui)
-            {
-                $('#user_email').val(ui.item.value);
-            }
-        });
-    </script>
 @endsection
+

@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <link rel="stylesheet" href="{{asset('css/all.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/accordeon.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/easyzoom.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/autocomplete.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/input.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/table.css')}}" type="text/css">
     <script type="text/javascript" src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
+    @if ($signed_in)
+        @if (Auth::user()->role === 'admin')
+            <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
+        @endif
+    @endif
 
 </head>
 <body>

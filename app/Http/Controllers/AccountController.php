@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ChangeMailRequest;
 use App\Http\Requests\ChangePassRequest;
 use App\Http\Requests\ChangeNameRequest;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,5 +45,10 @@ class AccountController extends Controller
         $user->name = $request->newName;
         $user->save();
         return response()->json(true);
+    }
+    public function users()
+    {
+        $users = User::all();
+        return response()->json($users);
     }
 }
