@@ -9,7 +9,7 @@
                 <ul>
                     <li class="sub-menu" style="background-color:rgba(0,0,0,0.73)">
                         <a id="{{ $task->id }}" onclick="showTask(this.id)">
-                            {{$task->task_desc}}
+                            {{$task->short_desc}}
                             <span id="{{ $task->id }}checkmark" class="checkmark"></span>
                         </a>
                     </li>
@@ -128,7 +128,6 @@
                     'id' : id
                 },
                 success: function (data, textStatus, xhr) {
-
                     task = data;
                     var editor = ace.edit('editor');
                     $('#sidebar2').show(1500,function(){
@@ -136,6 +135,7 @@
                     });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
+                    activeField(id);
                 },
                 error :function(err) {
 
@@ -161,6 +161,19 @@
                     checkMark.innerHTML = "&#10008;";
                     checkMark.style.display = 'inline';
                     checkMark.style.color = 'red';
+                }
+            }
+        }
+
+        function activeField(idElem) {
+            var collection = $('.nav ul li a');
+            for (let i = 0; i < collection.length; i++) {
+                collection[i].style.backgroundColor = 'rgba(41, 107, 164, 0.73)';
+            }
+            for (let i = 0; i < collection.length; i++) {
+                if (collection[i].id == idElem) {
+                    collection[i].style.backgroundColor = 'rgba(88, 169, 195, 0.73)';
+                    break;
                 }
             }
         }

@@ -21,7 +21,11 @@
                 Users/Moduls
             </th>
             @foreach($tasklists as $tasklist)
-            <th>{{$tasklist->name}}</th>
+            <th>{{$tasklist->name}}
+                <br>
+                tasks in modul : {{ count($tasklists) }}
+            </th>
+
             @endforeach
         </tr>
         @foreach($array as $user => $moduls)
@@ -30,9 +34,12 @@
                 @foreach($moduls as $user => $rate)
                     @if(count($rate))
                         <td>
-                        @foreach($rate as $task)
-                                solved task: {{$task->id}}<br><br>
-                        @endforeach
+
+                            <br>
+                            solved task: {{count($rate)}}
+                            <br>
+                            ready : {{ count($rate)/count($tasklists)*100 }} %
+
                         </td>
                     @else
                         <td>
@@ -42,5 +49,4 @@
                 @endforeach
             </tr>
         @endforeach
-    </table>
 @endsection
