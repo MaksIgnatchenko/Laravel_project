@@ -199,7 +199,7 @@
 
 <script type="text/javascript">
 
-    $('#profile_photo').stop().animate({height:80, left: 0, borderRadius:40},speed);
+    $('#profile_photo').stop().animate({height:80, left: 0, borderRadius:40},200);
 
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
