@@ -14,6 +14,13 @@
         }
     </style>
 @endif
+@if(Auth::user()->role === 'user')
+    <style>
+        .role {
+            color: grey;
+        }
+    </style>
+@endif
 @endauth
 
 <header style="position: relative">
