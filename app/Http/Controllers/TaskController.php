@@ -118,15 +118,16 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create($request)
     {
         $task = new Task;
         $task->user_id = Auth::user()->id;
+        $task->language = $request->language;
         $task->task_desc = $request->task_example;
         $task->check_code = $request->check_code;
         $task->task_view = $request->task_view;
         $task->save();
-        return redirect()->action('TaskController@index');
+        return redirect()->action('TaskController@showedit');
     }
 
     /**
@@ -161,6 +162,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+        $task->language = $request->language;
         $task->task_desc = $request->task_desc;
         $task->check_code = $request->check_code;
         $task->task_view = $request->task_view;
@@ -187,6 +189,7 @@ class TaskController extends Controller
 
     public function distribute(Request $request, Task $task)
     {
+//        dd($request->request);
         if ($request->action === 'check') {
             return $this->check($request, $task);
         } elseif ($request->action === 'update') {
