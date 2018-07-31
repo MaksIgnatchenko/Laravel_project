@@ -14,6 +14,13 @@
         }
     </style>
 @endif
+@if(Auth::user()->role === 'user')
+    <style>
+        .role {
+            color: grey;
+        }
+    </style>
+@endif
 @endauth
 
 <header style="position: relative">
@@ -149,8 +156,10 @@
                 <div>
                     @if(Auth::user()->avatar === 'default.png')
                         <img name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                    @elseif(strpos(Auth::user()->avatar, '://'))
+                        <img id="profile_photo" name="profile_avatar" src="{{Auth::user()->avatar}}">
                     @else
-                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                        <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
                     @endif
                     <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
                         <input id="my_avatar" type="file" name="avatar" class="hidden">
@@ -192,6 +201,17 @@
 
 <script type="text/javascript">
 
+    function blink() {
+        var wrapper = document.getElementById('wrapper');
+        if(wrapper.style["boxShadow"] == "red 0px 0px 10px") {
+            wrapper.style["boxShadow"] = 'red 0px 0px 50px';
+        } else {
+            wrapper.style["boxShadow"] = 'red 0px 0px 10px';
+        }
+    }
+
+    setInterval(blink, 500);
+
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
     });
@@ -204,5 +224,7 @@
     },function(){
         $('#profile_photo').stop().animate({height:originalHeight, left: 0, borderRadius:40},speed);
     })
+
+
 
 </script>

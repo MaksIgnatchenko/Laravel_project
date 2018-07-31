@@ -58,17 +58,17 @@ Route::post('createtasklist', 'TasklistController@create');
 Route::post('addtask', 'TasklistController@addTask');
 
 // sociality routes
-Route::get('auth/google',
+Route::get('auth/{provider}',
     [
-        'as' => 'auth/google',
-        'uses' => 'GoogleController@redirectToProvider'
+        'as' => 'auth/{provider}',
+        'uses' => 'SocialController@redirectToProvider'
     ]
 );
 
-Route::get('auth/google/callback',
+Route::get('auth/{provider}/callback',
     [
-        'as' => 'auth/google/callback',
-        'uses' => 'GoogleController@handleProviderCallback'
+        'as' => 'auth/{provider}/callback',
+        'uses' => 'SocialController@handleProviderCallback'
     ]
 );
 
