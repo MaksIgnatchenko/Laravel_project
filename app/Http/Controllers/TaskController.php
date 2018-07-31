@@ -213,4 +213,10 @@ class TaskController extends Controller
         return response()->json($taskResult);
     }
 
+    public function tasks()
+    {
+        $tasks = Task::all();
+        return response()->json($tasks);
+    }
+
 }

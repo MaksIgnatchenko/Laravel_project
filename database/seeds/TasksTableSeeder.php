@@ -17,7 +17,7 @@ class TasksTableSeeder extends Seeder
         $task->language = 'php';
         $task->theme = 'common';
         $task->task_desc = 'Функция получает на вход массив чисел, должна вернуть сумму этих чисел. Не использовать встроенные функции суммирования php. @param array $arr return integer';
-        $task->short_desc = 'Cумма';
+        $task->short_desc = 'Сумма';
         $task->task_view = <<<'TASKVIEW'
 function my_sum($arr) {
     // Your code here
@@ -53,7 +53,7 @@ TEXT;
 @param string $shortMe
 @return string
 DESC;
-        $task->short_desc = 'Cтроки';
+        $task->short_desc = 'Строки';
         $task->task_view = <<<'TASKVIEW'
 function shortener($shortMe) {
     // Your code here
@@ -139,7 +139,7 @@ TEXT;
  * @param string $str
  * @return string
 DESC;
-        $task->short_desc = 'Строки';
+        $task->short_desc = 'Перевертышь';
         $task->task_view = <<<'TASKVIEW'
 function reverse_string($str) {
     // Your code here

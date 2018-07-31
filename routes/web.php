@@ -94,3 +94,5 @@ Route::get('/show-requests', 'RoleRequestController@index');
 Route::post('/apply-request', 'RoleRequestController@applyRequest');
 Route::post('/decline-request', 'RoleRequestController@declineRequest');
 Route::get('/ajax-users', 'AccountController@users');
+Route::get('/ajax-tasks', 'TaskController@tasks');
+Route::get('/ajax-notification', 'NotificationController@index');

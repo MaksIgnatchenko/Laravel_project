@@ -14,13 +14,18 @@
                     <ul>
                         <li>
                             <a href='#'>
-                                <form action="{{ action('TasklistController@addTask') }}" method="POST">
+                                <form autocomplete="off" action="{{ action('TasklistController@addTask') }}" method="POST">
                                     {{csrf_field()}}
                                     <div class="group">
-                                        <input type="text" required name="task_id">
+                                        <div class="autocomplete">
+                                            <input class="myInput1" type="text" required name="short_desc" placeholder="Task name" style="border-radius: 5px;">
+                                        </div>
+                                        <script type="text/javascript" src="{{asset('js/autocomplete.js')}}"></script>
+
+
+
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
-                                        <label>Task id</label>
                                         <input id="tasklist_id" type="hidden" name="tasklist_id" value="{{ $tasklist->id }}">
                                         <br>
                                         <input class="litel" type="submit" value="Добавить задачу">
