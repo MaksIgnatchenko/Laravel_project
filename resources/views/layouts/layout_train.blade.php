@@ -15,16 +15,14 @@
     <script src="{{asset('js/src/theme-monokai.js')}}" type="text/javascript" charset="utf-8"></script>
     <script src="{{asset('js/src/mode-php.js')}}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
-    @if ($signed_in)
+    @auth
         @if (Auth::user()->role === 'user')
             <script type="text/javascript" src="{{asset('js/notification.js')}}" defer></script>
         @endif
-    @endif
-    @if ($signed_in)
         @if (Auth::user()->role === 'admin')
             <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
         @endif
-    @endif
+    @endauth
 </head>
 <body>
 

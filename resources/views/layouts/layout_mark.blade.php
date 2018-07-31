@@ -13,16 +13,14 @@
     <link rel="stylesheet" href="{{asset('css/table.css')}}" type="text/css">
     <script type="text/javascript" src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
-    @if ($signed_in)
+    @auth
         @if (Auth::user()->role === 'user')
             <script type="text/javascript" src="{{asset('js/notification.js')}}" defer></script>
         @endif
-    @endif
-    @if ($signed_in)
         @if (Auth::user()->role === 'admin')
             <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
         @endif
-    @endif
+    @endauth
 
 </head>
 <body>
