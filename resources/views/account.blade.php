@@ -4,11 +4,11 @@
 <div class="account" id="mainDiv">
     <nav class='animated bounceInDown nav'>
         <ul>
-            @empty(!$user->avatar)
-            <div>
-                <img src="{{ $user->avatar }}" alt="">
-            </div>
-            @endisset
+            {{--@empty(!$user->avatar)--}}
+            {{--<div>--}}
+                {{--<img src="{{ $user->avatar }}" alt="">--}}
+            {{--</div>--}}
+            {{--@endisset--}}
             <li>
                 <a>
                     <div id="setPhoto">

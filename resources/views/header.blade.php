@@ -199,13 +199,15 @@
 
 <script type="text/javascript">
 
+    $('#profile_photo').stop().animate({height:80, left: 0, borderRadius:40},speed);
+
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
     });
 
     var speed=500,
         originalHeight=80,
-        hoverHeight=160;
+        hoverHeight=460;
     $("#my_avatar").hover(function(){
         $('#profile_photo').stop().animate({height:hoverHeight,left: -150,borderRadius:0 },speed);
     },function(){
