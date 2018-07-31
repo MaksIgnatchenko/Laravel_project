@@ -41,7 +41,7 @@
 }
 
 .modal-wrapper.open .modal {
-  margin-top: -200px;
+  margin-top: -450px;
   opacity: 1;
 }
 
@@ -82,4 +82,10 @@
 }
 .good-job h1 {
   font-size: 45px;
+}
+
+.modalTable {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 0 !important;
 }

@@ -58,7 +58,7 @@ class TotalMarkController extends Controller
         $tasks = $tasklist->tasks;
         $users = $group->users;
         $taskListMarks = [];
-        $taskListMarks[0][0] = 'Field';
+        $taskListMarks[0][0] = ['theme' => 'Users/Tasks'];
         foreach($tasks as $task) {
             $taskListMarks[0][] = $task;
         }

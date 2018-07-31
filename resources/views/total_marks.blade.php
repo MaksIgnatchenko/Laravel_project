@@ -58,9 +58,6 @@
                 </a>
             </div>
             <div class="content">
-                <div class="good-job">
-                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                </div>
             </div>
         </div>
     </div>
@@ -116,14 +113,42 @@
                 })
 
                 function render(data) {
-                    // $('.modal-wrapper').toggleClass('open');
-                    // $('.page-wrapper').toggleClass('blur-it');
-                    var content = $('.content');
-                    let table = document.createElement('table');
+                    $('.modal-wrapper').toggleClass('open');
+                    $('.page-wrapper').toggleClass('blur-it');
+                    var content = $('.content')[0];
+                    var table = document.createElement('table');
+                    table.classList.add("simple-little-table");
+                    table.classList.add("modalTable");
                     content.appendChild(table);
-                    // for (let key in data[0]) {
-                    //     content.append('<div>' + data[0][key].theme + '</div><br>');
-                    // }
+                    let tr = document.createElement('tr');
+                    table.appendChild(tr);
+                    for (let key in data[0]) {
+                        let th = document.createElement('td');
+                        th.innerHTML = data[0][key].theme;
+                        tr.appendChild(th);
+                    }
+                    for (let i = 1; i < data.length; i++) {
+
+                        let tr = document.createElement('tr');
+                        table.appendChild(tr);
+                            for (let n = 0; n < data[i].length; n++) {
+                                if (n > 0) {
+                                    if (data[i][n]) {
+                                        var td = document.createElement('td');
+                                        td.innerHTML = "<span style='color : green'> &#10004; </span>";
+                                        tr.appendChild(td);
+                                    } else {
+                                        var td = document.createElement('td');
+                                        td.innerHTML = "<span style='color : red'> &#10008; </span>";
+                                        tr.appendChild(td);
+                                    }
+                                } else {
+                                    var th = document.createElement('td');
+                                    th.innerHTML = data[i][n].name;
+                                    tr.appendChild(th);
+                            }
+                        }
+                    }
                 }
             }
         }
