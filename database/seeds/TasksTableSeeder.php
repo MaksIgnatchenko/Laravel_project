@@ -173,7 +173,7 @@ TEXT;
  * @param string $str
  * @return string
 DESC;
-        $task->short_desc = ' Сложение';
+        $task->short_desc = 'Сложение';
         $task->task_view = <<<'TASKVIEW'
 function my_sum(a, b) {
     // Your code here
