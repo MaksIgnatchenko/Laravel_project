@@ -11,9 +11,9 @@
                     <li class="sub-menu" style="background-color:rgba(0,0,0,0.73)">
                         <a id="{{ $task->id }}" onclick="showTask(this.id)">
                             @if ($task->language === 'javascript')
-                                <i class="devicon-php-plain languageIcon"></i>
-                            @else
                                 <i class="devicon-javascript-plain languageIcon"></i>
+                            @else
+                                <i class="devicon-php-plain languageIcon"></i>
                             @endif
                             {{ $task->short_desc }}
                             <span id="{{ $task->id }}checkmark" class="checkmark"></span>
@@ -27,7 +27,7 @@
 @endsection
 
 @section('sidebar2')
-    Language : <span id="tasklanguage"></span>
+    <span style="color: #fff;">Language :</span><span id="tasklanguage"></span>
     <div id="taskDescription"></div>
     <div class="solution">
         <p>Solution:</p>
