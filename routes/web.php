@@ -28,7 +28,7 @@ Route::get('create',function (){
     return view('create_view', compact('task','example'));
 });
 
-Route::post('createtask','TaskController@create');
+Route::get('createtask','TaskController@create');
 Route::post('check','TaskController@check');
 Route::post('distribute/{task?}', 'TaskController@distribute');
 

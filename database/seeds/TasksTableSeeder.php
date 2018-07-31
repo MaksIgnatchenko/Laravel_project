@@ -161,5 +161,41 @@ TEXT;
         $task->user_id = 1;
         $task->is_published = 1;
         $task->save();
+
+        //task 5
+
+        $task = new Task();
+        $task->language = 'js';
+        $task->theme = 'numbers';
+        $task->task_desc = <<<'DESC'
+Функция получает на вход строку, должна вернуть ее перевернутой.
+ *
+ * @param string $str
+ * @return string
+DESC;
+        $task->short_desc = ' Сложение';
+        $task->task_view = <<<'TASKVIEW'
+function my_sum(a, b) {
+    // Your code here
+}
+TASKVIEW;
+        $task->check_code = <<<'TEXT'
+var result = '';
+function test(received, expected) {
+   result += (expected == received ? 1
+        : 0);
+}
+function test_my_sum(){    
+    test(10, my_sum(5, 5));
+    test(15, my_sum(10, 5));
+    test(15, my_sum(10, 5));
+}
+test_my_sum();
+console.log(result);
+TEXT;
+        $task->difficulty = 1;
+        $task->user_id = 1;
+        $task->is_published = 1;
+        $task->save();
     }
 }

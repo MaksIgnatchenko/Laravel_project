@@ -132,6 +132,11 @@
                     var editor = ace.edit('editor');
                     $('#sidebar2').show(1500,function(){
                         editor.setTheme("ace/theme/cobalt");
+                        var language  = data.language;
+                        if (language == 'js') {
+                            language = 'javascript';
+                        }
+                        editor.session.setMode("ace/mode/" + language);
                     });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;

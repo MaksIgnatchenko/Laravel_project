@@ -41,7 +41,7 @@ Abstract class Executor
         if (is_resource($process)) {
             fwrite($this->pipes[0], $this->code);
             fclose($this->pipes[0]);
-            $this->result = stream_get_contents($this->pipes[1]);
+            $this->result = trim(stream_get_contents($this->pipes[1]));
             fclose($this->pipes[1]);
             $this->error = stream_get_contents($this->pipes[2]);
             fclose($this->pipes[2]);
