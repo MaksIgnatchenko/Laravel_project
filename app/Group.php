@@ -22,6 +22,18 @@ class Group extends Model
         return $this->belongsToMany('App\Tasklist', 'tasklist_group');
     }
 
+    public function tasklist($id)
+    {
+        $tasklist = $this->tasklists;
+        $tasklist = $tasklist->where('id', $id)->first();
+        return $tasklist;
+    }
+
+//    public function tasklist($id)
+//    {
+//        return $this->belongsToMany('App\Tasklist', 'tasklist_group');
+//    }
+
     public function rate(User $user, Tasklist $tasklist)
     {
         $tasks = $tasklist->tasks->all();

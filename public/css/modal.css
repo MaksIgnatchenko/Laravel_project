@@ -26,14 +26,14 @@
 
 .modal {
   border-radius: 5px;
-  z-index: 100;
-  width: 600px;
-  height: 400px;
+  width: 80%;
+  height: 80%;
   display: block;
-  margin: 50% 0 0 -300px;
+  margin: auto auto;
   position: relative;
-  top: 50%; 
-  left: 50%;
+  z-index: 999;
+  /*top: 50%; */
+  /*left: 50%;*/
   background: #fff;
   opacity: 0;
   -webkit-transition: all 0.5s ease-in-out;
@@ -41,20 +41,20 @@
 }
 
 .modal-wrapper.open .modal {
-  margin-top: -200px;
+  margin-top: -450px;
   opacity: 1;
 }
 
 .head {
   border-radius: 5px 5px 0 0;
-  width: 90%;
+  width: 96%;
   height: 32px;
   padding: 12px 30px;
   overflow: hidden;
   background-color:rgba(41, 107, 164, 0.73)
 }
 .head:hover {
-  width: 90%;
+  width: 96%;
   height: 32px;
   padding: 12px 30px;
   overflow: hidden;
@@ -68,6 +68,7 @@
 }
 
 .content {
+  background-color: cornflowerblue;
   padding: 10%;
 }
 
@@ -81,4 +82,10 @@
 }
 .good-job h1 {
   font-size: 45px;
+}
+
+.modalTable {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 0 !important;
 }

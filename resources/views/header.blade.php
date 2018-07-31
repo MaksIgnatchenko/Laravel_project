@@ -156,8 +156,10 @@
                 <div>
                     @if(Auth::user()->avatar === 'default.png')
                         <img name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                    @elseif(strpos(Auth::user()->avatar, '://'))
+                        <img id="profile_photo" name="profile_avatar" src="{{Auth::user()->avatar}}">
                     @else
-                    <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
+                        <img id="profile_photo" name="profile_avatar" src="/images/avatars/{{Auth::user()->avatar}}">
                     @endif
                     <form id="profile_form" enctype="multipart/form-data" action="{{ action('UserController@userProfile') }}" method="POST">
                         <input id="my_avatar" type="file" name="avatar" class="hidden">
@@ -199,15 +201,13 @@
 
 <script type="text/javascript">
 
-    $('#profile_photo').stop().animate({height:80, left: 0, borderRadius:40},speed);
-
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
     });
 
     var speed=500,
         originalHeight=80,
-        hoverHeight=460;
+        hoverHeight=160;
     $("#my_avatar").hover(function(){
         $('#profile_photo').stop().animate({height:hoverHeight,left: -150,borderRadius:0 },speed);
     },function(){
