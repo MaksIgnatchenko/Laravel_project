@@ -79,18 +79,6 @@
                         <div class="menu">
                             <ul class="clear">
                                 <li>
-                                    <a href="/create">
-                                        <i class="fa fa-tasks" aria-hidden="true"></i>
-                                        <span class="link-text">Add task</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/edit">
-                                        <i class="fa fa-edit" aria-hidden="true"></i>
-                                        <span class="link-text">Edit task</span>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="/main">
                                         <i class="fa fa-bookmark" aria-hidden="true"></i>
                                         <span class="link-text">Pass a test</span>
