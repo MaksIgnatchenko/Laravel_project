@@ -3,7 +3,7 @@
 namespace App\Executors;
 
 
-class JsExecutor extends Executor
+class JavascriptExecutor extends Executor
 {
     const LANGUAGE = 'node';
     const INTERPRETER = '';

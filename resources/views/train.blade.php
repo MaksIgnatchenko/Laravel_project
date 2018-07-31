@@ -23,7 +23,7 @@
     <select>
         <option value="php" @if($task->language === 'php') selected @endif>PHP</option>
         <option value="python" @if($task->language === 'python') selected @endif>Python</option>
-        <option value="js" @if($task->language === 'js') selected @endif>JavaScript</option>
+        <option value="javascript" @if($task->language === 'javascript') selected @endif>JavaScript</option>
     </select>
     <div class="solution">
         <p>Solution:</p>

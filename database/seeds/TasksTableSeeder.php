@@ -165,7 +165,7 @@ TEXT;
         //task 5
 
         $task = new Task();
-        $task->language = 'js';
+        $task->language = 'javascript';
         $task->theme = 'numbers';
         $task->task_desc = <<<'DESC'
 Функция получает на вход строку, должна вернуть ее перевернутой.
