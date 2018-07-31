@@ -1,3 +1,4 @@
+@auth
 @if(Auth::user()->role === 'teacher')
     <style>
         .role {
@@ -13,7 +14,7 @@
         }
     </style>
 @endif
-
+@endauth
 
 <header style="position: relative">
     <div>
