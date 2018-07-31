@@ -9,7 +9,8 @@
                 <ul>
                     <li class="sub-menu" style="background-color:rgba(0,0,0,0.73)">
                         <a id="{{ $task->id }}" onclick="showTask(this.id)">
-                            {{$task->short_desc}}
+                            {{ $task->language }}
+                            {{ $task->short_desc }}
                             <span id="{{ $task->id }}checkmark" class="checkmark"></span>
                         </a>
                     </li>
@@ -21,8 +22,8 @@
 @endsection
 
 @section('sidebar2')
-    <div id="taskDescription">
-    </div>
+    Language : <span id="tasklanguage"></span>
+    <div id="taskDescription"></div>
     <div class="solution">
         <p>Solution:</p>
     </div>
@@ -44,6 +45,7 @@
         var checkMarks = document.getElementsByClassName('checkmark');
         var sidebar = document.getElementById('sidebar');
         var taskDescription = document.getElementById('taskDescription');
+        var tasklanguage = document.getElementById('tasklanguage');
         var textCode = document.getElementById('textCode');
         var editor = document.getElementById('editor');
         var buttonCheck = document.getElementById("buttonCheck");
@@ -137,6 +139,7 @@
                     });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
+                    tasklanguage.innerHTML = data.language;
                     activeField(id);
                 },
                 error :function(err) {
