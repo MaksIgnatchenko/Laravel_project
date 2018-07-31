@@ -95,3 +95,6 @@ Route::post('/apply-request', 'RoleRequestController@applyRequest');
 Route::post('/decline-request', 'RoleRequestController@declineRequest');
 Route::get('/ajax-users', 'AccountController@users');
 Route::get('/ajax-marks', 'TotalMarkController@marks');
+
+Route::post('/ajax-modul-group', 'TotalMarkController@test');
+

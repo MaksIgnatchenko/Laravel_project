@@ -48,4 +48,34 @@ class TotalMarkController extends Controller
                 'solution' => $arrayOfSolutions
         ]);
     }
+
+    public function test(Request $request)
+    {
+        $tasklist_id = 1;
+        $group_id = 1;
+        $group = Group::where('id', $group_id)->first();
+        $tasklist = $group->tasklist($tasklist_id);
+        $tasks = $tasklist->tasks;
+        $users = $group->users;
+        $taskListMarks = [];
+        $taskListMarks[0][0] = 'Field';
+        foreach($tasks as $task) {
+            $taskListMarks[0][] = $task;
+        }
+        $row = 1;
+        foreach ($users as $user) {
+            $taskListMarks[$row][] = $user;
+            foreach($tasks as $task) {
+                $solution = Solution::where('user_id', $user->id)->where('task_id', $task->id)->first();
+                if($solution) {
+                    $result = $solution;
+                } else {
+                    $result = null;
+                }
+                $taskListMarks[$row][] = $result;
+            }
+            $row++;
+        }
+        return response()->json($taskListMarks);
+    }
 }
