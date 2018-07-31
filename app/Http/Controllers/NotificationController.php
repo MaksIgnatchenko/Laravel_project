@@ -21,7 +21,6 @@ class NotificationController extends Controller
         } else {
             return response()->json(false);
         }
-
     }
 
     public function stopProcessed(Request $request)
