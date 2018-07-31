@@ -1,6 +1,7 @@
 @extends('layouts.layout_main')
 
 @section('content')
+    <i class="fab fa-js"></i>
     <div class="task">
         <input  id="tasklist" type="hidden" name="_token" value="{{$tasklist}}">
         <h5>Choose your task:</h5>
@@ -9,7 +10,11 @@
                 <ul>
                     <li class="sub-menu" style="background-color:rgba(0,0,0,0.73)">
                         <a id="{{ $task->id }}" onclick="showTask(this.id)">
-                            {{ $task->language }}
+                            @if ($task->language === 'javascript')
+                                <i class="devicon-php-plain languageIcon"></i>
+                            @else
+                                <i class="devicon-javascript-plain languageIcon"></i>
+                            @endif
                             {{ $task->short_desc }}
                             <span id="{{ $task->id }}checkmark" class="checkmark"></span>
                         </a>
@@ -53,7 +58,8 @@
         var CheckOk = document.getElementById('checkOk');
         var CheckNo = document.getElementById('checkNo');
         var syntaxError = document.getElementById('syntaxError');
-        var solutions = {{ json_encode($solutions) }}
+        var solutions = {{ json_encode($solutions) }};
+        var tasklanguage = document.getElementById('tasklanguage');
 
         buttonCheck.addEventListener('click', checkSolution);
         CheckOk.addEventListener('click', hideCheckStatus);
@@ -132,10 +138,18 @@
                 success: function (data, textStatus, xhr) {
                     task = data;
                     var editor = ace.edit('editor');
+                    tasklanguage.innerHTML = "<i class=\'devicon-php-plain languageIcon\'></i>";
+                    console.log(tasklanguage);
                     $('#sidebar2').show(1500,function(){
-                        editor.setTheme("ace/theme/cobalt");
-                        var language  = data.language;
-                        editor.session.setMode("ace/mode/" + language);
+                        var language  = "ace/mode/" + data.language;
+                        $('#mode').on('change', function(){
+                            var newMode = $("mode").val();
+                            editor.session().setMode({
+                                path: "ace/mode/php",
+                                v: Date.now()});
+                        });
+                        editor.getSession().setMode(language);
+                        console.log(language);
                     });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
