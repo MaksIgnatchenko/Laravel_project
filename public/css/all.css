@@ -73,7 +73,21 @@ header #logo a img {
     width: 160px;
     height: 140px;
 }
-
+header #wrapper {
+    float: right;
+    display: none;
+    margin-right: 15px;
+    margin-top: 10px;
+	width: 200px;
+	height: 93px;
+    color: #fff;
+	transition: .6s;
+	border-radius: 7px;
+	-moz-box-shadow:0 0 10px red;
+	-webkit-box-shadow:0 0 10px red;
+	box-shadow:0 0 10px red;
+    cursor: pointer;
+}
 header #profile {
     margin-top: 10px;
 	float: right;
@@ -162,7 +176,7 @@ header #profile li .rang  {
 	font-size: 18px;
 	cursor: pointer;
 }
-header #profile li .rang span:hover {
+header #profile li .rang .user_name:hover {
 	color: #6288bb;
 }
 header #profile .sub-menu {
@@ -783,4 +797,14 @@ textarea{
 	-webkit-box-shadow:0 0 10px #ffffff;
 	box-shadow:0 0 10px #ffffff;
 
+}
+
+#tasklanguage {
+	font-size: 20px;
+	color: white;
+}
+
+.languageIcon {
+    font-size: 30px;
+    margin: 0 10px 0 10px;
 }

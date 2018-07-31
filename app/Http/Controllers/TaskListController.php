@@ -26,7 +26,7 @@ class TasklistController extends Controller
     public function addTask(Request $request)
     {
         $tasklist = TaskList::find($request->tasklist_id);
-        $task = Task::where('id', $request->task_id)->first();
+        $task = Task::where('short_desc', $request->short_desc)->first();
         $tasklist->tasks()->attach($task->id);
         return redirect()->route('tasklists');
     }

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
     <link rel="stylesheet" href="{{asset('css/account.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/ok.css')}}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     <script type="text/javascript" src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
     <script src="{{asset('js/src/ace.js')}}" type="text/javascript" charset="utf-8"></script>
@@ -23,11 +24,14 @@
     <script src="{{asset('js/src/mode-php.js')}}" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('js/action.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/account.js')}}" defer></script>
-    @if ($signed_in)
-        @if (Auth::user()->role === 'admin')
-        <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
+    @auth
+        @if (Auth::user()->role === 'user')
+            <script type="text/javascript" src="{{asset('js/notification.js')}}" defer></script>
         @endif
-    @endif
+        @if (Auth::user()->role === 'admin')
+            <script src="{{asset('js/roleRequests.js')}}" type="text/javascript" charset="utf-8" defer></script>
+        @endif
+    @endauth
 </head>
 <body>
 

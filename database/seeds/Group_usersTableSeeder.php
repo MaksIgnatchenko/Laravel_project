@@ -19,6 +19,11 @@ class Group_usersTableSeeder extends Seeder
 
         $relation = new GroupUser();
         $relation->user_id = 3;
+        $relation->group_id = 1;
+        $relation->save();
+
+        $relation = new GroupUser();
+        $relation->user_id = 3;
         $relation->group_id = 4;
         $relation->save();
 

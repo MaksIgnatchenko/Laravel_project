@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         // Admin account
         $account = new User();
-        $account->name = 'admin';
+        $account->name = 'Admin';
         $account->email = 'admin@gmail.com';
         $account->password = Hash::make('test123');
         $account->role = 'admin';

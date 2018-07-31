@@ -17,7 +17,7 @@ class TasksTableSeeder extends Seeder
         $task->language = 'php';
         $task->theme = 'common';
         $task->task_desc = 'Функция получает на вход массив чисел, должна вернуть сумму этих чисел. Не использовать встроенные функции суммирования php. @param array $arr return integer';
-        $task->short_desc = 'Cумма';
+        $task->short_desc = 'Сумма';
         $task->task_view = <<<'TASKVIEW'
 function my_sum($arr) {
     // Your code here
@@ -53,7 +53,7 @@ TEXT;
 @param string $shortMe
 @return string
 DESC;
-        $task->short_desc = 'Cтроки';
+        $task->short_desc = 'Строки';
         $task->task_view = <<<'TASKVIEW'
 function shortener($shortMe) {
     // Your code here
@@ -139,7 +139,7 @@ TEXT;
  * @param string $str
  * @return string
 DESC;
-        $task->short_desc = 'Строки';
+        $task->short_desc = 'Перевертышь';
         $task->task_view = <<<'TASKVIEW'
 function reverse_string($str) {
     // Your code here
@@ -158,6 +158,42 @@ function test_reverse_string() {
 test_reverse_string();
 TEXT;
         $task->difficulty = 2;
+        $task->user_id = 1;
+        $task->is_published = 1;
+        $task->save();
+
+        //task 5
+
+        $task = new Task();
+        $task->language = 'javascript';
+        $task->theme = 'numbers';
+        $task->task_desc = <<<'DESC'
+Функция получает на вход строку, должна вернуть ее перевернутой.
+ *
+ * @param string $str
+ * @return string
+DESC;
+        $task->short_desc = ' Сложение';
+        $task->task_view = <<<'TASKVIEW'
+function my_sum(a, b) {
+    // Your code here
+}
+TASKVIEW;
+        $task->check_code = <<<'TEXT'
+var result = '';
+function test(received, expected) {
+   result += (expected == received ? 1
+        : 0);
+}
+function test_my_sum(){    
+    test(10, my_sum(5, 5));
+    test(15, my_sum(10, 5));
+    test(15, my_sum(10, 5));
+}
+test_my_sum();
+console.log(result);
+TEXT;
+        $task->difficulty = 1;
         $task->user_id = 1;
         $task->is_published = 1;
         $task->save();
