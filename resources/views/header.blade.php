@@ -201,6 +201,17 @@
 
 <script type="text/javascript">
 
+    function blink() {
+        var wrapper = document.getElementById('wrapper');
+        if(wrapper.style["boxShadow"] == "red 0px 0px 10px") {
+            wrapper.style["boxShadow"] = 'red 0px 0px 50px';
+        } else {
+            wrapper.style["boxShadow"] = 'red 0px 0px 10px';
+        }
+    }
+
+    setInterval(blink, 500);
+
     $("#my_avatar").on("change", function() {
         $("#profile_form").submit();
     });
@@ -213,5 +224,7 @@
     },function(){
         $('#profile_photo').stop().animate({height:originalHeight, left: 0, borderRadius:40},speed);
     })
+
+
 
 </script>

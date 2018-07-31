@@ -13,8 +13,6 @@ function getNotification() {
         success: function (data, textStatus, xhr) {
             if(data == true) {
                 wrapper.style.display = 'block';
-                $('#wrapper').effect("highlight", {}, 500);
-
             } else {
                 wrapper.style.display = 'none';
             }
