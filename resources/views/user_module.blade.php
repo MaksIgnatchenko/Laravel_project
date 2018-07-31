@@ -141,16 +141,15 @@
                     tasklanguage.innerHTML = "<i class=\'devicon-php-plain languageIcon\'></i>";
                     console.log(tasklanguage);
                     $('#sidebar2').show(1500,function(){
-                        var language  = "ace/mode/" + data.language;
-                        $('#mode').on('change', function(){
-                            var newMode = $("mode").val();
-                            editor.session().setMode({
-                                path: "ace/mode/php",
-                                v: Date.now()});
+                            editor.setOptions({
+
+                                useWrapMode: true,
+                                highlightActiveLine: true,
+                                showPrintMargin: false,
+                                theme: 'ace/theme/cobalt',
+                                mode: 'ace/mode/' + data.language
+                            })
                         });
-                        editor.getSession().setMode(language);
-                        console.log(language);
-                    });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
                     tasklanguage.innerHTML = data.language;
