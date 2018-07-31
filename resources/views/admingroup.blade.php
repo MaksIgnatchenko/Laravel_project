@@ -24,7 +24,7 @@
 
 
                                         <div class="autocomplete">
-                                            <input class="myInput" type="text" required name="user_email" placeholder="User login" style="border-radius: 5px;">
+                                            <input id="user_email" class="myInput" type="text" required name="user_email" placeholder="User login" style="border-radius: 5px;">
                                         </div>
                                         <script type="text/javascript" src="{{asset('js/autocomplete.js')}}"></script>
 
@@ -34,7 +34,7 @@
                                         <label style="margin-left: 5px"></label>
                                         <input type="hidden" name="group_id" value="{{ $group->id }}">
                                         <br>
-                                        <input class="litel" type="submit" value="Add student">
+                                        <input id="add_student" class="litel" type="submit" value="Add student">
                                         <input class="litel" name="delete" type="submit" value="Delete student">
                                     </div>
                                 </form>
@@ -110,6 +110,8 @@
                                 </a>
                             </li>
                         @endif
+                            @else
+                            <p style="color: #fff; font-size: 20px;">There are no users in the group</p>
                         @endif
                     </ul>
                 </li>
@@ -137,5 +139,17 @@
             </li>
         </ul>
     </nav>
+
+    {{--<script>
+        $('#add_student').click(function() {
+            var user_email = $('#user_email').val();
+            $.get('/ajax-notification', {user_email: user_email},
+                function(data) {
+                    console.log(data);
+                }
+            )
+        })
+
+    </script>--}}
 @endsection
 

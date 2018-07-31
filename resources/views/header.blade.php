@@ -1,3 +1,19 @@
+@if(Auth::user()->role === 'teacher')
+    <style>
+        .role {
+            color: green;
+        }
+    </style>
+@endif
+
+@if(Auth::user()->role === 'admin')
+    <style>
+        .role {
+            color: dodgerblue;
+        }
+    </style>
+@endif
+
 
 <header style="position: relative">
     <div>
@@ -40,6 +56,7 @@
                         </a>
                     </li>
                     @auth
+                        <input type="hidden" id="user_id" value="{{Auth::user()->id}}">
                     @if((Auth::user()->role === 'admin') || (Auth::user()->role === 'teacher'))
                     <li>
                         <a href="/admingroup" title="Admin groups">
@@ -140,9 +157,9 @@
                     </form>
                 </div>
                 <div class="rang">
-                    <span>
+                    <span class="user_name">
                         {{Auth::user()->name}}
-                        ({{Auth::user()->role}})
+                        <span class="role">({{Auth::user()->role}})</span>
                         <br>
                         @foreach(Auth::user()->groups()->get() as $user_group)
                             @if(Auth::user()->role === 'user')
@@ -168,6 +185,8 @@
             </li>
         </ul>
         @endif
+
+    <div id="wrapper" onclick="stopProcessed();">You have been added to the group! Click to close</div>
 </header>
 
 <script type="text/javascript">
