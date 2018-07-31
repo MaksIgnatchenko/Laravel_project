@@ -139,16 +139,10 @@
                     task = data;
                     var editor = ace.edit('editor');
                     tasklanguage.innerHTML = "<i class=\'devicon-php-plain languageIcon\'></i>";
-                    console.log(tasklanguage);
                     $('#sidebar2').show(1500,function(){
-                            editor.setOptions({
-
-                                useWrapMode: true,
-                                highlightActiveLine: true,
-                                showPrintMargin: false,
-                                theme: 'ace/theme/cobalt',
-                                mode: 'ace/mode/' + data.language
-                            })
+                        var language = data.language
+                            editor.setTheme('ace/theme/cobalt')
+                            editor.getSession.setMode("ace/mode/"+language);
                         });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
