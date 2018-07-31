@@ -140,7 +140,7 @@
         </ul>
     </nav>
 
-    <script>
+    {{--<script>
         $('#add_student').click(function() {
             var user_email = $('#user_email').val();
             $.get('/ajax-notification', {user_email: user_email},
@@ -150,6 +150,6 @@
             )
         })
 
-    </script>
+    </script>--}}
 @endsection
 

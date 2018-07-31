@@ -73,7 +73,21 @@ header #logo a img {
     width: 160px;
     height: 140px;
 }
-
+header #wrapper {
+    float: right;
+    display: none;
+    margin-right: 15px;
+    margin-top: 10px;
+	width: 200px;
+	height: 93px;
+    color: #fff;
+	transition: .6s;
+	border-radius: 7px;
+	-moz-box-shadow:0 0 10px red;
+	-webkit-box-shadow:0 0 10px red;
+	box-shadow:0 0 10px red;
+    cursor: pointer;
+}
 header #profile {
     margin-top: 10px;
 	float: right;

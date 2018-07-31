@@ -10,20 +10,25 @@ class NotificationController extends Controller
 {
     public function index(Request $request)
     {
-        $user = User::where('email', $request->user_email)->get();
 
-        foreach ($user as $user_id) {
-            $user_notification = GroupUser::where('user_id', $user_id->id)->where('processed', null)->first();
+        $user = User::where('id', $request->user_id)->first();
+        $user_id = $user->id;
 
-            var_dump($user_notification);
-            die();
+        $user_notification = GroupUser::where('user_id', $user_id)->where('processed', null)->first();
 
-            if($user_notification) {
-                return response()->json(true);
-            } else {
-                return response()->json(false);
-            }
+        if($user_notification) {
+            return response()->json(true);
+        } else {
+            return response()->json(false);
         }
 
+    }
+
+    public function stopProcessed(Request $request)
+    {
+        $user = User::where('id', $request->user_id)->first();
+        $user_id = $user->id;
+
+        $stop = GroupUser::where('user_id', $user_id)->update(['processed' => 1]);
     }
 }

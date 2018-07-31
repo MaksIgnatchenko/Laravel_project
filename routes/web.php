@@ -97,3 +97,4 @@ Route::get('/ajax-users', 'AccountController@users');
 Route::get('/ajax-marks', 'TotalMarkController@marks');
 Route::get('/ajax-tasks', 'TaskController@tasks');
 Route::get('/ajax-notification', 'NotificationController@index');
+Route::get('/ajax-stopProcessed', 'NotificationController@stopProcessed');

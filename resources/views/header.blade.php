@@ -56,6 +56,7 @@
                         </a>
                     </li>
                     @auth
+                        <input type="hidden" id="user_id" value="{{Auth::user()->id}}">
                     @if((Auth::user()->role === 'admin') || (Auth::user()->role === 'teacher'))
                     <li>
                         <a href="/admingroup" title="Admin groups">
@@ -185,7 +186,7 @@
         </ul>
         @endif
 
-    <div id="wrapper" style="position: absolute; display: none; left: 450px; color: #fff; width: 200px; height: 70px; background-color: grey;">You have been added to the group!</div>
+    <div id="wrapper" onclick="stopProcessed();">You have been added to the group! Click to close</div>
 </header>
 
 <script type="text/javascript">
