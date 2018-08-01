@@ -18,12 +18,27 @@ class Tasklist_tasksTableSeeder extends Seeder
         $relation->save();
 
         $relation = new  TasklistTask();
+        $relation->task_id = 3;
+        $relation->tasklist_id = 1;
+        $relation->save();
+
+        $relation = new  TasklistTask();
+        $relation->task_id = 4;
+        $relation->tasklist_id = 1;
+        $relation->save();
+
+        $relation = new  TasklistTask();
+        $relation->task_id = 4;
+        $relation->tasklist_id = 1;
+        $relation->save();
+
+        $relation = new  TasklistTask();
         $relation->task_id = 5;
         $relation->tasklist_id = 1;
         $relation->save();
 
         $relation = new  TasklistTask();
-        $relation->task_id = 2;
+        $relation->task_id = 6;
         $relation->tasklist_id = 1;
         $relation->save();
 

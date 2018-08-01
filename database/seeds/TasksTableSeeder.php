@@ -166,7 +166,7 @@ TEXT;
 
         $task = new Task();
         $task->language = 'javascript';
-        $task->theme = 'numbers';
+        $task->theme = 'addition';
         $task->task_desc = <<<'DESC'
 Функция получает на вход строку, должна вернуть ее перевернутой.
  *
@@ -189,6 +189,39 @@ function test_my_sum(){
     test(10, my_sum(5, 5));
     test(15, my_sum(10, 5));
     test(15, my_sum(10, 5));
+}
+test_my_sum();
+console.log(result);
+TEXT;
+        $task->difficulty = 1;
+        $task->user_id = 1;
+        $task->is_published = 1;
+        $task->save();
+
+        //task 6
+
+        $task = new Task();
+        $task->language = 'javascript';
+        $task->theme = 'subtraction';
+        $task->task_desc = <<<'DESC'
+Функция получает на вход  два числа. Верните разницу этих чисел.  
+DESC;
+        $task->short_desc = 'Вычитание';
+        $task->task_view = <<<'TASKVIEW'
+function my_func(a , b) {
+    // Your code here
+}
+TASKVIEW;
+        $task->check_code = <<<'TEXT'
+var result = "";
+function test(received, expected) {
+    result += expected === received ? 1
+        : 0;
+}
+function test_my_sum(){    
+    test(5, my_func(10, 5));
+    test(10, my_func(20, 10));
+    test(15, my_func(25, 10));
 }
 test_my_sum();
 console.log(result);
