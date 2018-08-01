@@ -34,7 +34,6 @@
 </div>
 
 <div id="right-content">
-
 </div>
 
 

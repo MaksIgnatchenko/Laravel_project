@@ -168,10 +168,7 @@ TEXT;
         $task->language = 'javascript';
         $task->theme = 'addition';
         $task->task_desc = <<<'DESC'
-Функция получает на вход строку, должна вернуть ее перевернутой.
- *
- * @param string $str
- * @return string
+Функция получает на вход два числа. Необходимо вернуть их сумму 
 DESC;
         $task->short_desc = 'Сложение';
         $task->task_view = <<<'TASKVIEW'
