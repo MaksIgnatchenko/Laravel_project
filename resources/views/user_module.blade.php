@@ -10,16 +10,10 @@
                 <ul>
                     <li class="sub-menu" style="background-color:rgba(0,0,0,0.73)">
                         <a id="{{ $task->id }}" onclick="showTask(this.id)">
-<<<<<<< HEAD
                             @if ($task->language === 'php')
                                 <i class="devicon-php-plain languageIcon"></i>
                             @else
-=======
-                            @if ($task->language === 'javascript')
->>>>>>> ac4af5332e2443cf13cd7e6b043c2fd1a6c51803
                                 <i class="devicon-javascript-plain languageIcon"></i>
-                            @else
-                                <i class="devicon-php-plain languageIcon"></i>
                             @endif
                             {{ $task->short_desc }}
                             <span id="{{ $task->id }}checkmark" class="checkmark"></span>
