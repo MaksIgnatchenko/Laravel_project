@@ -49,10 +49,10 @@ class TotalMarkController extends Controller
         ]);
     }
 
-    public function test(Request $request)
+    public function test($gropId, $tasklistId)
     {
-        $tasklist_id = 1;
-        $group_id = 1;
+        $tasklist_id = $tasklistId;
+        $group_id = $gropId;
         $group = Group::where('id', $group_id)->first();
         $tasklist = $group->tasklist($tasklist_id);
         $tasks = $tasklist->tasks;

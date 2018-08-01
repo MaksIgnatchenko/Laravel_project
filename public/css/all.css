@@ -809,3 +809,11 @@ textarea{
     font-size: 30px;
     margin: 0 10px 0 10px;
 }
+
+.statisticButton {
+	border: 5px ridge;
+}
+
+.statisticButton :hover {
+	border: 2px solid;
+}

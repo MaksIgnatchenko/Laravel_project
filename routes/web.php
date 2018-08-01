@@ -99,5 +99,5 @@ Route::get('/ajax-tasks', 'TaskController@tasks');
 Route::get('/ajax-notification', 'NotificationController@index');
 Route::get('/ajax-stopProcessed', 'NotificationController@stopProcessed');
 
-Route::post('/ajax-modul-group', 'TotalMarkController@test');
+Route::get('/ajax-modul-group/{group_id}/{tasklist_id}', 'TotalMarkController@test');
 

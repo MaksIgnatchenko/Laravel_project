@@ -16,13 +16,15 @@
         </tr>
         <br>
         <tr>
-            <th style="background: -webkit-gradient(linear, left top, left bottom, from(rgb(112, 147, 193)), to(rgb(238, 242, 248)));">
+            <th class="statisticButton" style="background: -webkit-gradient(linear, left top, left bottom, from(rgb(112, 147, 193)), to(rgb(238, 242, 248)));">
                 Users/Moduls
             </th>
             @foreach($tasklists as $tasklist)
-            <th class="tasklist" id="tasklist{{$tasklist->name}}">{{$tasklist->name}}
+            <th class="tasklist statisticButton" id="tasklist{{$tasklist->name}}">{{$tasklist->name}}
                 <br>
                 tasks in modul : {{ count($tasklists) }}
+                <br>
+                <span style="font-size: 18px; color: black">Push for detail statistic</span>
             </th>
 
             @endforeach
@@ -80,42 +82,44 @@
                         }
                     })
                 $('.content')[0].innerHTML = "";
-
                 $('.modal-wrapper').toggleClass('open');
                 $('.page-wrapper').toggleClass('blur-it');
                 return false;
             });
         })
 
-        var groupId = document.getElementById('groupId');
+        var groupId = document.getElementById('groupId').value;
         var tasklists = document.getElementsByClassName('tasklist');
         for (let i = 0; tasklists.length > i; i++) {
-            var tasklistId = tasklists[i].id.match(/\d+/g)[0];
-            var res = {'groupId' : groupId,
-                   'tasklistId' : tasklistId
-            };
-        tasklists[i].onclick = function() {
-                return new Promise((resolve, reject) => {
-                    let ajax = new XMLHttpRequest();
-                    ajax.open("POST", '/ajax-modul-group', true);
-                    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    ajax.send(res);
-                    ajax.onreadystatechange = () => {
-                        if (ajax.readyState == XMLHttpRequest.DONE && ajax.status == 200) {
-                            var data = JSON.parse(ajax.responseText);
-
-                            render(data);
-                            resolve(data);
-                        } else if (ajax.status != 200) {
-                            reject(new Error("status is not 200"))
+            tasklists[i].onclick = function() {
+                var tasklistId = (this.id.match(/\d+/g)[0]);
+                var groupId = document.getElementById('groupId').value;
+                postAjax();
+                function postAjax() {
+                    return new Promise((resolve, reject) => {
+                        let ajax = new XMLHttpRequest();
+                        let url = "/ajax-modul-group/" + groupId + "/" + tasklistId;
+                        ajax.open("GET", url, true);
+                        // ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        ajax.send();
+                        ajax.onreadystatechange = () => {
+                            if (ajax.readyState == XMLHttpRequest.DONE && ajax.status == 200) {
+                                var data = JSON.parse(ajax.responseText);
+                                console.log(data);
+                                render(data);
+                                resolve(data);
+                            } else if (ajax.status != 200) {
+                                reject(new Error("status is not 200"))
+                            }
                         }
-                    }
-                })
+                    })
+                }
 
                 function render(data) {
                     $('.modal-wrapper').toggleClass('open');
                     $('.page-wrapper').toggleClass('blur-it');
                     var content = $('.content')[0];
+                    $('.content')[0].innerHTML = "";
                     var table = document.createElement('table');
                     table.classList.add("simple-little-table");
                     table.classList.add("modalTable");
