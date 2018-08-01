@@ -1,7 +1,6 @@
 @extends('layouts.layout_mark')
-
 @section('sidebar')
-
+    <input type="hidden" id="groupId" value="{{ $group->id }}">
     <table class="simple-little-table" >
         <tr>
             <th colspan="{{count($tasklists)+1}}"
@@ -21,7 +20,7 @@
                 Users/Moduls
             </th>
             @foreach($tasklists as $tasklist)
-            <th>{{$tasklist->name}}
+            <th class="tasklist" id="tasklist{{$tasklist->name}}">{{$tasklist->name}}
                 <br>
                 tasks in modul : {{ count($tasklists) }}
             </th>
@@ -33,9 +32,6 @@
                 <td>{{$user}}</td>
                 @foreach($moduls as $key => $rate)
                     @if(count($rate))
-                            {{--@php--}}
-                            {{--dd($key);--}}
-                            {{--@endphp--}}
                         <td id="{{$key}}:{{$rate[0]->user_id}}" class="trigger" style="cursor:pointer">
                             <br>
                             solved task: {{count($rate)}}
@@ -62,34 +58,102 @@
                 </a>
             </div>
             <div class="content">
-                <div class="good-job">
-                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                </div>
             </div>
         </div>
     </div>
+
     <script  type="text/javascript" charset="utf-8">
-        $( document ).ready(function() {
-            $('.trigger').on('click', function(event) {
+        $(document).ready(function () {
+            $('.trigger').on('click', function (event) {
 
                 var userId = event.target.id.split(':')[1]
                 var tasklistName = event.target.id.split(':')[0]
                 $.get("/ajax-marks/",
-                    { user_id: userId,
-                      tasklist_name: tasklistName}, function(data) {
-                    console.log(data.solution)
-                    for(var key in data.tasks) {
-
-                                $('.content').append('<div>' + data.tasks[key][0].short_desc + '</div><br>');
-                    }
-                })
-                $('.content').innerHTML = "";
+                    {
+                        user_id: userId,
+                        tasklist_name: tasklistName
+                    }, function (data) {
+                        var content = $('.content');
+                        content.innerHTML = "";
+                        for (var key in data.tasks) {
+                            content.append('<div>' + data.tasks[key][0].short_desc + '</div><br>');
+                        }
+                    })
+                $('.content')[0].innerHTML = "";
 
                 $('.modal-wrapper').toggleClass('open');
                 $('.page-wrapper').toggleClass('blur-it');
                 return false;
             });
-        });
+        })
+
+        var groupId = document.getElementById('groupId');
+        var tasklists = document.getElementsByClassName('tasklist');
+        for (let i = 0; tasklists.length > i; i++) {
+            var tasklistId = tasklists[i].id.match(/\d+/g)[0];
+            var res = {'groupId' : groupId,
+                   'tasklistId' : tasklistId
+            };
+        tasklists[i].onclick = function() {
+                return new Promise((resolve, reject) => {
+                    let ajax = new XMLHttpRequest();
+                    ajax.open("POST", '/ajax-modul-group', true);
+                    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    ajax.send(res);
+                    ajax.onreadystatechange = () => {
+                        if (ajax.readyState == XMLHttpRequest.DONE && ajax.status == 200) {
+                            var data = JSON.parse(ajax.responseText);
+
+                            render(data);
+                            resolve(data);
+                        } else if (ajax.status != 200) {
+                            reject(new Error("status is not 200"))
+                        }
+                    }
+                })
+
+                function render(data) {
+                    $('.modal-wrapper').toggleClass('open');
+                    $('.page-wrapper').toggleClass('blur-it');
+                    var content = $('.content')[0];
+                    var table = document.createElement('table');
+                    table.classList.add("simple-little-table");
+                    table.classList.add("modalTable");
+                    content.appendChild(table);
+                    let tr = document.createElement('tr');
+                    table.appendChild(tr);
+                    for (let key in data[0]) {
+                        let th = document.createElement('td');
+                        th.innerHTML = data[0][key].theme;
+                        tr.appendChild(th);
+                    }
+                    for (let i = 1; i < data.length; i++) {
+
+                        let tr = document.createElement('tr');
+                        table.appendChild(tr);
+                            for (let n = 0; n < data[i].length; n++) {
+                                if (n > 0) {
+                                    if (data[i][n]) {
+                                        var td = document.createElement('td');
+                                        td.innerHTML = "<span style='color : green'> &#10004; </span>";
+                                        tr.appendChild(td);
+                                    } else {
+                                        var td = document.createElement('td');
+                                        td.innerHTML = "<span style='color : red'> &#10008; </span>";
+                                        tr.appendChild(td);
+                                    }
+                                } else {
+                                    var th = document.createElement('td');
+                                    th.innerHTML = data[i][n].name;
+                                    tr.appendChild(th);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
 
     </script>
 

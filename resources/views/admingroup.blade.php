@@ -139,17 +139,5 @@
             </li>
         </ul>
     </nav>
-
-    {{--<script>
-        $('#add_student').click(function() {
-            var user_email = $('#user_email').val();
-            $.get('/ajax-notification', {user_email: user_email},
-                function(data) {
-                    console.log(data);
-                }
-            )
-        })
-
-    </script>--}}
 @endsection
 

@@ -80,6 +80,7 @@ header #wrapper {
     margin-top: 10px;
 	width: 200px;
 	height: 93px;
+	padding: 0 10px 0 10px;
     color: #fff;
 	transition: .6s;
 	border-radius: 7px;

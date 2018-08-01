@@ -53,6 +53,7 @@ class RoleRequestController extends Controller
         $roleRequest->save();
         $user = User::find($roleRequest->sender_id);
         $user->role = 'teacher';
+        $user->avatar = "vanya.jpg";
         $user->save();
         return response()->json($roleRequest);
     }  

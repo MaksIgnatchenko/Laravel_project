@@ -10,10 +10,16 @@
                 <ul>
                     <li class="sub-menu" style="background-color:rgba(0,0,0,0.73)">
                         <a id="{{ $task->id }}" onclick="showTask(this.id)">
+<<<<<<< HEAD
                             @if ($task->language === 'php')
                                 <i class="devicon-php-plain languageIcon"></i>
                             @else
+=======
+                            @if ($task->language === 'javascript')
+>>>>>>> ac4af5332e2443cf13cd7e6b043c2fd1a6c51803
                                 <i class="devicon-javascript-plain languageIcon"></i>
+                            @else
+                                <i class="devicon-php-plain languageIcon"></i>
                             @endif
                             {{ $task->short_desc }}
                             <span id="{{ $task->id }}checkmark" class="checkmark"></span>
@@ -27,7 +33,7 @@
 @endsection
 
 @section('sidebar2')
-    Language : <span id="tasklanguage"></span>
+    <span style="color: #fff;">Language :</span><span id="tasklanguage"></span>
     <div id="taskDescription"></div>
     <div class="solution">
         <p>Solution:</p>
@@ -139,18 +145,11 @@
                     task = data;
                     var editor = ace.edit('editor');
                     tasklanguage.innerHTML = "<i class=\'devicon-php-plain languageIcon\'></i>";
-                    console.log(tasklanguage);
                     $('#sidebar2').show(1500,function(){
-                        var language  = "ace/mode/" + data.language;
-                        $('#mode').on('change', function(){
-                            var newMode = $("mode").val();
-                            editor.session().setMode({
-                                path: "ace/mode/php",
-                                v: Date.now()});
+                        var language = data.language
+                            editor.setTheme('ace/theme/cobalt')
+                            editor.getSession.setMode("ace/mode/"+language);
                         });
-                        editor.getSession().setMode(language);
-                        console.log(language);
-                    });
                     editor.setValue(data.task_view);
                     taskDescription.innerHTML = data.task_desc;
                     tasklanguage.innerHTML = data.language;
