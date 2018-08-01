@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
         $account->save();
         //Teacher account
         $account = new User();
-        $account->name = 'Sergey';
+        $account->name = 'Ivan';
         $account->email = 'teacher@gmail.com';
         $account->password = Hash::make('test123');
         $account->role = 'teacher';
